@@ -2,14 +2,15 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import AppRoutes from './routes/AppRoutes'
 import Navigation from './components/Navigation/Navigation'
+import Footer from './components/Footer/Footer'
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Navigation /> */}
-      <h1>SUPER WEB DE RECETAS</h1>
+      <Navigation />
       <AppRoutes />
+      <Footer />
     </div>
   )
 }
