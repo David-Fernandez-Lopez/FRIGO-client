@@ -23,7 +23,10 @@ class RecipeService {
 
     createRecipe(recipeData) {
         return this.api.post(`/create`, recipeData)
+    }
 
+    editRecipe(recipe_id, recipeData) {
+        return this.api.get(`/${recipe_id}/edit`, recipeData)
     }
 
     getRecipeById(recipe_id) {
@@ -31,11 +34,11 @@ class RecipeService {
     }
 
     getRecipeByIngredients(ingredients) {
-        return this.api.get(`/findByIngredients?ingredients=${ingredients}`)
+        return this.api.get('/findByIngredients', ingredients)
     }
   
     getRecipesByCuisine(cuisine) {
-        return this.api.get(`/complexSearch?cuisines=${cuisine}`)
+        return this.api.get('/complexSearch', cuisine)
     }
 }
 
