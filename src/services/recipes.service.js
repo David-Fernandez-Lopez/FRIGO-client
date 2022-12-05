@@ -37,8 +37,8 @@ class RecipeService {
         return this.api.get('/findByIngredients', ingredients)
     }
   
-    getRecipesByCuisine(cuisine) {
-        return this.api.get('/complexSearch', cuisine)
+    getRecipesByCuisine(cuisines) {
+        return this.api.get('/complexSearch', cuisines)
     }
 }
 

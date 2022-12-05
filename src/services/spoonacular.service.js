@@ -1,13 +1,16 @@
 import axios from 'axios'
 
-class RecipeService {
+class SpoonacularService {
 
     constructor() {
 
        
-        // this.api = axios.create({
-        //     baseURL: `${process.env.REACT_APP_API_URL}/recipes`
-        // })
+        this.api = axios.create({
+            baseURL: `https://api.spoonacular.com/recipes`,
+            headers: {
+                "X-API-KEY": API_KEY
+            }
+        })
 
         this.api.interceptors.request.use((config) => {
 
@@ -20,28 +23,20 @@ class RecipeService {
             return config
         })
     }
+   
+    getRecipeById(recipe_id) {
+        return this.api.get(`/${recipe_id}/information`)
+    }
 
-    // createRecipe(recipeData) {
-    //     return this.api.post(`/create`, recipeData)
-    // }
-
-    // editRecipe(recipe_id, recipeData) {
-    //     return this.api.get(`/${recipe_id}/edit`, recipeData)
-    // }
-
-    // getRecipeById(recipe_id) {
-    //     return this.api.get(`/${recipe_id}/information`)
-    // }
-
-    // getRecipeByIngredients(ingredients) {
-    //     return this.api.get('/findByIngredients', ingredients)
-    // }
+    getRecipeByIngredients(ingredients) {
+        return this.api.get('/findByIngredients', ingredients)
+    }
   
-    // getRecipesByCuisine(cuisine) {
-    //     return this.api.get('/complexSearch', cuisine)
-    // }
+    getRecipesByCuisine(cuisines) {
+        return this.api.get('/complexSearch', cuisines)
+    }
 }
 
-const recipeService = new RecipeService()
+const spoonacularService = new SpoonacularService()
 
-export default recipeService
+export default spoonacularService
