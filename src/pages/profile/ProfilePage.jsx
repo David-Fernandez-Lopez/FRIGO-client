@@ -1,12 +1,16 @@
 import { Container } from "react-bootstrap"
+import ProfileHeader from "../../components/ProfileHeader/ProfileHeader"
+import ProfileTab from "../../components/ProfileTab/ProfileTab"
 
 const ProfilePage = () => {
 
     return (
        <Container>
-            <h1>Profile Page</h1>
+
+            <ProfileHeader />
             <hr />
-    </Container>
+            <ProfileTab/>
+        </Container>
     )
 }
 
