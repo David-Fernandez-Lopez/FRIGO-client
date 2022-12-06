@@ -1,10 +1,14 @@
 import './RecipeCard.css'
 
-function RecipeCard() {
 
+function RecipeCard({id}) {
 
+    
+    
     return (
-        <></>
+        <>
+            <h1>hola</h1>
+        </>
     )
 
 }
