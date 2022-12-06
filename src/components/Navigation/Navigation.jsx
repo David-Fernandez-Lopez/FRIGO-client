@@ -1,12 +1,20 @@
-import { useContext } from 'react'
-import { Nav, Container, Navbar, NavDropdown } from 'react-bootstrap'
+import { useContext, useState } from 'react'
+import { Nav, Container, Navbar, NavDropdown, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navigation.css'
+import AuthForms from '../AuthForms/AuthForms'
+
 // import { AuthContext } from '../../contexts/auth.context'
 
 const Navigation = () => {
 
     // const { user, logoutUser } = useContext(AuthContext)
+
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
 
     return (
         <>  
@@ -27,9 +35,19 @@ const Navigation = () => {
                         <Link to="/about" className='navlink'>
                             <Nav.Link as="div">About Us</Nav.Link>
                         </Link>
-                        <Link to="/login" className='navlink'>
-                            <Nav.Link as="div">Log In</Nav.Link>
+                        <Link className='navlink'>
+                                <Nav.Link as="div" onClick={openModal}>Log In</Nav.Link>
                             </Link>
+
+                <Modal show={showModal} onHide={closeModal}>
+                            <Modal.Header closeButton>
+                                    <img src="#" alt="LOGO FRIGO" />
+                            </Modal.Header>
+                            <Modal.Body>
+                                <AuthForms />
+                            </Modal.Body>
+                </Modal>
+
                             
                              <NavDropdown title="Profile" id="basic-nav-dropdown">
                                     <NavDropdown.Item href="/profile/:id"> My Profile </NavDropdown.Item>
