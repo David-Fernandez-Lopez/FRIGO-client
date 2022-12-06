@@ -2,8 +2,8 @@ import { useContext, useState } from 'react'
 import { Nav, Container, Navbar, NavDropdown, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navigation.css'
-import AuthForms from '../AuthForms/AuthForms'
 import LogInForm from '../LogInForm/LogInForm'
+import SignUpForm from '../SignUpForm/SignUpForm'
 
 // import { AuthContext } from '../../contexts/auth.context'
 
@@ -27,6 +27,7 @@ const Navigation = () => {
 
     const closeModal = () => {
         setShowModal(false)
+        
     }
 
 
@@ -62,7 +63,7 @@ const Navigation = () => {
                             </Modal.Header>
                                 <Modal.Body>
                                     {showingForm === 'login' && <LogInForm />}
-                                    {showingForm === 'signup' && <AuthForms />}
+                                    {showingForm === 'signUp' && <SignUpForm />}
                             </Modal.Body>
                 </Modal>
 

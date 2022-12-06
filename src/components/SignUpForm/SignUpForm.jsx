@@ -6,7 +6,8 @@ const SignUpForm = () => {
 
     const [signupData, setSignupData] = useState({
         email: '',
-        password: ''
+        password: '',
+        name: '',
     })
 
     const handleInputChange = e => {

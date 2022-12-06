@@ -19,7 +19,8 @@ const LogInForm = () => {
 
     return (
 
-                    <Form >
+        <Form >
+            <h3 className="mb-3" style='align-content-center'>Log In</h3>
                         <Form.Group className="mb-3" controlId="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
