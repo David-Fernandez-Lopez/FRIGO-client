@@ -1,15 +1,17 @@
 import { Container } from "react-bootstrap"
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader"
 import ProfileTab from "../../components/ProfileTab/ProfileTab"
+import NewRecipeForm from "../../components/NewRecipeForm/NewRecipeForm"
 
 const ProfilePage = () => {
 
     return (
-       <Container>
+        <Container>
 
             <ProfileHeader />
             <hr />
-            <ProfileTab/>
+            <ProfileTab />
+            <NewRecipeForm />
         </Container>
     )
 }
