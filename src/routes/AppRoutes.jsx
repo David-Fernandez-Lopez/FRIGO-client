@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom"
 
-import HomePage from "../pages/home/HomePage"
-import RecipeDetailsPage from "../pages/recipeDetails/RecipeDetailsPage"
-import RecipesPage from "../pages/recipes/RecipesPage"
-import AboutPage from "../pages/about/AboutPage"
-import ProfilePage from "../pages/profile/ProfilePage"
-import ShoppingListPage from "../pages/shoppingList/ShoppingListPage"
+import HomePage from "../pages/Home/HomePage"
+import RecipeDetailsPage from "../pages/RecipeDetails/RecipeDetailsPage"
+import RecipesPage from "../pages/Recipes/RecipesPage"
+import AboutPage from "../pages/About/AboutPage"
+import ProfilePage from "../pages/Profile/ProfilePage"
+import ShoppingListPage from "../pages/ShoppingList/ShoppingListPage"
 
 /* import PrivateRoute from "./PrivateRoutes" */
 

@@ -6,7 +6,7 @@ class RecipeService {
 
        
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/recipes`
+            baseURL: `${process.env.REACT_APP_API_URL}/api/recipes`
         })
 
         this.api.interceptors.request.use((config) => {
