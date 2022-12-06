@@ -27,6 +27,7 @@ const LogInForm = () => {
         authService
             .login(signupData)
             .then(({ data }) => {
+                console.log(data)
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()

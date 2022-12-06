@@ -9,6 +9,7 @@ const SignUpForm = () => {
     const [signupData, setSignupData] = useState({
         email: '',
         password: '',
+        name: '',
     })
 
     const handleInputChange = e => {
@@ -25,6 +26,7 @@ const navigate = useNavigate()
         authService
             .signup(signupData)
             .then(() => {
+
                 navigate('/')
             })
             .catch(err => console.log(err))
