@@ -1,13 +1,14 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
+import authService from "../../services/auth.service"
 
+import { useNavigate } from 'react-router-dom'
 
 const SignUpForm = () => {
 
     const [signupData, setSignupData] = useState({
         email: '',
         password: '',
-        name: '',
     })
 
     const handleInputChange = e => {
@@ -15,12 +16,27 @@ const SignUpForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
+const navigate = useNavigate()
+
+    const handleSubmit = e => {
+
+        e.preventDefault()
+
+        authService
+            .signup(signupData)
+            .then(() => {
+                navigate('/')
+            })
+            .catch(err => console.log(err))
+    }
 
     const { password, email, name } = signupData
 
     return (
-        <Form >
-            <Form.Group className="mb-3" controlId="email">
+        <>
+        <h3>Sign Up</h3>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="name" value={name} onChange={handleInputChange} name="name" />
             </Form.Group>
@@ -36,7 +52,8 @@ const SignUpForm = () => {
             <div className="d-grid">
                 <Button variant="dark" type="submit">Register</Button>
             </div>
-        </Form>
+            </Form>
+              </>
     )
 }
 
