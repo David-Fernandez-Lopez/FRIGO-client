@@ -10,10 +10,10 @@ const AuthForms = () => {
 
     return (
             <Tabs defaultActiveKey="Forms" id="fill" className="forms mb-3" justify>
-                <Tab className="login" eventKey="login" title="Log In">
+                <Tab tabClassName="login" eventKey="login" title="Log In">
                     <LogInForm />
                 </Tab>
-                <Tab className="signup" eventKey="signup" title="Sign Up">
+                <Tab tabClassName="signup" eventKey="signup" title="Sign Up">
                     <SignUpForm />
                 </Tab>
             </Tabs>

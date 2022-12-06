@@ -1,3 +1,12 @@
-.login {
+.login:hover {
+background-color: rgba(0, 128, 0, 0.144);
+color: black;
+}
+.signup:hover {
+background-color: rgba(0, 128, 0, 0.144);
+color: black;
 
+}
+.forms {
+border-bottom: none;
 }
