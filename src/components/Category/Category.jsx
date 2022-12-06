@@ -10,10 +10,10 @@ const responsive = {
         items: 1
     },
     568: {
-        items: 2
+        items: 3
     },
     1024: {
-        items: 3,
+        items: 4,
         itemsFit: 'contain'
     },
 }
