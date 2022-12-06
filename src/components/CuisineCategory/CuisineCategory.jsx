@@ -2,7 +2,6 @@ import './CuisineCategory.css'
 
 function CuisineCategory() {
 
-
     return (
         <></>
     )
