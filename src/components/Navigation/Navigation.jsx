@@ -3,6 +3,7 @@ import { Nav, Container, Navbar, NavDropdown, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navigation.css'
 import AuthForms from '../AuthForms/AuthForms'
+import LogInForm from '../LogInForm/LogInForm'
 
 // import { AuthContext } from '../../contexts/auth.context'
 
@@ -11,9 +12,22 @@ const Navigation = () => {
     // const { user, logoutUser } = useContext(AuthContext)
 
     const [showModal, setShowModal] = useState(false)
+    const [showingForm, setShowingForm] = useState('')
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
+
+    const signUp = () => {
+        setShowModal(true)
+        setShowingForm('signUp')
+    }
+
+    const login = () => {
+        setShowModal(true)
+        setShowingForm('login')
+    }
+
+    const closeModal = () => {
+        setShowModal(false)
+    }
 
 
     return (
@@ -36,15 +50,19 @@ const Navigation = () => {
                             <Nav.Link as="div">About Us</Nav.Link>
                         </Link>
                         <Link className='navlink'>
-                                <Nav.Link as="div" onClick={openModal}>Log In</Nav.Link>
-                            </Link>
+                                <Nav.Link as="div" onClick={login}>Log In</Nav.Link>
+                        </Link>
+                        <Link className='navlink'>
+                                <Nav.Link as="div" onClick={signUp}>Sign Up</Nav.Link>
+                        </Link>
 
                 <Modal show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
                                     <img src="#" alt="LOGO FRIGO" />
                             </Modal.Header>
-                            <Modal.Body>
-                                <AuthForms />
+                                <Modal.Body>
+                                    {showingForm === 'login' && <LogInForm />}
+                                    {showingForm === 'signup' && <AuthForms />}
                             </Modal.Body>
                 </Modal>
 
