@@ -30,7 +30,7 @@ function Category(props) {
 
         const promises = [
             spoonacularService.getRecipeByIngredients('apple'),
-            spoonacularService.getRecipesByCuisine('main course')
+            spoonacularService.getRecipesByCategory('main course')
         ]
 
         Promise
