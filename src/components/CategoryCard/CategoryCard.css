@@ -1,0 +1,12 @@
+.CategoryCard {
+    transition: all ease 200ms;
+}
+
+.CategoryCard:hover {
+    transform: scale(1.03);
+    box-shadow: black ;
+}
+
+.CategoryCard p {
+    text-shadow: 2px 7px 5px rgba(16, 6, 81, 0.072),0px -4px 10px rgba(21, 17, 105, 0.085);
+}
