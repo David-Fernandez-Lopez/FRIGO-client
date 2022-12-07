@@ -1,16 +1,12 @@
 import axios from 'axios'
-const API_KEY = process.env.API_KEY
 
 class SpoonacularService {
 
     constructor() {
 
-       
+
         this.api = axios.create({
-            baseURL: `https://api.spoonacular.com/recipes`,
-            headers: {
-                "X-API-KEY": API_KEY
-            }
+            baseURL: `https://api.spoonacular.com/recipes`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -24,17 +20,17 @@ class SpoonacularService {
             return config
         })
     }
-   
+
     getRecipeById(recipe_id) {
         return this.api.get(`/${recipe_id}/information`)
     }
 
     getRecipeByIngredients(ingredients) {
-        return this.api.get('/findByIngredients', ingredients)
+        return this.api.get(`/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${ingredients}`)
     }
-  
-    getRecipesByCuisine(cuisines) {
-        return this.api.get('/complexSearch', cuisines)
+
+    getRecipesByCuisine(category) {
+        return this.api.get(`/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${category}`)
     }
 }
 

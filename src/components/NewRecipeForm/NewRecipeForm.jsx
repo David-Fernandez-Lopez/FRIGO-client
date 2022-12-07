@@ -4,21 +4,63 @@ import recipeService from "../../services/recipes.service"
 import uploadServices from "../../services/upload.service"
 import cuisineService from "../../services/cuisines.service"
 import dishTypeService from "../../services/dishTypes.service"
+import sortAlphabetically from '../../utils/sort'
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
+    const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
     const [dishType, setdishType] = useState([])
-
+    const [instructionsData, setInstructionsData] = useState(
+        [{
+            number: 0,
+            step: ''
+        },
+        {
+            number: 0,
+            step: ''
+        }
+        ]
+    )
+    const [ingedientsData, setIngedientsData] = useState(
+        [{
+            name: '',
+            quantity: 0,
+            units: ''
+        },
+        {
+            name: '',
+            quantity: 0,
+            units: ''
+        }]
+    )
+    const [recipeData, setRecipeData] = useState({
+        title: '',
+        readyInMinutes: 0,
+        servings: 0,
+        inversions: '',
+        instructions: instructionsData,
+        cuisines: '',
+        dishTypes: '',
+        summary: '',
+        ingredients: ingedientsData,
+        image: ''
+    })
+    console.log(recipeData)
     const loadData = () => {
-        cuisineService
-            .getCuisines()
-            .then(({ data }) => {
-                const sortedByName = [...data]
-                sortedByName.sort((a, b) => {
-                    return a.cuisine.localeCompare(b.cuisine)
-                })
-                setCuisine(sortedByName)
+
+        const promises = [
+            cuisineService.getCuisines(),
+            dishTypeService.getDishType()
+        ]
+
+        Promise
+            .all(promises)
+            .then(([cuisines, dishType]) => {
+                const cuisineSortedByName = sortAlphabetically(cuisines)
+                setCuisine(cuisineSortedByName)
+                const dishTypeSortedByName = sortAlphabetically(dishType)
+                setdishType(dishTypeSortedByName)
             })
             .catch(err => console.log(err))
     }
@@ -27,23 +69,10 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         loadData()
     }, [])
 
-    const [recipeData, setRecipeData] = useState({
-        title: '',
-        readyInMinutes: 0,
-        servings: 0,
-        inversions: '',
-        instructions: '',
-        cuisines: '',
-        dishTypes: '',
-        summary: '',
-        ingredients: '',
-        image: ''
-    })
-
-    const [loadingImage, setLoadingImage] = useState(false)
-
     const handleInputChange = e => {
         const { name, value } = e.target
+        // setIngedientsData({ ...ingedientsData, [name]: value })
+        // setInstructionsData({ ...instructionsData, [name]: value })
         setRecipeData({ ...recipeData, [name]: value })
     }
 
@@ -96,10 +125,12 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             <Row>
                 <Col>
                     <Form.Group className="mb-3" controlId="dishTypes">
-                        <Form.Label>dishTypes</Form.Label>
+                        <Form.Label>Dish Type</Form.Label>
                         <Form.Select aria-label="dishTypes" value={dishTypes} onChange={handleInputChange} name="dishTypes">
-                            <option>Please select a dishTypes</option>
-                            <option>main course</option>
+                            <option>Please select a Dish Type</option>
+                            {dishType.map(elem => {
+                                return <option key={elem._id}>{elem.dishType}</option>
+                            })}
                         </Form.Select>
                     </Form.Group>
                 </Col>
@@ -119,7 +150,24 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className="mb-3" controlId="ingredients">
                         <Form.Label>Ingredients</Form.Label>
-                        <Form.Control type="text" value={ingredients} onChange={handleInputChange} name="ingredients" />
+                        {ingedientsData.map((elm, idx) => {
+                            return (<Row>
+                                <Col>
+                                    <Form.Control type="text" placeholder="Ingredient Name" value={ingredients.name} onChange={handleInputChange} name="ingredients.name" />
+                                </Col>
+                                <Col>
+                                    <Form.Control type="number" placeholder="Quantity" value={ingredients.quantity} onChange={handleInputChange} name="ingredients.quantity" />
+                                </Col>
+                                <Col>
+                                    <Form.Select aria-label="ingredient.units" value={ingredients.units} onChange={handleInputChange} name="ingredient.units">
+                                        <option>Please select a Unit of Measurement</option>
+                                        <option>mg</option>
+                                        <option>ml</option>
+                                    </Form.Select>
+                                </Col>
+                            </Row>)
+                        })}
+
                     </Form.Group>
                 </Col>
             </Row>
@@ -127,7 +175,18 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className="mb-3" controlId="instructions">
                         <Form.Label>Instructions</Form.Label>
-                        <Form.Control type="text" value={instructions} onChange={handleInputChange} name="instructions" />
+                        {instructionsData.map((elm, idx) => {
+                            return (
+                                <Row>
+                                    <Col>
+                                        <Form.Control type="text" disabled value={idx + 1} onChange={handleInputChange} name="instructions.number" />
+                                    </Col>
+                                    <Col>
+                                        <Form.Control type="text" value={instructions.step} onChange={handleInputChange} name="instructions.step" />
+                                    </Col>
+                                </Row>
+                            )
+                        })}
                     </Form.Group>
                 </Col>
             </Row>
@@ -140,7 +199,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" controlId="readyInMinutes">
-                        <Form.Label>readyInMinutes</Form.Label>
+                        <Form.Label>Cooking Time (min)</Form.Label>
                         <Form.Control type="number" value={readyInMinutes} onChange={handleInputChange} name="readyInMinutes" />
                     </Form.Group>
                 </Col>

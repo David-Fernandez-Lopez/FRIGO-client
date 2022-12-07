@@ -4,9 +4,9 @@ class DishTypeService {
 
     constructor() {
 
-       
+
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/api/cuisines`
+            baseURL: `${process.env.REACT_APP_API_URL}/api/dishTypes`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -25,7 +25,7 @@ class DishTypeService {
         return this.api.get(`/`)
     }
 
-    
+
 }
 
 const dishTypeService = new DishTypeService()
