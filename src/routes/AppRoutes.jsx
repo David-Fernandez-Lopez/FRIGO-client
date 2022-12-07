@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import PrivateRoutes from "./PrivateRoutes"
 
 import HomePage from "../pages/Home/HomePage"
 import RecipeDetailsPage from "../pages/RecipeDetails/RecipeDetailsPage"
@@ -6,9 +7,7 @@ import RecipesPage from "../pages/Recipes/RecipesPage"
 import AboutPage from "../pages/About/AboutPage"
 import ProfilePage from "../pages/Profile/ProfilePage"
 import ShoppingListPage from "../pages/ShoppingList/ShoppingListPage"
-
-/* import PrivateRoute from "./PrivateRoutes" */
-
+import LogInForm from "../components/LogInForm/LogInForm"
 
 
 const AppRoutes = () => {
@@ -19,13 +18,12 @@ const AppRoutes = () => {
             <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/recipe/:id/information" element={<RecipeDetailsPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/profile/:id" element={<ProfilePage />} />
-            <Route path="/shopping-list" element={<ShoppingListPage />} />
+           {/*  <Route path="/login" element={<LogInForm /> } /> */}
 
-            {/* <Route element={<PrivateRoute />}>
-                <Route path="/perfil" element={<h1>MI PERFIL (PROTEGIDA)</h1>} />
-                <Route path="/admin" element={<h1>ADMIN (PROTEGIDA)</h1>} />
-            </Route> */}
+            <Route element={<PrivateRoutes />}>
+                <Route path="/profile/:id" element={<ProfilePage />} />
+                <Route path="/shopping-list" element={<ShoppingListPage />} />
+            </Route>
 
             <Route path="/*" element={<h1>404</h1>} />
         </Routes>

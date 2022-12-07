@@ -1,8 +1,9 @@
 import { useState, useContext } from "react"
-import { Form, Button } from "react-bootstrap"
-import authService from "../../services/auth.service"
-
 import { useNavigate } from 'react-router-dom'
+import { Form, Button } from "react-bootstrap"
+
+import authService from "../../services/auth.service"
+import { MessageContext } from './../../context/userMessage.context'
 
 const SignUpForm = () => {
 
@@ -17,6 +18,8 @@ const SignUpForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
+const { setShowToast, setToastMessage } = useContext(MessageContext)
+
 const navigate = useNavigate()
 
     const handleSubmit = e => {
@@ -26,7 +29,8 @@ const navigate = useNavigate()
         authService
             .signup(signupData)
             .then(() => {
-
+                setShowToast(true)
+                setToastMessage('User Created')
                 navigate('/')
             })
             .catch(err => console.log(err))

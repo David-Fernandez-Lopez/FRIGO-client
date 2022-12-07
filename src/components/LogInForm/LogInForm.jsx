@@ -1,7 +1,10 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Button } from "react-bootstrap"
+
 import { AuthContext } from "../../context/auth.context"
+import { MessageContext } from "../../context/userMessage.context"
+
 import authService from "../../services/auth.service"
 
 const LogInForm = () => {
@@ -19,6 +22,7 @@ const LogInForm = () => {
     const navigate = useNavigate()
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     const handleSubmit = e => {
 
@@ -31,6 +35,8 @@ const LogInForm = () => {
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()
+                setShowToast(true)
+                setToastMessage('Success')
                 navigate('/')
             })
             .catch(err => console.log(err))

@@ -5,11 +5,11 @@ import './Navigation.css'
 import LogInForm from '../LogInForm/LogInForm'
 import SignUpForm from '../SignUpForm/SignUpForm'
 
-// import { AuthContext } from '../../contexts/auth.context'
+import { AuthContext } from '../../context/auth.context'
 
 const Navigation = () => {
 
-    // const { user, logoutUser } = useContext(AuthContext)
+    const { user, logoutUser } = useContext(AuthContext)
 
     const [showModal, setShowModal] = useState(false)
     const [showingForm, setShowingForm] = useState('')
@@ -50,33 +50,8 @@ const Navigation = () => {
                         <Link to="/about" className='navlink'>
                             <Nav.Link as="div">About Us</Nav.Link>
                         </Link>
-                        <Link className='navlink'>
-                                <Nav.Link as="div" onClick={login}>Log In</Nav.Link>
-                        </Link>
-                        <Link className='navlink'>
-                                <Nav.Link as="div" onClick={signUp}>Sign Up</Nav.Link>
-                        </Link>
-
-                <Modal show={showModal} onHide={closeModal}>
-                            <Modal.Header closeButton>
-                                    <img src="#" alt="LOGO FRIGO" />
-                            </Modal.Header>
-                                <Modal.Body>
-                                    {showingForm === 'login' && <LogInForm />}
-                                    {showingForm === 'signUp' && <SignUpForm />}
-                            </Modal.Body>
-                </Modal>
-
-                            
-                             <NavDropdown title="Profile" id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="/profile/:id"> My Profile </NavDropdown.Item>
-                                    <NavDropdown.Item href="/shopping-list"> Shopping List </NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="/profile/:id"> Account Settings </NavDropdown.Item>
-                             </NavDropdown>
-
-
-                        {/* {user ?
+                    
+                       {user ?
                             <>
                                 <Nav.Link as="div" onClick={logoutUser}>Log Out</Nav.Link>
 
@@ -89,13 +64,26 @@ const Navigation = () => {
                             </>
                                 :
                             <>
-                                <Link to="/login">
-                                    <Nav.Link as="div">Log In</Nav.Link>
+                               <Link className='navlink'>
+                                    <Nav.Link as="div" onClick={login}>Log In</Nav.Link>
                                 </Link>
-                            </>
-                        } */}
+                                <Link className='navlink'>
+                                    <Nav.Link as="div" onClick={signUp}>Sign Up</Nav.Link>
+                                </Link>
 
-                        {/* <Nav.Link as="div">¡Welcome, {!user ? '' : user.username}!</Nav.Link> */}
+                                <Modal show={showModal} onHide={closeModal}>
+                                    <Modal.Header closeButton>
+                                        <img src="#" alt="LOGO FRIGO" />
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        {showingForm === 'login' && <LogInForm element={closeModal} />}
+                                        {showingForm === 'signUp' && <SignUpForm element={closeModal} />}
+                                    </Modal.Body>
+                                </Modal>  
+                            </>
+                        } 
+
+                        <Nav.Link as="div">{!user ? '' :  `¡Welcome ${user.name}!`}</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Toast } from 'react-bootstrap'
-import { MessageContext } from '../../contexts/userMessage.context'
+import { MessageContext } from '../../context/userMessage.context'
 
 const UserMessage = () => {
 
@@ -9,7 +9,7 @@ const UserMessage = () => {
     return (
         <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide style={{ position: 'fixed', bottom: 10, right: 10 }}>
             <Toast.Header>
-                <strong className="me-auto">Menssage</strong>
+                <strong className="me-auto">Message</strong>
             </Toast.Header>
             <Toast.Body>{toastMessage}</Toast.Body>
         </Toast>
