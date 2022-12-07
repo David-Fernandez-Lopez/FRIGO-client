@@ -5,32 +5,20 @@ import CategoryCard from '../CategoryCard/CategoryCard'
 import spoonacularService from "../../services/spoonacular.service"
 
 import React from 'react'
-import AliceCarousel from 'react-alice-carousel'
-import 'react-alice-carousel/lib/alice-carousel.css'
+import { Accordion } from 'react-bootstrap'
 
-const responsive = {
-    0: {
-        items: 1
-    },
-    568: {
-        items: 3
-    },
-    1024: {
-        items: 4,
-        itemsFit: 'contain'
-    },
-}
-
-function CuisineCategory()  {
+function CuisineCategory({cuisine})  {
 
     const [category, setCategory] = useState([])
   
 
     const loadData = () => {
 
-       
+        const paramsObj = { query: cuisine , number: '2' }
+        const searchParams = new URLSearchParams(paramsObj)
+        
         spoonacularService
-            .getRecipesByCategory('main course')
+            .getRecipesByCategory(searchParams.toString())
             .then(({data}) => {
                 console.log(data)
                 setCategory(data)
@@ -40,23 +28,17 @@ function CuisineCategory()  {
 
     useEffect(() => {
         loadData()
-    }, [])
+    }, [cuisine])
 
-    const myCategory = category.map(elm => {
-        return <div className="item" data-value={elm.id}><CategoryCard {...elm} /></div>
-    })
+    
 
 
     return (
-        <div className='Category'>
-            <h3>Apple Party</h3>
-            <hr />
-            <AliceCarousel
-                mouseTracking
-                items={myCategory}
-                responsive={responsive}
-            />
-        </div>
+        <Accordion.Body>
+            {category?.map(elm => {
+                return <CategoryCard className="item" data-value={elm.id}><CategoryCard {...elm} /></CategoryCard>
+            })}
+        </Accordion.Body>
     )
 
 }
