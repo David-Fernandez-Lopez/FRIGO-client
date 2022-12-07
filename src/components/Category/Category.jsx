@@ -28,9 +28,12 @@ function Category(props) {
 
     const loadData = () => {
 
+        const paramsObj = { query: 'main course' , number: '5' }
+        const searchParams = new URLSearchParams(paramsObj)
+
         const promises = [
             spoonacularService.getRecipeByIngredients('apple'),
-            spoonacularService.getRecipesByCategory('main course')
+            spoonacularService.getRecipesByCategory(searchParams.toString())
         ]
 
         Promise
@@ -59,14 +62,14 @@ function Category(props) {
 
     return (
         <div className='Category'>
-            <h3>Apple Party</h3>
+            <h4>Apple Party</h4>
             <hr />
             <AliceCarousel
                 mouseTracking
                 items={appleParty}
                 responsive={responsive}
             />
-            <h3>Category 2</h3>
+            <h4>African</h4>
             <hr />
             <AliceCarousel
                 mouseTracking
