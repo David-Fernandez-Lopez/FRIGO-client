@@ -28,9 +28,12 @@ function Category(props) {
 
     const loadData = () => {
 
+        const paramsObj = { query: 'main course' , number: '5' }
+        const searchParams = new URLSearchParams(paramsObj)
+
         const promises = [
             spoonacularService.getRecipeByIngredients('apple'),
-            spoonacularService.getRecipesByCategory('main course')
+            spoonacularService.getRecipesByCategory(searchParams.toString())
         ]
 
         Promise

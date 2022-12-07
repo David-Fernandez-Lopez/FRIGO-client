@@ -29,8 +29,8 @@ class SpoonacularService {
         return this.api.get(`/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${ingredients}`)
     }
 
-    getRecipesByCategory(category) {
-        return this.api.get(`/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${category}`)
+    getRecipesByCategory(searchParams) {
+        return this.api.get(`/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&${searchParams}`)
     }
 }
 
