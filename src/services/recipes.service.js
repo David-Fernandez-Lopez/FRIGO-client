@@ -4,7 +4,7 @@ class RecipeService {
 
     constructor() {
 
-       
+
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/api/recipes`
         })
@@ -36,9 +36,9 @@ class RecipeService {
     getRecipeByIngredients(ingredients) {
         return this.api.get(`/findByIngredients?ingredients=${ingredients}`)
     }
-  
+
     getRecipesByCuisine(cuisines) {
-        return this.api.get(`/complexSearch?query=${cuisines}` )
+        return this.api.get(`/complexSearch?query=${cuisines}`)
     }
 }
 
