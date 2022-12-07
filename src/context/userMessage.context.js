@@ -5,7 +5,7 @@ const MessageContext = createContext()
 function MessageProviderWrapper(props) {
 
     const [showToast, setShowToast] = useState(false)
-    const [toastMessage, setToastMessage] = useState('Im the Toast')
+    const [toastMessage, setToastMessage] = useState('Mensaje de ejemplo')
 
     return (
         <MessageContext.Provider value={{ setShowToast, showToast, setToastMessage, toastMessage }}>

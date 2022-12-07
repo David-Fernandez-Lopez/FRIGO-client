@@ -6,14 +6,18 @@ import LogInForm from '../LogInForm/LogInForm'
 import SignUpForm from '../SignUpForm/SignUpForm'
 
 import { AuthContext } from '../../context/auth.context'
+import { MessageContext } from '../../context/userMessage.context'
 
 const Navigation = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     const [showModal, setShowModal] = useState(false)
     const [showingForm, setShowingForm] = useState('')
-
+    
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
 
     const signUp = () => {
         setShowModal(true)
@@ -25,11 +29,12 @@ const Navigation = () => {
         setShowingForm('login')
     }
 
-    const closeModal = () => {
-        setShowModal(false)
-        
+    const fireFinalActions = () => {
+        console.log('entro aqui')
+        setShowToast(true)
+        setToastMessage('Hola')
+        closeModal()
     }
-
 
     return (
         <>  
@@ -76,8 +81,8 @@ const Navigation = () => {
                                         <img src="#" alt="LOGO FRIGO" />
                                     </Modal.Header>
                                     <Modal.Body>
-                                        {showingForm === 'login' && <LogInForm element={closeModal} />}
-                                        {showingForm === 'signUp' && <SignUpForm element={closeModal} />}
+                                        {showingForm === 'login' && <LogInForm fireFinalActions={fireFinalActions} />}
+                                        {showingForm === 'signUp' && <SignUpForm fireFinalActions={fireFinalActions} />}
                                     </Modal.Body>
                                 </Modal>  
                             </>
