@@ -1,9 +1,31 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import recipeService from "../../services/recipes.service"
 import uploadServices from "../../services/upload.service"
+import cuisineService from "../../services/cuisines.service"
+import dishTypeService from "../../services/dishTypes.service"
 
 const NewRecipeForm = ({ fireFinalActions }) => {
+
+    const [cuisine, setCuisine] = useState([])
+    const [dishType, setdishType] = useState([])
+
+    const loadData = () => {
+        cuisineService
+            .getCuisines()
+            .then(({ data }) => {
+                const sortedByName = [...data]
+                sortedByName.sort((a, b) => {
+                    return a.cuisine.localeCompare(b.cuisine)
+                })
+                setCuisine(sortedByName)
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        loadData()
+    }, [])
 
     const [recipeData, setRecipeData] = useState({
         title: '',
@@ -35,10 +57,16 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
+                console.log(
+                    { res }
+                )
+
                 setRecipeData({ ...recipeData, image: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     const handleFormSubmit = e => {
@@ -67,9 +95,9 @@ const NewRecipeForm = ({ fireFinalActions }) => {
 
             <Row>
                 <Col>
-                    <Form.Group className="mb-3" controlId="cuisines">
+                    <Form.Group className="mb-3" controlId="dishTypes">
                         <Form.Label>dishTypes</Form.Label>
-                        <Form.Select value={dishTypes} onChange={handleInputChange} name="dishTypes">
+                        <Form.Select aria-label="dishTypes" value={dishTypes} onChange={handleInputChange} name="dishTypes">
                             <option>Please select a dishTypes</option>
                             <option>main course</option>
                         </Form.Select>
@@ -78,9 +106,11 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className="mb-3" controlId="cuisines">
                         <Form.Label>Cuisine</Form.Label>
-                        <Form.Select value={cuisines} onChange={handleInputChange} name="cuisines">
+                        <Form.Select aria-label="cuisines" value={cuisines} onChange={handleInputChange} name="cuisines">
                             <option>Please select a Cuisine</option>
-                            <option>African</option>
+                            {cuisine.map(elem => {
+                                return <option key={elem._id}>{elem.cuisine}</option>
+                            })}
                         </Form.Select>
                     </Form.Group>
                 </Col>
@@ -88,13 +118,15 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             <Row>
                 <Col>
                     <Form.Group className="mb-3" controlId="ingredients">
-                        <Form.Label>ingredients</Form.Label>
+                        <Form.Label>Ingredients</Form.Label>
                         <Form.Control type="text" value={ingredients} onChange={handleInputChange} name="ingredients" />
                     </Form.Group>
                 </Col>
+            </Row>
+            <Row>
                 <Col>
                     <Form.Group className="mb-3" controlId="instructions">
-                        <Form.Label>instructions</Form.Label>
+                        <Form.Label>Instructions</Form.Label>
                         <Form.Control type="text" value={instructions} onChange={handleInputChange} name="instructions" />
                     </Form.Group>
                 </Col>
@@ -120,7 +152,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Create New Recipe'}</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create New Recipe'}</Button>
             </div>
         </Form>
     )
