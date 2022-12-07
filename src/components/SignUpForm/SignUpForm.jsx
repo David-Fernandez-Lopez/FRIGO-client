@@ -1,15 +1,15 @@
 import { useState, useContext } from "react"
+import { useNavigate } from 'react-router-dom'
 import { Form, Button } from "react-bootstrap"
+
 import authService from "../../services/auth.service"
 
-import { useNavigate } from 'react-router-dom'
+const SignUpForm = ({ fireFinalActions}) => {
 
-const SignUpForm = () => {
-
-    const [signupData, setSignupData] = useState({
+const [signupData, setSignupData] = useState({
+        username: '',
         email: '',
-        password: '',
-        name: '',
+        password: ''
     })
 
     const handleInputChange = e => {
@@ -17,7 +17,8 @@ const SignUpForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
-const navigate = useNavigate()
+
+    const navigate = useNavigate()
 
     const handleSubmit = e => {
 
@@ -26,7 +27,8 @@ const navigate = useNavigate()
         authService
             .signup(signupData)
             .then(() => {
-
+                fireFinalActions()
+                alert('Funciona')
                 navigate('/')
             })
             .catch(err => console.log(err))

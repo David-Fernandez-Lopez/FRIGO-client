@@ -10,13 +10,13 @@ import { MessageProviderWrapper } from './../src/context/userMessage.context'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <AuthProviderWrapper>
-      <MessageProviderWrapper>
+    <MessageProviderWrapper>
+      <AuthProviderWrapper>
         <Router>
           <App />
         </Router>
-      </MessageProviderWrapper>
-    </AuthProviderWrapper>
+      </AuthProviderWrapper>
+    </MessageProviderWrapper>
   </React.StrictMode >
 )
 
