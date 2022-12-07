@@ -22,14 +22,14 @@ class SpoonacularService {
     }
 
     getRecipeById(recipe_id) {
-        return this.api.get(`/${recipe_id}/information`)
+        return this.api.get(`/${recipe_id}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
     }
 
     getRecipeByIngredients(ingredients) {
         return this.api.get(`/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${ingredients}`)
     }
 
-    getRecipesByCuisine(category) {
+    getRecipesByCategory(category) {
         return this.api.get(`/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${category}`)
     }
 }
