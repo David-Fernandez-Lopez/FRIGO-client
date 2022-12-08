@@ -5,7 +5,7 @@ import UserMessage from "../../components/UserMessage/UserMessage"
 import IngredientsSerachBar from "../../components/IngredientsSearchBar/IngredientsSerachBar"
 import spoonacularService from "../../services/spoonacular.service"
 import './HomePage.css'
-import { PartyMode } from "@mui/icons-material"
+
 
 
 const HomePage = () => {
