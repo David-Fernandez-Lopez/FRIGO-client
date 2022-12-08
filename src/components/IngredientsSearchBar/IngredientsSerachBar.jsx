@@ -1,26 +1,31 @@
 import './IngredientsSerachBar.css'
-import { redirect } from "react-router-dom"
 import SearchIcon from '@mui/icons-material/Search'
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useState } from 'react'
-import { ContactSupportOutlined } from '@mui/icons-material'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 
 const IngredientsSerachBar = ({ setQuery }) => {
 
     const [inputValue, setInputValue] = useState('')
-    const [queryArr, setqueryArr] = useState([])
+    const [queryArr, setQueryArr] = useState([])
 
     const searchRecipes = e => {
         setInputValue(e.target.value)
     }
 
-    const handleSpace = (e) => {
-        if (e.keyCode === 32) {
+    const handleKeys = e => {
+        if (e.keyCode === 32 || e.keyCode === 13) {
             queryArr.push(inputValue)
-            console.log(inputValue)
             setInputValue('')
         }
     }
+
+    const handleIgredients = idx => {
+        let queryArrCopy = [...queryArr]
+        queryArrCopy.splice(idx, 1)
+        setQueryArr(queryArrCopy)
+    }
+
 
     const handleFormSubmit = e => {
         e.preventDefault()
@@ -33,12 +38,15 @@ const IngredientsSerachBar = ({ setQuery }) => {
             <Form.Group className="mb-3" controlId="ingredient">
                 <Row>
                     <Col md={{ span: 6, offset: 2 }} >
-                        <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleSpace} onChange={searchRecipes} placeholder='Search by ingredient' />
+                        <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleKeys} onChange={searchRecipes} placeholder='Search by ingredient' />
                     </Col>
                     <Col md={{ span: 2 }}>
                         <Button variant="dark" type="submit"><SearchIcon /></Button>
                     </Col>
                 </Row>
+                <p className='mt-3'> {queryArr.map((elm, idx) => {
+                    return <span className='Ingredient' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
+                })}</p>
             </Form.Group>
         </Form>
     )
