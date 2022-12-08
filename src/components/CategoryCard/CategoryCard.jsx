@@ -12,7 +12,7 @@ function CategoryCard({ title, image, id }) {
             <Card className="bg-ligth text-black">
                 <Card.Img className='categoryImg' src={image} alt="Card image" />
                     <Card.ImgOverlay>
-                       <p> <IconsComponent id={id} /></p> 
+                       <div> <IconsComponent id={id} /></div> 
                     </Card.ImgOverlay>
                     <Card.Body>
                         <p>{title}</p>           

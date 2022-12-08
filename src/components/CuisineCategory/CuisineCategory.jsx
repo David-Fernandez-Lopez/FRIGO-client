@@ -9,7 +9,7 @@ import { Accordion } from 'react-bootstrap'
 
 function CuisineCategory({cuisine})  {
 
-    const [category, setCategory] = useState([])
+    const [category, setCategory] = useState(null)
   
 
     const loadData = () => {
