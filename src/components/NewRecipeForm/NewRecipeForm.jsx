@@ -15,38 +15,27 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         [{
             number: 0,
             step: ''
-        },
-        {
-            number: 0,
-            step: ''
-        }
-        ]
+        }]
     )
-    const [ingedientsData, setIngedientsData] = useState(
+    const [ingredientsData, setIngredientsData] = useState(
         [{
-            name: '',
+            name: 'efgsdf',
             quantity: 0,
-            units: ''
-        },
-        {
-            name: '',
-            quantity: 0,
-            units: ''
+            units: 'sad'
         }]
     )
     const [recipeData, setRecipeData] = useState({
         title: '',
         readyInMinutes: 0,
         servings: 0,
-        inversions: '',
         instructions: instructionsData,
         cuisines: '',
         dishTypes: '',
         summary: '',
-        ingredients: ingedientsData,
+        ingredients: ingredientsData,
         image: ''
     })
-    console.log(recipeData)
+    // console.log(ingredientsData)
     const loadData = () => {
 
         const promises = [
@@ -69,9 +58,15 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         loadData()
     }, [])
 
+    const ingredientsDataCopy = [...ingredientsData]
+
+    const instructionsDataCopy = [...instructionsData]
+
     const handleInputChange = e => {
         const { name, value } = e.target
-        // setIngedientsData({ ...ingedientsData, [name]: value })
+        const el = document.querySelector('#ingredients') 
+        console.log(el.dataset.idx)
+        // setIngredientsData( [...ingredientsData, {[name]: value} ])
         // setInstructionsData({ ...instructionsData, [name]: value })
         setRecipeData({ ...recipeData, [name]: value })
     }
@@ -108,7 +103,23 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             .catch(err => console.log(err))
     }
 
-    const { title, readyInMinutes, servings, image, instructions, cuisines, dishTypes, summary, ingredients } = recipeData
+    const  oneIngredientData = { name: '', quantity: 0, units: ''}
+
+    const pushIngredient = () => {
+        ingredientsDataCopy.push(oneIngredientData)
+        setIngredientsData(ingredientsDataCopy)
+    }
+
+    const  newStepData = { name: '', quantity: 0, units: ''}
+
+    const pushNewStep = () => {
+        instructionsDataCopy.push(newStepData)
+        setInstructionsData(instructionsDataCopy)
+    }
+
+
+    const { title, readyInMinutes, servings, image, instructions, cuisines, dishTypes, summary } = recipeData
+
 
     return (
         <Form onSubmit={handleFormSubmit}>
@@ -150,16 +161,17 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className="mb-3" controlId="ingredients">
                         <Form.Label>Ingredients</Form.Label>
-                        {ingedientsData.map((elm, idx) => {
-                            return (<Row>
+                        {ingredientsData.map((elm, idx) => {
+                        
+                            return (<Row key={idx}>
                                 <Col>
-                                    <Form.Control type="text" placeholder="Ingredient Name" value={ingredients.name} onChange={handleInputChange} name="ingredients.name" />
+                                    <Form.Control data-idx={idx} type="text" placeholder="Ingredient Name" value={elm.name} onChange={handleInputChange} name="ingredients.name" />
                                 </Col>
                                 <Col>
-                                    <Form.Control type="number" placeholder="Quantity" value={ingredients.quantity} onChange={handleInputChange} name="ingredients.quantity" />
+                                    <Form.Control type="number" placeholder="Quantity" value={elm.quantity} onChange={handleInputChange} name="ingredients.quantity" />
                                 </Col>
                                 <Col>
-                                    <Form.Select aria-label="ingredient.units" value={ingredients.units} onChange={handleInputChange} name="ingredient.units">
+                                    <Form.Select aria-label="ingredient.units" value={elm.units} onChange={handleInputChange} name="ingredient.units">
                                         <option>Please select a Unit of Measurement</option>
                                         <option>mg</option>
                                         <option>ml</option>
@@ -167,7 +179,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                                 </Col>
                             </Row>)
                         })}
-
+                        <Button variant="dark" onClick={pushIngredient}>Add Ingredient</Button>
                     </Form.Group>
                 </Col>
             </Row>
@@ -175,11 +187,13 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className="mb-3" controlId="instructions">
                         <Form.Label>Instructions</Form.Label>
+                        <Row>
+                            <Col>   </Col>
                         {instructionsData.map((elm, idx) => {
                             return (
-                                <Row>
-                                    <Col>
-                                        <Form.Control type="text" disabled value={idx + 1} onChange={handleInputChange} name="instructions.number" />
+                                <Row key={idx}>
+                                    <Col md={{span:1}}>
+                                        <Form.Control className="text-center" type="text" disabled value={idx + 1} onChange={handleInputChange} name="instructions.number" />
                                     </Col>
                                     <Col>
                                         <Form.Control type="text" value={instructions.step} onChange={handleInputChange} name="instructions.step" />
@@ -187,6 +201,8 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                                 </Row>
                             )
                         })}
+                            <Button variant="dark" onClick={pushNewStep}>Add Step</Button>
+                            </Row>
                     </Form.Group>
                 </Col>
             </Row>
