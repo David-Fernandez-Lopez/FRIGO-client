@@ -31,6 +31,10 @@ class AuthService {
     verify = token => {
         return this.api.get('/verify', { headers: { Authorization: `Bearer ${token}` } })
     }
+
+    editProfile = (_id, signupData) => {
+        return this.api.put(`/${_id}/edit` , signupData)
+    }
 }
 
 const authService = new AuthService()

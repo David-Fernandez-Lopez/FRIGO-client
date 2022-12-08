@@ -58,7 +58,6 @@ const LogInForm = ({fireFinalActions}) => {
                             <Button variant="dark" type="submit">Start</Button>
                             </div>
             </Form>
-          
             </>
     )
 }
