@@ -23,6 +23,7 @@ const homePage = () => {
             </Form.Group>
         </Form>
             {/* <Category /> */}
+            <hr />
             <h2>Placeholder Categories</h2>
 
         </Container>
