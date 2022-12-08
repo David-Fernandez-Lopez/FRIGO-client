@@ -7,7 +7,6 @@ import spoonacularService from "../../services/spoonacular.service"
 import './HomePage.css'
 
 
-
 const HomePage = () => {
 
     const [query, setQuery] = useState('')
