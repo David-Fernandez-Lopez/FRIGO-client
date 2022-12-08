@@ -28,7 +28,6 @@ const [signupData, setSignupData] = useState({
             .signup(signupData)
             .then(() => {
                 fireFinalActions()
-                alert('Funciona')
                 navigate('/')
             })
             .catch(err => console.log(err))

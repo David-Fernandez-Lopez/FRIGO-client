@@ -1,4 +1,4 @@
- import './IconsComponent.css'
+import './IconsComponent.css'
 import { useEffect, useState } from 'react'
 import spoonacularService from "../../services/spoonacular.service"
 import Loader from '../Loader/Loader'
@@ -30,9 +30,10 @@ function Icons({id} ) {
                 <Loader />
                 :
                 <>
-                <p className='icons'>iconos</p>
-                <p>{ icons.readyInMinutes }</p>
-                <p>{icons.servings}</p>
+                    <div className='icons'>
+                        <p>{icons.readyInMinutes}</p>
+                        <p>{icons.servings}</p>
+                    </div>
                 </>
     }
     </>

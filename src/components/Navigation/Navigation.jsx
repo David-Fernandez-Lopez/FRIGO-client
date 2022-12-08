@@ -64,7 +64,7 @@ const Navigation = () => {
                                     <NavDropdown.Item href="/profile/:id"> My Profile </NavDropdown.Item>
                                     <NavDropdown.Item href="/shopping-list"> Shopping List </NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="/profile/:id"> Account Settings </NavDropdown.Item>
+                                    <NavDropdown.Item href="/profile/:id/edit"> Account Settings </NavDropdown.Item>
                                 </NavDropdown>
                             </>
                                 :

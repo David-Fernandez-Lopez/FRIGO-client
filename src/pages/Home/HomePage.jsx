@@ -41,8 +41,8 @@ const HomePage = () => {
             <h2 className="homepageTitle mb-3">What's in your fridge?</h2>
             <IngredientsSerachBar setQuery={setQuery} />
             {/* <Category /> */}
+            <hr />
             <h2>Placeholder Categories</h2>
-            <UserMessage />
 
         </Container>
     )
