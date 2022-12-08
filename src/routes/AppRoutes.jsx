@@ -8,6 +8,7 @@ import AboutPage from "../pages/About/AboutPage"
 import ProfilePage from "../pages/Profile/ProfilePage"
 import ShoppingListPage from "../pages/ShoppingList/ShoppingListPage"
 import LogInForm from "../components/LogInForm/LogInForm"
+import EditProfilePage from "../pages/EditProfile/EditProfilePage"
 
 
 const AppRoutes = () => {
@@ -22,6 +23,7 @@ const AppRoutes = () => {
 
             <Route element={<PrivateRoutes />}>
                 <Route path="/profile/:id" element={<ProfilePage />} />
+                <Route path="/profile/:id/edit" element={<EditProfilePage />} />
                 <Route path="/shopping-list" element={<ShoppingListPage />} />
             </Route>
 

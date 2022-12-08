@@ -1,7 +1,6 @@
 import { Container, Form, Button, Row, Col } from "react-bootstrap"
 import { useState, useEffect, useContext } from "react"
 import Category from "../../components/Category/Category"
-import UserMessage from "../../components/UserMessage/UserMessage"
 import './HomePage.css'
 
 
@@ -25,7 +24,6 @@ const homePage = () => {
         </Form>
             {/* <Category /> */}
             <h2>Placeholder Categories</h2>
-            <UserMessage />
 
         </Container>
     )
