@@ -22,33 +22,39 @@ function NewShoppingListItem() {
         setIngredientsData({ ...ingredientsData, [name]: value })
     }
 
-    const newIngredient = () => setShoppingList([...shoppingList, ingredientsData])
+    const newIngredient = () => {
+        setShoppingList([...shoppingList, ingredientsData])
+        setIngredientsData({
+            name: '',
+            quantity: 0,
+            units: ''
+        })
+    }
 
     const {name, quantity, units} = ingredientsData
 
     return (
 
         <Form.Group className="mb-3" controlId="ingredients">
-            <Form.Label>Ingredients</Form.Label>            
             <Row>                
-                <Col md={{ span: 10 }}>                                                            
-                            <Row className="mb-3">                                
-                                <Col>                                    
-                                    <Form.Control type="text" placeholder="Ingredient Name" value={name} onChange={handleInputChange} name="name" />                                    
-                                </Col>
+                <Col md={{ span: 8, offset:1 }}>                                                            
+                    <Row className="mb-3">      
+                        <Col>   
+                            <Form.Control type="text" placeholder="Ingredient Name" value={name} onChange={handleInputChange} name="name" /> 
+                        </Col>
                                 
-                                <Col md={{ span: 2 }}>                                    
-                                    <Form.Control type="number" placeholder="Quantity" value={quantity} onChange={handleInputChange} name="quantity" />                                    
-                                </Col>
-                                
-                                <Col md={{ span: 2 }}>                                    
-                                    <Form.Select aria-label="ingredient.units" value={units} onChange={handleInputChange} name="units">                                        
-                                        <option>Please select a Unit of Measurement</option>                                        
-                                        <option>mg</option>                                        
-                                        <option>ml</option>                                        
-                                    </Form.Select>                                    
-                                </Col>                                                     
-                            </Row>                                           
+                        <Col md={{ span: 2 }}>  
+                            <Form.Control type="number" placeholder="Quantity" value={quantity || ''} onChange={handleInputChange} name="quantity" /> 
+                        </Col>
+                        
+                        <Col md={{ span: 4 }}>     
+                            <Form.Select aria-label="ingredient.units" value={units} onChange={handleInputChange} name="units">  
+                                <option>Unit of Measurement</option>     
+                                <option>mg</option>   
+                                <option>ml</option>   
+                            </Form.Select> 
+                        </Col>    
+                    </Row>            
                 </Col>
                 
                 <Col md={{ span: 2 }}>                    
