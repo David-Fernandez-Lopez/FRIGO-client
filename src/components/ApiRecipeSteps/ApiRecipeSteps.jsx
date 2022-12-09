@@ -1,4 +1,6 @@
 import './ApiRecipeSteps.css'
+import Loader from '../Loader/Loader'
+import { useState } from 'react'
 
 function ApiRecipeSteps({ analyzedInstructions }) {
     // if (analyzedInstructions) {
@@ -6,11 +8,24 @@ function ApiRecipeSteps({ analyzedInstructions }) {
     //     console.log('funciona??', instructions)
     // }
 
+    // const [steps, setSteps] = useState(null)
+
+    // if (analyzedInstructions?.length >= 1) {
+    //     setSteps(analyzedInstructions[0].steps)
+    //     console.log('steps', steps)
+    // }
+
     return (
         <>
-            {analyzedInstructions?.map((elm, idx) => {
-                return <p key={idx}>{elm.number} - {elm.step}</p>
-            })}
+            {/* {!steps ?
+                <Loader />
+                :
+                <>
+                    {steps?.map((elm, idx) => {
+                        return <p key={idx}>{elm.number} - {elm.step}</p>
+                    })}
+                </>
+            } */}
         </>
     )
 
