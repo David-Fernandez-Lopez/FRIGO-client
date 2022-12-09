@@ -48,34 +48,34 @@ const Navigation = () => {
                             <div style={{ display: 'flex' }}>
 
                                 <Link to="/" className='navlink'>
-                                    <Nav.Link as="div">Home</Nav.Link>
+                                    <Nav.Link as="div" className='hover-underline-animation'>Home</Nav.Link>
                                 </Link>
                                 <Link to="/recipes" className='navlink'>
-                                    <Nav.Link as="div">Recipes</Nav.Link>
+                                    <Nav.Link as="div" className='hover-underline-animation'>Recipes</Nav.Link>
                                 </Link>
                                 <Link to="/about" className='navlink'>
-                                    <Nav.Link as="div">About Us</Nav.Link>
+                                    <Nav.Link as="div" className='hover-underline-animation'>About Us</Nav.Link>
                                 </Link>
                             </div>
                             <div style={{ display: 'flex' }}>
                                 {user ?
                                     <>
-                                        <Nav.Link as="div" onClick={logoutUser}>Log Out</Nav.Link>
+                                        <Nav.Link as="div" className='hover-underline-animation' onClick={logoutUser}>Log Out</Nav.Link>
 
-                                        <NavDropdown title={`¡Welcome ${user.name}!`} id="basic-nav-dropdown">
-                                            <NavDropdown.Item href="/profile/:id"> My Profile </NavDropdown.Item>
-                                            <NavDropdown.Item href="/shopping-list"> Shopping List </NavDropdown.Item>
+                                        <NavDropdown className='hover-underline-animation' title={`¡Welcome ${user.name}!`} id="basic-nav-dropdown">
+                                            <NavDropdown.Item className='dropdown' href="/profile/:id"> My Profile </NavDropdown.Item>
+                                            <NavDropdown.Item className='dropdown' href="/shopping-list"> Shopping List </NavDropdown.Item>
                                             <NavDropdown.Divider />
-                                            <NavDropdown.Item href={`/profile/${user._id}/edit`}> Account Settings </NavDropdown.Item>
+                                            <NavDropdown.Item className='dropdown' href={`/profile/${user._id}/edit`}> Account Settings </NavDropdown.Item>
                                         </NavDropdown>
                                     </>
                                     :
                                     <>
                                         <Link className='navlink'>
-                                            <Nav.Link as="div" onClick={login}>Log In</Nav.Link>
+                                            <Nav.Link as="div" className='hover-underline-animation' onClick={login}>Log In</Nav.Link>
                                         </Link>
                                         <Link className='navlink'>
-                                            <Nav.Link as="div" onClick={signUp}>Sign Up</Nav.Link>
+                                            <Nav.Link as="div" className='hover-underline-animation' onClick={signUp}>Sign Up</Nav.Link>
                                         </Link>
 
                                         <Modal show={showModal} onHide={closeModal}>
