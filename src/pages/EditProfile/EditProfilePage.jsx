@@ -14,17 +14,29 @@ const EditProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-    const [editData, setEditData] = useState({
-        name: user.name,
-        email: user.email,
-        password: '',
-        lastName: user.lastName,
-        profileImg: user.profileImg,
-    })
+    const [editData, setEditData] = useState({   
+            name: '',
+            email: '',
+            lastName: '',
+            profileImg: '',
+        })
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [changed, setChanged] = useState(false)
 
+    useEffect( () => {
+        loadData()
+    }, [])
+    
+    const loadData = () => {
+        setEditData({
+            name: user.name,
+            email: user.email,
+            lastName: user.lastName,
+            profileImg: user.profileImg,
+        })
+    }
+    
     const handleFileUpload = e => {
 
         setLoadingImage(true)
@@ -64,7 +76,7 @@ const EditProfilePage = () => {
             .catch(err => console.log(err))
     }
 
-    const { password, email, name, lastName, profileImg } = editData
+    const { email, name, lastName, profileImg } = editData
 
     return (
         <>
@@ -90,13 +102,9 @@ const EditProfilePage = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-                        </Form.Group>
                         <Form.Group className="mb-3" controlId="image">
                             <Form.Label>Profile Image</Form.Label>
-                            <Form.Control type="file" value={profileImg} onChange={handleFileUpload} />
+                            <Form.Control type="file"  onChange={handleFileUpload} />
                         </Form.Group>
 
                         <div className="d-grid">

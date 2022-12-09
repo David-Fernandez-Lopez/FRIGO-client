@@ -9,7 +9,6 @@ const ProfilePage = () => {
         <Container>
             <ProfileHeader />
             <ProfileTab />
-            <NewRecipeForm />
         </Container>
     )
 }
