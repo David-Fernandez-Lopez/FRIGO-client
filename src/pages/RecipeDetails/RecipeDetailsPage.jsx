@@ -2,8 +2,12 @@ import { Container } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import RecipeCard from "../../components/RecipeCard/RecipeCard"
+import DbRecipeSteps from "../../components/DbRecipeSteps/DbRecipeSteps"
+import ApiRecipeSteps from "../../components/ApiRecipeSteps/ApiRecipeSteps"
+import RecipeIngredients from "../../components/RecipeIngredients/RecipeIngredients"
 import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
+
 
 const RecipeDetailsPage = () => {
 
@@ -13,26 +17,24 @@ const RecipeDetailsPage = () => {
     const [dbRecipe, setDbRecipe] = useState(null)
 
     const loadData = () => {
-        spoonacularService
-            .getRecipeById(id)
-            .then(({ data }) => {
-                setApiRecipe(data)
-            })
-            .catch(err => console.log(err))
 
-        console.log(apiRecipe)
+        if (id.length < 10) {
+            spoonacularService
+                .getRecipeById(id)
+                .then(({ data }) => {
+                    setApiRecipe(data)
+                })
+                .catch(err => console.log(err))
+        } else {
+            recipeService
+                .getRecipeById(id)
+                .then(({ data }) => {
+                    setDbRecipe(data)
+                })
+                .catch(err => console.log(err))
+        }
 
-        recipeService
-            .getRecipeById(id)
-            .then(({ data }) => {
-                // console.log(data)
-                setDbRecipe(data)
-            })
-            .catch(err => console.log(err))
     }
-
-    console.log(apiRecipe)
-    console.log(dbRecipe)
 
     useEffect(() => {
         loadData()
@@ -40,9 +42,9 @@ const RecipeDetailsPage = () => {
 
     return (
         <Container>
-            <h1>Recipe Details Page</h1>
-            <hr />
-            <RecipeCard  {...apiRecipe} />
+            {dbRecipe === null ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
+            {dbRecipe === null ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
+            {dbRecipe === null ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
         </Container>
     )
 }

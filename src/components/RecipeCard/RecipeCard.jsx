@@ -1,15 +1,17 @@
 import './RecipeCard.css'
+import { Col, Row, Button, Figure, Image } from 'react-bootstrap'
 
 
-function RecipeCard(props) {
+function RecipeCard({ title, summary, image }) {
 
-    // console.log(props.dbData.title)
-
-    // Object.keys(props.apiData).length === 0 ? { title } = props.dbData : { title } = props.apiData
+    console.log(title)
 
     return (
         <>
-            {/* <h1>{title}</h1> */}
+            <h1>{title}</h1>
+            <hr />
+            <p>{summary}</p>
+            <Figure.Image src={image} alt="" />
         </>
     )
 
