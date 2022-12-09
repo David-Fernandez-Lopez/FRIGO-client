@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import recipeService from "../../services/recipes.service"
 import uploadServices from "../../services/upload.service"
@@ -7,8 +7,9 @@ import dishTypeService from "../../services/dishTypes.service"
 import sortAlphabetically from '../../utils/sort'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
+import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
 
-const NewRecipeForm = ({ fireFinalActions }) => {
+const NewRecipeForm = ({fireFinalActions }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
@@ -35,6 +36,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         summary: '',
         image: ''
     })
+    
 
     useEffect(() => {
         loadData()
@@ -89,7 +91,10 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         console.log(recipe)
         recipeService
             .createRecipe(recipe)
-            .then(() => fireFinalActions())
+            .then(() =>
+                
+                fireFinalActions()
+            )
             .catch(err => console.log(err))
     }
 
@@ -117,9 +122,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
 
 
     const newStep = (e) => {
-        let newNumber = 0
-        newNumber++
-        console.log(e.target.value)
+      
         setInstructionsData([...instructionsData, { number: instructionsData.length + 1, step: '' }])
     }
 
@@ -171,39 +174,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             </Row>
             <Row>
                 <Col>
-                    <Form.Group className="mb-3" controlId="ingredients">
-                        <Form.Label>Ingredients</Form.Label>
-                        <Row>
-                            <Col md={{ span: 10 }}>
-                                {ingredientsData.map((elm, idx) => {
-                                    return (
-                                        <Row className="mb-3" key={idx}>
-                                            <Col>
-                                                <Form.Control type="text" placeholder="Ingredient Name" value={elm.name} onChange={e => handleIngredientsChange(idx, e)} name="name" />
-                                            </Col>
-                                            <Col md={{ span: 2 }}>
-                                                <Form.Control type="number" placeholder="Quantity" value={elm.quantity} onChange={e => handleIngredientsChange(idx, e)} name="quantity" />
-                                            </Col>
-                                            <Col md={{ span: 2 }}>
-                                                <Form.Select aria-label="ingredient.units" value={elm.units} onChange={e => handleIngredientsChange(idx, e)} name="units">
-                                                    <option>Please select a Unit of Measurement</option>
-                                                    <option>mg</option>
-                                                    <option>ml</option>
-                                                </Form.Select>
-                                            </Col>
-                                            <Col md={{ span: 1, offset: 1 }}>
-                                                <Button variant="danger" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon /> </Button>
-                                            </Col>
-                                        </Row>
-                                    )
-                                })}
-                            </Col>
-                            <Col md={{ span: 2 }}>
-                                <Button variant="dark" onClick={newIngredient}><AddIcon /> Ingredient</Button>
-                            </Col>
-                        </Row>
-
-                    </Form.Group>
+                    <NewIngredientForm ingredientsData={ ingredientsData } setIngredientsData={setIngredientsData} />
                 </Col>
             </Row>
             <Row>
