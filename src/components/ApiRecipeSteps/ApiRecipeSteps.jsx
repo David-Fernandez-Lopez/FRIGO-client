@@ -1,6 +1,6 @@
 import './ApiRecipeSteps.css'
-import Loader from '../Loader/Loader'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Col, Nav, Row, Tab, } from 'react-bootstrap'
 
 function ApiRecipeSteps({ analyzedInstructions }) {
     // if (analyzedInstructions) {
@@ -8,24 +8,46 @@ function ApiRecipeSteps({ analyzedInstructions }) {
     //     console.log('funciona??', instructions)
     // }
 
-    // const [steps, setSteps] = useState(null)
+    const [apiSteps, setApiSteps] = useState(null)
 
-    // if (analyzedInstructions?.length >= 1) {
-    //     setSteps(analyzedInstructions[0].steps)
-    //     console.log('steps', steps)
-    // }
+    useEffect(() => {
+        if (analyzedInstructions?.length >= 1) {
+            setApiSteps(analyzedInstructions[0].steps)
+        }
+    }, [analyzedInstructions])
+
 
     return (
         <>
-            {/* {!steps ?
-                <Loader />
-                :
+            {apiSteps &&
                 <>
-                    {steps?.map((elm, idx) => {
-                        return <p key={idx}>{elm.number} - {elm.step}</p>
-                    })}
+                    <h3>Instructions</h3>
+                    <br />
+                    < Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+                        <Row>
+                            <Col sm={3}>
+                                <Nav variant="pills" className="flex-column">
+                                    {apiSteps?.map((elm, idx) => {
+                                        return (<Nav.Item key={idx}>
+                                            <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
+                                        </Nav.Item>)
+                                    })}
+                                </Nav>
+                            </Col>
+                            <Col sm={9}>
+                                <Tab.Content>
+                                    {apiSteps?.map((elm, idx) => {
+                                        return (<Tab.Pane key={idx} eventKey={idx}>
+                                            <p>{elm.step}</p>
+                                        </Tab.Pane>)
+                                    })}
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container >
+                    <hr />
                 </>
-            } */}
+            }
         </>
     )
 

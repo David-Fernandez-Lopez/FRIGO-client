@@ -1,17 +1,48 @@
 import './DbRecipeSteps.css'
+import { useEffect, useState } from 'react'
+import { Col, Nav, Row, Tab, } from 'react-bootstrap'
 
 function DbRecipeSteps({ analyzedInstructions }) {
-    // if (analyzedInstructions) {
-    //     let { steps: instructions } = analyzedInstructions[0]
-    //     console.log('funciona??', instructions)
-    // }
 
-    console.log(analyzedInstructions)
+    const [dbSteps, setDbSteps] = useState(null)
+
+    useEffect(() => {
+        if (analyzedInstructions?.length >= 1) {
+            setDbSteps(analyzedInstructions)
+        }
+    }, [analyzedInstructions])
+
     return (
         <>
-            {analyzedInstructions?.map((elm, idx) => {
-                return <p key={idx}>{elm.number} - {elm.step}</p>
-            })}
+            {dbSteps &&
+                <>
+                    <h3>Instructions</h3>
+                    <br />
+                    < Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+                        <Row>
+                            <Col sm={3}>
+                                <Nav variant="pills" className="flex-column">
+                                    {dbSteps?.map((elm, idx) => {
+                                        return (<Nav.Item key={idx}>
+                                            <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
+                                        </Nav.Item>)
+                                    })}
+                                </Nav>
+                            </Col>
+                            <Col sm={9}>
+                                <Tab.Content>
+                                    {dbSteps?.map((elm, idx) => {
+                                        return (<Tab.Pane eventKey={idx}>
+                                            <p>{elm.step}</p>
+                                        </Tab.Pane>)
+                                    })}
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container >
+                    <hr />
+                </>
+            }
         </>
     )
 

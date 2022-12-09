@@ -43,8 +43,8 @@ const RecipeDetailsPage = () => {
     return (
         <Container>
             {dbRecipe === null ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
-            {dbRecipe === null ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
             {dbRecipe === null ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
+            {dbRecipe === null ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
         </Container>
     )
 }
