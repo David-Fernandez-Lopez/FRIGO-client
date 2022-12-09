@@ -1,13 +1,13 @@
 import './RecipesResults.css'
 
-const RecipesResults = ({ recipesToSerach }) => {
+const RecipesResults = ({ recipesToSearch }) => {
 
-    console.log(recipesToSerach)
+    console.log(recipesToSearch)
 
     return (
         <>
-            {recipesToSerach && <section className="CountriesList" style={{ "maxHeight": "50vh", "overflow": "scroll" }}>
-                {recipesToSerach.map(elm => {
+            {recipesToSearch && <section className="CountriesList" style={{ "maxHeight": "50vh", "overflow": "scroll" }}>
+                {recipesToSearch.map(elm => {
                     return <h1>{elm.title}</h1>
                 }
                 )}

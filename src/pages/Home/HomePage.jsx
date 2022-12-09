@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap"
 import { useState, useEffect } from 'react'
 import Category from "../../components/Category/Category"
 import UserMessage from "../../components/UserMessage/UserMessage"
-import IngredientsSerachBar from "../../components/IngredientsSearchBar/IngredientsSerachBar"
+import IngredientsSearchBar from "../../components/IngredientsSearchBar/IngredientsSearchBar"
 import spoonacularService from "../../services/spoonacular.service"
 import './HomePage.css'
 import RecipesResults from "../../components/RecipesResults/RecipesResults"
@@ -10,7 +10,7 @@ import RecipesResults from "../../components/RecipesResults/RecipesResults"
 const HomePage = () => {
 
     const [query, setQuery] = useState('')
-    const [recipesToSerach, setrecipesToSerach] = useState([])
+    const [recipesToSearch, setrecipesToSearch] = useState([])
 
     const loadData = () => {
 
@@ -20,7 +20,7 @@ const HomePage = () => {
         spoonacularService
             .getRecipeByIngredients(searchParams.toString())
             .then(({ data }) => {
-                setrecipesToSerach(data)
+                setrecipesToSearch(data)
             })
             .catch(err => console.log(err))
     }
@@ -32,8 +32,8 @@ const HomePage = () => {
     return (
         <Container className="homepageForm">
             <h2 className="homepageTitle mb-3">What's in your fridge?</h2>
-            <IngredientsSerachBar setQuery={setQuery} />
-            {/* <RecipesResults recipesToSerach={recipesToSerach} /> */}
+            <IngredientsSearchBar setQuery={setQuery} />
+            {/* <RecipesResults recipesToSearch={recipesToSearch} /> */}
             {/* <Category /> */}
             <hr />
             <h2>Placeholder Categories</h2>

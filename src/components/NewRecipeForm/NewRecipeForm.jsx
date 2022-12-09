@@ -36,6 +36,10 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         image: ''
     })
 
+    useEffect(() => {
+        loadData()
+    }, [])
+
     const loadData = () => {
 
         const promises = [
@@ -54,11 +58,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             .catch(err => console.log(err))
     }
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-        const handleInputChange = e => {
+    const handleInputChange = e => {
 
         const { name, value } = e.target
         setRecipeData({ ...recipeData, [name]: value })
@@ -74,10 +74,6 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                console.log(
-                    { res }
-                )
-
                 setRecipeData({ ...recipeData, image: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
@@ -105,7 +101,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
     }
 
     const newIngredient = () => setIngredientsData([...ingredientsData, { name: '', quantity: 0, units: '' }])
-    
+
     const deleteIngredient = idx => {
         const ingredientsDataCopy = [...ingredientsData]
         ingredientsDataCopy.splice(idx, 1)
@@ -119,7 +115,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
         setInstructionsData(instructionsDataCopy)
     }
 
-    
+
     const newStep = (e) => {
         let newNumber = 0
         newNumber++
@@ -180,31 +176,33 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                         <Row>
                             <Col md={{ span: 10 }}>
                                 {ingredientsData.map((elm, idx) => {
-                                    return (<Row className="mb-3" key={idx}>
-                                        <Col>
-                                            <Form.Control type="text" placeholder="Ingredient Name" value={elm.name} onChange={e=>handleIngredientsChange(idx, e)} name="name" />
-                                        </Col>
-                                        <Col md={{span:2}}>
-                                            <Form.Control type="number" placeholder="Quantity" value={elm.quantity} onChange={e=>handleIngredientsChange(idx, e)} name="quantity" />
-                                        </Col>
-                                        <Col md={{span:2}}>
-                                            <Form.Select aria-label="ingredient.units" value={elm.units} onChange={e=>handleIngredientsChange(idx, e)} name="units">
-                                                <option>Please select a Unit of Measurement</option>
-                                                <option>mg</option>
-                                                <option>ml</option>
-                                            </Form.Select>
-                                        </Col>
-                                        <Col md={{span:1, offset:1}}>
-                                            <Button variant="danger" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon/> </Button>
-                                        </Col>
-                                    </Row>)
+                                    return (
+                                        <Row className="mb-3" key={idx}>
+                                            <Col>
+                                                <Form.Control type="text" placeholder="Ingredient Name" value={elm.name} onChange={e => handleIngredientsChange(idx, e)} name="name" />
+                                            </Col>
+                                            <Col md={{ span: 2 }}>
+                                                <Form.Control type="number" placeholder="Quantity" value={elm.quantity} onChange={e => handleIngredientsChange(idx, e)} name="quantity" />
+                                            </Col>
+                                            <Col md={{ span: 2 }}>
+                                                <Form.Select aria-label="ingredient.units" value={elm.units} onChange={e => handleIngredientsChange(idx, e)} name="units">
+                                                    <option>Please select a Unit of Measurement</option>
+                                                    <option>mg</option>
+                                                    <option>ml</option>
+                                                </Form.Select>
+                                            </Col>
+                                            <Col md={{ span: 1, offset: 1 }}>
+                                                <Button variant="danger" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon /> </Button>
+                                            </Col>
+                                        </Row>
+                                    )
                                 })}
                             </Col>
-                            <Col md={{ span: 2 }}>  
+                            <Col md={{ span: 2 }}>
                                 <Button variant="dark" onClick={newIngredient}><AddIcon /> Ingredient</Button>
                             </Col>
                         </Row>
-                        
+
                     </Form.Group>
                 </Col>
             </Row>
@@ -213,7 +211,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                     <Form.Group className="mb-3" controlId="instructions">
                         <Form.Label>Instructions</Form.Label>
                         <Row>
-                            <Col md={{span:10}}>   
+                            <Col md={{ span: 10 }}>
                                 {instructionsData.map((elm, idx) => {
                                     return (
                                         <Row className="mb-3" key={idx}>
@@ -223,17 +221,17 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                                             <Col>
                                                 <Form.Control type="text" value={elm.step} onChange={e => handleInstructionsChange(idx, e)} name="step" />
                                             </Col>
-                                            <Col md={{span:1, offset:1}}>
-                                            <Button variant="danger" onClick={() => deleteStep(idx)}> <DeleteForeverIcon/> </Button>
+                                            <Col md={{ span: 1, offset: 1 }}>
+                                                <Button variant="danger" onClick={() => deleteStep(idx)}> <DeleteForeverIcon /> </Button>
                                             </Col>
                                         </Row>
                                     )
                                 })}
                             </Col>
-                            <Col md={{ span: 2 }}>  
+                            <Col md={{ span: 2 }}>
                                 <Button variant="dark" onClick={newStep}><AddIcon /> Step</Button>
                             </Col>
-                            </Row>
+                        </Row>
                     </Form.Group>
                 </Col>
             </Row>

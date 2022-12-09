@@ -1,10 +1,10 @@
-import './IngredientsSerachBar.css'
+import './IngredientsSearchBar.css'
 import SearchIcon from '@mui/icons-material/Search'
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useState } from 'react'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 
-const IngredientsSerachBar = ({ setQuery }) => {
+const IngredientsSearchBar = ({ setQuery }) => {
 
     const [inputValue, setInputValue] = useState('')
     const [queryArr, setQueryArr] = useState([])
@@ -53,6 +53,6 @@ const IngredientsSerachBar = ({ setQuery }) => {
 
 }
 
-export default IngredientsSerachBar
+export default IngredientsSearchBar
 
 
