@@ -83,7 +83,7 @@ const EditProfilePage = () => {
             <div className="background">
                 <Container >
                     <h2 className="edit-profile-title p-5">Edit your profile</h2>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} className='editForm'>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3" controlId="name">
