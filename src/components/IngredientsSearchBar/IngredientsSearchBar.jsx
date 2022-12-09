@@ -35,9 +35,9 @@ const IngredientsSearchBar = ({ setQuery }) => {
     return (
 
         <Form onSubmit={handleFormSubmit}>
-            <Form.Group className="mb-3" controlId="ingredient">
+            <Form.Group className="mb-4" controlId="ingredient">
                 <Row>
-                    <Col md={{ span: 6, offset: 2 }} >
+                    <Col md={{ span: 7, offset: 2 }} >
                         <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleKeys} onChange={searchRecipes} placeholder='Search by ingredient' />
                     </Col>
                     <Col md={{ span: 2 }}>

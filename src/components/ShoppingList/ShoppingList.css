@@ -20,7 +20,7 @@
     text-align: center;
 /*     font-style: italic; */
     border-radius: 30px;
-    padding: 30px;
+    margin-top: 50px;
     margin-bottom: 0px;
 }
 
@@ -28,8 +28,9 @@
     text-align: center;
     font-style: italic;
     margin-bottom: 0px;
-    margin-top: 8px;
+    margin-top: 35px;
 }
+
 .shopListPageIntro2 {
     text-align: center;
     font-style: italic;

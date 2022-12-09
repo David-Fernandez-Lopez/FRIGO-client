@@ -11,6 +11,8 @@ function ProfileTab() {
 
     const [showModal, setShowModal] = useState(false)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
+    
+
 
     const closeModal = () => setShowModal(false)
     
@@ -31,14 +33,15 @@ function ProfileTab() {
                 id="justify-tab-example"
                 className="mb-3 black-text"
                 justify
+        
             >
-                <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='black-text'>
+                <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='favTab'>
 
                     <section className='mt-5'>
                         <h3>aquí irá un map con todas las recetas favoritas</h3>
-                    </section>
+                        </section>
                 </Tab>
-                <Tab eventKey="My Recipes" title="My Recipes" tabClassName='black-text'>
+                <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
                     <section className='mt-5'>
                         <h3>aquí irá un map con todas las recetas creadas por el usuario</h3>
 
