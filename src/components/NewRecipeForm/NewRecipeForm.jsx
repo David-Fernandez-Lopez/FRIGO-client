@@ -87,7 +87,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
-        const recipe = { ...recipeData, ingredients: ingredientsData, instructions: instructionsData }
+        const recipe = { ...recipeData, extendedIngredients: ingredientsData, analyzedInstructions: instructionsData }
         console.log(recipe)
         recipeService
             .createRecipe(recipe)
@@ -96,21 +96,6 @@ const NewRecipeForm = ({fireFinalActions }) => {
                 fireFinalActions()
             )
             .catch(err => console.log(err))
-    }
-
-    const handleIngredientsChange = (idx, e) => {
-
-        const ingredientsDataCopy = [...ingredientsData]
-        ingredientsDataCopy[idx][e.target.name] = e.target.value
-        setIngredientsData(ingredientsDataCopy)
-    }
-
-    const newIngredient = () => setIngredientsData([...ingredientsData, { name: '', quantity: 0, units: '' }])
-
-    const deleteIngredient = idx => {
-        const ingredientsDataCopy = [...ingredientsData]
-        ingredientsDataCopy.splice(idx, 1)
-        setIngredientsData(ingredientsDataCopy)
     }
 
     const handleInstructionsChange = (idx, e) => {
