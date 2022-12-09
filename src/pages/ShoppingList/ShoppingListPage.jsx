@@ -1,3 +1,4 @@
+import '../../components/ShoppingList/ShoppingList.css'
 import { Container } from "react-bootstrap"
 import ShoppingList from './../../components/ShoppingList/ShoppingList.jsx'
 
@@ -9,12 +10,16 @@ const ShoppingListPage = () => {
 
 
     return (
-        <Container>
-            <h1>Shopping List Page</h1>
-            <hr />
-            <NewShoppingListItem/>
+        <div className='shopListBg'>
+        <Container  style={{ width: '100vw'}}>
+            <h1 className='shopListPageTitle'>Your Shopping List</h1>
+            <p className='shopListPageIntro1'>Add the ingredients you need and unify your shopping list</p>
+            <p className='shopListPageIntro2'>all in one place</p>
+
+            <NewShoppingListItem />
             <ShoppingList />
-        </Container>
+            </Container>
+        </div>
     )
 }
 

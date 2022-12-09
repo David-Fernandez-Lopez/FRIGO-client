@@ -3,7 +3,7 @@ import { Row, Col , ListGroup, Button} from 'react-bootstrap'
 
 import { ShoppingListContext } from "../../context/shoppingList.context.js"
 import { useContext, useState } from "react"
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 
 
 function ShoppingList() {
@@ -17,24 +17,24 @@ function ShoppingList() {
             {
                 shoppingList.map((elem, idx) => {
                     return (
-                        <Col key={ idx} md={{ span: 6 }}>
+                        <Col className='shopListItems' key={ idx} md={{ span: 6 }} >
                             <ListGroup>
-                                <ListGroup.Item>
+                                <ListGroup.Item className='cardShopList'>
                                     <Row>
                                         <Col md={{ span: 6 }}>
-                                        <p>{elem.name}</p>
+                                        <p className='shopListName'>{elem.name}</p>
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p>{elem.quantity}</p>
+                                        <p className='shopListInfo'>{elem.quantity}</p>
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p>{elem.units}</p>
+                                        <p className='shopListInfo'>{elem.units}</p>
                                         </Col>
 
                                         <Col className='d-grid' md={{ span: 2 }}>
-                                            <Button  variant="danger" onClick={() => deleteItem(idx)} > <DeleteForeverIcon /> </Button>
+                                            <Button  className='deleteItemButton' variant="danger" onClick={() => deleteItem(idx)} > <RemoveRoundedIcon /> </Button>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>

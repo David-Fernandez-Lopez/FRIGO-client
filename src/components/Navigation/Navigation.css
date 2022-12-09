@@ -1,7 +1,39 @@
 .navbar {
      padding: 20px;
+    background-color: transparent !important;
 }
 
 .navlink {
     text-decoration: none;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown {
+    background-color: rgba(255, 0, 0, 0);
+}
+.dropdown:active {
+    color: black;
+    background-color: white;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #179246;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }

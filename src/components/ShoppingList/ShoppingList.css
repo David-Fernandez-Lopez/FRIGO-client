@@ -1,0 +1,52 @@
+.deleteItemButton {
+    border-radius: 40px;
+    background-color: rgba(227, 101, 101, 0.773);
+    border-color:rgba(209, 48, 48, 0.086);
+}
+
+.shopListItems {
+    margin-bottom: 10px;
+}
+
+.shopListName {
+ font-weight:bold
+}
+
+.shopListInfo {
+    font-weight: 300;
+}
+
+.shopListPageTitle {
+    text-align: center;
+/*     font-style: italic; */
+    border-radius: 30px;
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.shopListPageIntro1 {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+.shopListPageIntro2 {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 50px;
+/*     text-decoration-style: wavy;
+    text-decoration-color: rgb(17, 133, 65);
+    text-decoration-line:underline; */
+}
+
+
+.cardShopList {
+    background: linear-gradient(rgba(246, 246, 246, 0.195), rgba(169, 169, 169, 0.05));
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.082);
+}
+
+.shopListBg {
+   /*  background-image: url('https://64.media.tumblr.com/3898d527bfa5c7a7515a4c13029da1d4/tumblr_mwjh5kGYcp1s21vcjo1_1280.png');
+    height: 100vh; */
+    
+}
