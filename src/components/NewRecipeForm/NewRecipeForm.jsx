@@ -9,7 +9,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
 
-const NewRecipeForm = ({fireFinalActions }) => {
+const NewRecipeForm = ({ fireFinalActions }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
@@ -36,7 +36,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
         summary: '',
         image: ''
     })
-    
+
 
     useEffect(() => {
         loadData()
@@ -92,7 +92,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
         recipeService
             .createRecipe(recipe)
             .then(() =>
-                
+
                 fireFinalActions()
             )
             .catch(err => console.log(err))
@@ -107,7 +107,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
 
 
     const newStep = (e) => {
-      
+
         setInstructionsData([...instructionsData, { number: instructionsData.length + 1, step: '' }])
     }
 
@@ -159,7 +159,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
             </Row>
             <Row>
                 <Col>
-                    <NewIngredientForm ingredientsData={ ingredientsData } setIngredientsData={setIngredientsData} />
+                    <NewIngredientForm ingredientsData={ingredientsData} setIngredientsData={setIngredientsData} />
                 </Col>
             </Row>
             <Row>

@@ -33,6 +33,10 @@ class RecipeService {
         return this.api.get(`/${recipe_id}/information`)
     }
 
+    getRecipeByOwner() {
+        return this.api.get('/findByOwner')
+    }
+
     getRecipeByIngredients(ingredients) {
         return this.api.get(`/findByIngredients?ingredients=${ingredients}`)
     }

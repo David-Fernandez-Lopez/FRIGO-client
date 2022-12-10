@@ -3,17 +3,16 @@ import { Accordion, Container } from "react-bootstrap"
 import CuisineCategory from "../../components/CuisineCategory/CuisineCategory"
 import cuisineService from "../../services/cuisines.service"
 
+
 const RecipesPage = () => {
 
     const [cuisineList, setCuisineList] = useState([])
-    
 
     const loadData = () => {
 
         cuisineService
             .getCuisines()
-            .then(({data}) => {
-                console.log(data)
+            .then(({ data }) => {
                 setCuisineList(data)
             })
             .catch(err => console.log(err))
@@ -25,20 +24,20 @@ const RecipesPage = () => {
 
 
     return (
-       <Container>
+        <Container>
             <h1 className="titles mb-4">Recipes Page</h1>
 
             <Accordion>
-                
-                {cuisineList.map((elem, idx) => {
+
+                {cuisineList.map((elm, idx) => {
                     return (
-                        <Accordion.Item key={elem._id} eventKey={`${idx+1}`}>
-                            <Accordion.Header>{elem.cuisine}</Accordion.Header>
-                            {/* <CuisineCategory cuisine={elem.cuisine}/> */}
+                        <Accordion.Item key={elm._id} eventKey={`${idx + 1}`}>
+                            <Accordion.Header>{elm.cuisine}</Accordion.Header>
+                            <CuisineCategory cuisine={elm.cuisine} />
                         </Accordion.Item>
                     )
                 })}
-                
+
             </Accordion>
         </Container>
     )

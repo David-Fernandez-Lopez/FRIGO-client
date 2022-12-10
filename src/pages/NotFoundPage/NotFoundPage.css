@@ -1,0 +1,9 @@
+.NotFoundPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NotFoundPage img {
+    width: 50%;
+}

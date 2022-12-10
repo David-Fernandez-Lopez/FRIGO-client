@@ -1,9 +1,11 @@
-const imgURL = "https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/react-routing/404.gif"
+import imgURL from "./404.png"
+import './NotFoundPage.css'
 
 function ErrorPage() {
     return (
-        <div className="d-flex justify-content-center">
-            <img src={imgURL} alt="404 error gif" className="page-img" />
+        <div className="NotFoundPage">
+            <h2 className="m-3">404 - Page Not Found</h2>
+            <img src={imgURL} alt="404 error" />
         </div>
     )
 }
