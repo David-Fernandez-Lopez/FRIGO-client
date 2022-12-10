@@ -5,6 +5,7 @@ let unifyShopingListItems = (data) => {
   if(data.length > 1){
 
     let unifiedItem = []
+
     
     let items = dataCopy.map(item => [item.name,item.amount,item.unit])
   
@@ -13,12 +14,12 @@ let unifyShopingListItems = (data) => {
         if(items[i][0] === items[j][0] && items[i][2] === items[j][2]){
           unifiedItem.push({
             name: items[i][0],
-            amount: items[i][1] + items[j][1],
+            amount: parseInt(items[i][1]) + parseInt(items[j][1]),
             unit: items[i][2]
           })
         } else if(items[i][0] === items[j][0] && items[i][2] !== items[j][2]){
-            return dataCopy
-        }
+          return dataCopy
+        } 
       }
     }
     const filtered = dataCopy.filter(elm =>elm.name !== unifiedItem[0].name) 

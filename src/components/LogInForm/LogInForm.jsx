@@ -6,6 +6,8 @@ import { AuthContext } from "../../context/auth.context"
 
 import authService from "../../services/auth.service"
 import UserMessage from "../UserMessage/UserMessage"
+import { MessageContext } from '../../context/userMessage.context'
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 const LogInForm = ({fireFinalActions}) => {
 
@@ -13,6 +15,13 @@ const LogInForm = ({fireFinalActions}) => {
         email: '',
         password: ''
     })
+
+    const {user} = useContext(AuthContext)
+
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
+
+
+    const [errors, setErrors] = useState([]) 
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -35,9 +44,11 @@ const LogInForm = ({fireFinalActions}) => {
                 storeToken(tokenFromServer)
                 authenticateUser()
                 fireFinalActions()
+                setShowToast(true)
+                setToastMessage(`Welcome ${email}`)
                 navigate('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const { password, email } = signupData
@@ -54,6 +65,9 @@ const LogInForm = ({fireFinalActions}) => {
                              <Form.Label>Password</Form.Label>
                           <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
                         </Form.Group>
+                
+                         {errors.length ? <ErrorMessage>{errors.map(e => <p key={e}>{e}</p>)}</ErrorMessage> : undefined} 
+
                             <div className="d-grid">
                             <Button variant="dark" type="submit">Start</Button>
                             </div>

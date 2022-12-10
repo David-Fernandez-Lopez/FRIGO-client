@@ -13,8 +13,3 @@ Relevant endpoints CLIENT
 | `/profile/:id`   | USER PROFILE                                        | ✔         |
 | `/shopping-list` | YOUR SHOPPING LIST                                  | ✔         |
 | `/*`             | 404                                                 | X         |
-
-edit profile, edit recipe, log in & sign up ---> MODAL
-
-<!-- | `/my-recipes`                  | POST       | INDEX PAGE          | ✔           |
-| `/fav-recipes`                 | POST       | INDEX PAGE          | ✔           | -->

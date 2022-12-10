@@ -10,6 +10,19 @@ a {
     font-weight: bold;
 }
 
-.favTab:active {
-font-weight: 400;
+.favTab {
+    font-weight: 500;
+    color: black;
+}
+.myRecTab {
+    font-weight: 500;
+    color: black;
+}
+.favTab:hover {
+    font-weight: 500;
+    color: black;
+}
+.myRecTab:hover {
+    font-weight: 500;
+    color: black;
 }

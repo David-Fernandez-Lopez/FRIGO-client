@@ -1,7 +1,8 @@
 import { ShoppingListContext } from "../../context/shoppingList.context.js"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import AddIcon from '@mui/icons-material/Add'
+import dataTreatment from "../../utils/dataTreatment.js"
 
 
 function NewShoppingListItem() {
@@ -15,14 +16,27 @@ function NewShoppingListItem() {
             unit: ''
         }
     )
-
+    
+    
+    
     const handleInputChange = e => {
 
         const { name, value } = e.target
+        
         setIngredientsData({ ...ingredientsData, [name]: value })
     }
 
     const newIngredient = () => {
+
+        const ingredientsDataCopy = { ...ingredientsData }
+        console.log(ingredientsDataCopy)
+
+        let ingredientsTreated = dataTreatment(ingredientsDataCopy)
+        console.log(ingredientsTreated)
+
+        setIngredientsData(ingredientsTreated)
+        console.log(ingredientsData)
+        
         setShoppingList([...shoppingList, ingredientsData])
         setIngredientsData({
             name: '',
@@ -30,7 +44,6 @@ function NewShoppingListItem() {
             unit: ''
         })           
         unifyItems()
-        
     }
 
     const {name, amount, unit} = ingredientsData

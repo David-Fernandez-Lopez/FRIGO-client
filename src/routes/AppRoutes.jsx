@@ -7,7 +7,6 @@ import RecipesPage from "../pages/Recipes/RecipesPage"
 import AboutPage from "../pages/About/AboutPage"
 import ProfilePage from "../pages/Profile/ProfilePage"
 import ShoppingListPage from "../pages/ShoppingList/ShoppingListPage"
-import LogInForm from "../components/LogInForm/LogInForm"
 import EditProfilePage from "../pages/EditProfile/EditProfilePage"
 import ErrorPage from "../pages/NotFoundPage/NotFoundPage"
 
@@ -20,7 +19,6 @@ const AppRoutes = () => {
             <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/recipes/:id/information" element={<RecipeDetailsPage />} />
             <Route path="/about" element={<AboutPage />} />
-            {/*  <Route path="/login" element={<LogInForm /> } /> */}
 
             <Route element={<PrivateRoutes />}>
                 <Route path="/profile/:id" element={<ProfilePage />} />

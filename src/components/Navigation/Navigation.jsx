@@ -11,8 +11,8 @@ import { MessageContext } from '../../context/userMessage.context'
 const Navigation = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
-    const { setShowToast, setToastMessage } = useContext(MessageContext)
-
+/*     const { setShowToast, setToastMessage } = useContext(MessageContext)
+ */
     const [showModal, setShowModal] = useState(false)
     const [showingForm, setShowingForm] = useState('')
 
@@ -30,8 +30,8 @@ const Navigation = () => {
     }
 
     const fireFinalActions = () => {
-        setShowToast(true)
-        setToastMessage('Hola')
+     /*    setShowToast(true)
+        setToastMessage('') */
         closeModal()
     }
 
@@ -62,7 +62,7 @@ const Navigation = () => {
                                     <>
                                         <Nav.Link as="div" className='hover-underline-animation' onClick={logoutUser}>Log Out</Nav.Link>
 
-                                        <NavDropdown className='hover-underline-animation' title={`¡Welcome ${user.name}!`} id="basic-nav-dropdown">
+                                        <NavDropdown className='hover-underline-animation' title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
                                             <NavDropdown.Item className='dropdown' href="/profile/:id"> My Profile </NavDropdown.Item>
                                             <NavDropdown.Item className='dropdown' href="/shopping-list"> Shopping List </NavDropdown.Item>
                                             <NavDropdown.Divider />

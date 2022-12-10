@@ -8,7 +8,6 @@ import RecipeIngredients from "../../components/RecipeIngredients/RecipeIngredie
 import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
 
-
 const RecipeDetailsPage = () => {
 
     const { id } = useParams()
