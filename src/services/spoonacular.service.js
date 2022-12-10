@@ -32,6 +32,11 @@ class SpoonacularService {
     getRecipesByCategory(searchParams) {
         return this.api.get(`/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&${searchParams}`)
     }
+
+    autocompleatSearch(searchParams) {
+        return this.api.get(`/autocomplete?apiKey=${process.env.REACT_APP_API_KEY}&${searchParams}`)
+    }
+
 }
 
 const spoonacularService = new SpoonacularService()
