@@ -8,7 +8,7 @@
 
 
 a {
-    color: black;
+    color: #000000;
     text-decoration: none;
 }
 .titles {
@@ -18,3 +18,4 @@ a {
     margin-bottom: 0px;
     font-weight: normal;
 }
+
