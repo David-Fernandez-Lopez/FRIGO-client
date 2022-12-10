@@ -23,8 +23,8 @@ const NewRecipeForm = ({fireFinalActions }) => {
     const [ingredientsData, setIngredientsData] = useState(
         [{
             name: '',
-            quantity: 0,
-            units: ''
+            amount: 0,
+            unit: ''
         }]
     )
     const [recipeData, setRecipeData] = useState({
@@ -172,7 +172,7 @@ const NewRecipeForm = ({fireFinalActions }) => {
                                     return (
                                         <Row className="mb-3" key={idx}>
                                             <Col md={{ span: 1 }}>
-                                                <Form.Control className="text-center" disabled type="text" value={elm.number} onChange={e => handleInstructionsChange(idx, e)} name="number" />
+                                                <Form.Control className="text-center" disabled type="text" value={parseInt(elm.number)} onChange={e => handleInstructionsChange(idx, e)} name="number" />
                                             </Col>
                                             <Col>
                                                 <Form.Control type="text" value={elm.step} onChange={e => handleInstructionsChange(idx, e)} name="step" />

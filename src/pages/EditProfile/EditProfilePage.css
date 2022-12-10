@@ -1,8 +1,11 @@
-.background {
-    background-image: url('https://img.freepik.com/premium-photo/food-cooking-background-stone-texture-with-sea-salt-pepper-garlic-parsley-light-grey-abstract-food-background-empty-space-text-can-be-used-food-posters-design-menu-top-view_253362-16400.jpg?w=2000');
-    background-repeat: no-repeat;
-    box-shadow: inset 2px 20px 55px 55px #2f2f2f38;
+.background  {
+/*     background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80');
+ */    background-repeat: no-repeat;
+    background-size: cover;
+/*     opacity: 20%;
+ */    box-shadow: inset 2px 20px 55px 55px #2f2f2f38;
     height: 100vh;
+
 }
 
 .edit-profile-title {

@@ -26,8 +26,7 @@ const RecipesPage = () => {
 
     return (
        <Container>
-            <h1>Recipes Page</h1>
-            <hr />
+            <h1 className="titles mb-4">Recipes Page</h1>
 
             <Accordion>
                 

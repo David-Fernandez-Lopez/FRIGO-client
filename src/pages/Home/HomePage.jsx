@@ -31,11 +31,10 @@ const HomePage = () => {
 
     return (
         <Container className="homepageForm">
-            <h2 className="homepageTitle mb-3">What's in your fridge?</h2>
+            <h1 className="titles mb-4">What's in your fridge?</h1>
             <IngredientsSearchBar setQuery={setQuery} />
             {/* <RecipesResults recipesToSearch={recipesToSearch} /> */}
             {/* <Category /> */}
-            <hr />
             <h2>Placeholder Categories</h2>
 
         </Container>

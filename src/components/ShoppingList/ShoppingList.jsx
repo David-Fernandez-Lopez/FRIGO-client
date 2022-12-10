@@ -26,11 +26,11 @@ function ShoppingList() {
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p className='shopListInfo'>{elem.quantity}</p>
+                                        <p className='shopListInfo'>{elem.amount}</p>
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p className='shopListInfo'>{elem.units}</p>
+                                        <p className='shopListInfo'>{elem.unit}</p>
                                         </Col>
 
                                         <Col className='d-grid' md={{ span: 2 }}>

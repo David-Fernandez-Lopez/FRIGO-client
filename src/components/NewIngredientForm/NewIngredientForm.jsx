@@ -13,7 +13,7 @@ function NewIngredientForm({ingredientsData, setIngredientsData}) {
         setIngredientsData(ingredientsDataCopy)
     }
 
-    const newIngredient = () => setIngredientsData([...ingredientsData, { name: '', quantity: 0, units: '' }])
+    const newIngredient = () => setIngredientsData([...ingredientsData, { name: '', amount: 0, unit: '' }])
 
     const deleteIngredient = idx => {
         const ingredientsDataCopy = [...ingredientsData]
@@ -37,11 +37,11 @@ function NewIngredientForm({ingredientsData, setIngredientsData}) {
                                 </Col>
                                 
                                 <Col md={{ span: 2 }}>                                    
-                                    <Form.Control type="number" placeholder="Quantity" value={elm.quantity} onChange={e => handleIngredientsChange(idx, e)} name="quantity" />                                    
+                                    <Form.Control type="number" placeholder="amount" value={parseInt(elm.amount)} onChange={e => handleIngredientsChange(idx, e)} name="amount" />                                    
                                 </Col>
                                 
                                 <Col md={{ span: 2 }}>                                    
-                                    <Form.Select aria-label="ingredient.units" value={elm.units} onChange={e => handleIngredientsChange(idx, e)} name="units">                                        
+                                    <Form.Select aria-label="ingredient.unit" value={elm.unit} onChange={e => handleIngredientsChange(idx, e)} name="unit">                                        
                                         <option>Please select a Unit of Measurement</option>                                        
                                         <option>mg</option>                                        
                                         <option>ml</option>                                        

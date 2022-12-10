@@ -3,10 +3,18 @@
 .Frigo {
     font-family: Montserrat;
     height: 100vh;
+
 }
 
 
 a {
     color: black;
     text-decoration: none;
+}
+.titles {
+    text-align: center;
+    /*     font-style: italic; */
+    border-radius: 30px;
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
