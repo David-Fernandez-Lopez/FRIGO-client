@@ -52,18 +52,18 @@ function ProfileTab() {
             >
                 <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='favTab'>
 
-                    <section className='mt-5'>
+                    <section className='d-flex justify-content-start mb-3'>
                         <h3>aquí irá un map con todas las recetas favoritas</h3>
                     </section>
                 </Tab>
                 <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
                     <section className='mt-5'>
-                        <div>
+                        <Button variant='outline-secondary' onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
+                        <div className='d-flex justify-content-start mt-3'>
                             {myRecipes?.map(elm => {
                                 return <DbRecipeCard key={elm._id} {...elm} />
                             })}
                         </div>
-
                         <Modal size='xl' show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
                                 <img src="#" alt="LOGO FRIGO" />
@@ -73,7 +73,6 @@ function ProfileTab() {
                                 <NewRecipeForm fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
-                        <Button onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
                     </section>
                 </Tab>
 
