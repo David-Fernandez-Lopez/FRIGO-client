@@ -1,13 +1,32 @@
 import './IngredientsSearchBar.css'
+import 'react-select-search/style.css'
 import SearchIcon from '@mui/icons-material/Search'
 import { Form, Button, Row, Col } from "react-bootstrap"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
+import { SettingsPowerRounded } from '@mui/icons-material'
+import SelectSearch from 'react-select-search'
+import { useLoaderData } from 'react-router-dom'
+import ingredientsService from '../../services/ingredients.service'
 
 const IngredientsSearchBar = ({ setQuery }) => {
 
     const [inputValue, setInputValue] = useState('')
     const [queryArr, setQueryArr] = useState([])
+    const [ingredients, setIngredients] = useState([])
+
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    const loadData = () => {
+        
+        ingredientsService
+            .getIngredients()
+            .then(({ data }) => setIngredients(data))
+            .catch(err => console.log(err))
+        
+    }
 
     const searchRecipes = e => {
         setInputValue(e.target.value)
@@ -34,12 +53,17 @@ const IngredientsSearchBar = ({ setQuery }) => {
         setQuery(queryArr.toString())
     }
 
+    const options = ingredients.map(elem => {
+        return { name: elem.name, value: elem._id }
+    })
+
     return (
 
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-4" controlId="ingredient">
                 <Row>
                     <Col md={{ span: 7, offset: 2 }} >
+                        <SelectSearch options={options} value='sv' name='ingredients' placeholder='Search by ingredient'/>
                         <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleKeys} onChange={searchRecipes} placeholder='Search by ingredient' />
                     </Col>
                     <Col md={{ span: 2 }}>

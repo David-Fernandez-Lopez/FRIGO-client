@@ -1,4 +1,4 @@
-# FRIGO CLIENT
+## FRIGO CLIENT
 
 Relevant endpoints CLIENT
 
@@ -13,3 +13,11 @@ Relevant endpoints CLIENT
 | `/profile/:id`   | USER PROFILE                                        | ✔         |
 | `/shopping-list` | YOUR SHOPPING LIST                                  | ✔         |
 | `/*`             | 404                                                 | X         |
+
+# COLORS
+
+- Light-Green: #179246
+- Dark-Green:
+- Brown: #5e2302
+- Black: #000000
+- White: #ffffff
