@@ -1,5 +1,5 @@
-import { createContext, useState } from 'react'
-import unifyShopingListItems from '../utils/unifyShopingListItems'
+import { createContext, useEffect, useState } from 'react'
+import unifyShoppingListItems from '../utils/unifyShoppingListItems'
 
 
 const ShoppingListContext = createContext()
@@ -8,12 +8,20 @@ function ShoppingListWrapper(props) {
     
     const [shoppingList, setShoppingList] = useState([])
 
-    const unifyItems = () => {
- 
+    // useEffect(() => {
+    //     setShoppingList(unifyShoppingListItems(shoppingList))
+    // },[])
+
+    function unifyItems () {
+        console.log(shoppingList)
         setShoppingList(oldData => {
-            return unifyShopingListItems(oldData)
+            return unifyShoppingListItems(oldData)
         })
+        console.log(shoppingList)
     }
+    
+    console.log(shoppingList)
+    
 
     const deleteItem = idx => {
 
@@ -21,8 +29,6 @@ function ShoppingListWrapper(props) {
         shoppingListCopy.splice(idx, 1)
         setShoppingList(shoppingListCopy)
     }
-
-    console.log(shoppingList)
 
     return (
         <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem, unifyItems}}>
