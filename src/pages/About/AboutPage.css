@@ -4,6 +4,10 @@
     border-radius: 30px;
     margin-top: 50px;
     margin-bottom: 60px;
+    position: absolute;
+        top: 220px;
+        left: 630px;
+    color: white;
 }
 
 .aboutTitles {
@@ -11,4 +15,19 @@
     font-style: italic;
     margin-bottom: 0px;
     margin-top: 50px;
+}
+
+.aboutPage img {
+    min-width: 100vw;
+    max-height: 600px;
+    position:static;
+}
+
+.aboutPage {
+    margin: 0px;
+    padding: 0px;
+    min-width: 100vw;
+    position: relative;
+    display: inline-block;
+    text-align: center;
 }
