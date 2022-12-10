@@ -18,8 +18,9 @@ const HomePage = () => {
         const searchParams = new URLSearchParams(paramsObj)
 
         spoonacularService
-            .getRecipeByIngredients(searchParams.toString())
+            .autocompleatSearch(searchParams.toString())
             .then(({ data }) => {
+                console.log(data)
                 setrecipesToSearch(data)
             })
             .catch(err => console.log(err))
@@ -33,7 +34,7 @@ const HomePage = () => {
         <Container className="homepageForm">
             <h1 className="titles mb-5">What's in your fridge?</h1>
             <IngredientsSearchBar setQuery={setQuery} />
-            {/* <RecipesResults recipesToSearch={recipesToSearch} /> */}
+            <RecipesResults recipesToSearch={recipesToSearch} />
             {/* <Category /> */}
             <h2>Placeholder Categories</h2>
 
