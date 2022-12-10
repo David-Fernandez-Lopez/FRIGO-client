@@ -20,8 +20,8 @@ const LogInForm = ({fireFinalActions}) => {
 
     const { setShowToast, setToastMessage } = useContext(MessageContext)
 
-/* 
-    const [errors, setErrors] = useState([]) */
+
+    const [errors, setErrors] = useState([]) 
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -48,7 +48,7 @@ const LogInForm = ({fireFinalActions}) => {
                 setToastMessage(`Welcome ${email}`)
                 navigate('/')
             })
-            .catch(err => console.log(err)/* setErrors(err.response.data.errorMessages) */)
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const { password, email } = signupData
@@ -66,7 +66,7 @@ const LogInForm = ({fireFinalActions}) => {
                           <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
                         </Form.Group>
                 
-                           {/*  {errors.length ? <ErrorMessage>{errors.map(e => <p key={e}>{e}</p>)}</ErrorMessage> : undefined} */}
+                         {errors.length ? <ErrorMessage>{errors.map(e => <p key={e}>{e}</p>)}</ErrorMessage> : undefined} 
 
                             <div className="d-grid">
                             <Button variant="dark" type="submit">Start</Button>

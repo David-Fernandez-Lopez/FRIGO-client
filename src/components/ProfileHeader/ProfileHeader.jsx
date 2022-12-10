@@ -18,9 +18,7 @@ function ProfileHeader() {
                 </div>
             </Col>
             <Col xs={6} className='d-flex justify-content-center flex-column'>
-                <div>
-                    <h2>{user.name} {user.lastName}</h2>
-                </div>
+                <h2>{user.name} {user.lastName}</h2>
             </Col>
         </Row>
     )

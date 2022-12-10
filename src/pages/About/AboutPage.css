@@ -7,12 +7,12 @@
     position: absolute;
         top: 220px;
         left: 630px;
-    color: white;
+    color: black;
+
 }
 
 .aboutTitles {
     text-align: center;
-    font-style: italic;
     margin-bottom: 0px;
     margin-top: 50px;
 }
@@ -21,6 +21,7 @@
     min-width: 100vw;
     max-height: 600px;
     position:static;
+    opacity: 50%;
 }
 
 .aboutPage {

@@ -60,7 +60,7 @@ const [signupData, setSignupData] = useState({
                 <Form.Label>Password</Form.Label>
                     <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
-                {errors.length ? <ErrorMessage>{errors.map(elm => <p className='mb-3'key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
+                {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
              {/*    [elm].forEach ((error) => */}
             <div className="d-grid">
