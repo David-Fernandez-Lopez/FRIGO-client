@@ -9,6 +9,7 @@ import ProfilePage from "../pages/Profile/ProfilePage"
 import ShoppingListPage from "../pages/ShoppingList/ShoppingListPage"
 import LogInForm from "../components/LogInForm/LogInForm"
 import EditProfilePage from "../pages/EditProfile/EditProfilePage"
+import ErrorPage from "../pages/NotFoundPage/NotFoundPage"
 
 
 const AppRoutes = () => {
@@ -27,7 +28,7 @@ const AppRoutes = () => {
                 <Route path="/shopping-list" element={<ShoppingListPage />} />
             </Route>
 
-            <Route path="/*" element={<h1>404</h1>} />
+            <Route path="/*" element={<ErrorPage />} />
         </Routes>
     )
 }

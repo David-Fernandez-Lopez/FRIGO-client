@@ -5,8 +5,7 @@ import Loader from '../Loader/Loader'
 
 
 
-function Icons({id} ) {
-    console.log(id)
+function Icons({ id }) {
 
     const [icons, setIcons] = useState()
 
@@ -16,28 +15,26 @@ function Icons({id} ) {
             .then(({ data }) => {
                 setIcons(data)
             })
-        .catch (err =>console.log(err))
+            .catch(err => console.log(err))
     }
-    
+
     useEffect(() => {
         getData()
-    }, [id])
- 
-    
+    }, [id, icons])
+
+
     return (
         <>
-            {!icons ?
-                <Loader />
-                :
+            {icons &&
                 <>
                     <div className='icons'>
                         <p>{icons.readyInMinutes}</p>
                         <p>{icons.servings}</p>
                     </div>
                 </>
-    }
-    </>
-  )
+            }
+        </>
+    )
 }
 
 export default Icons

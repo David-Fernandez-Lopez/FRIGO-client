@@ -15,15 +15,17 @@ const IngredientsSearchBar = ({ setQuery }) => {
 
     const handleKeys = e => {
         if (e.keyCode === 32 || e.keyCode === 13) {
-            queryArr.push(inputValue)
+            let queryArrCopy1 = [...queryArr]
+            queryArrCopy1.push(inputValue)
+            setQueryArr(queryArrCopy1)
             setInputValue('')
         }
     }
 
     const handleIgredients = idx => {
-        let queryArrCopy = [...queryArr]
-        queryArrCopy.splice(idx, 1)
-        setQueryArr(queryArrCopy)
+        let queryArrCopy2 = [...queryArr]
+        queryArrCopy2.splice(idx, 1)
+        setQueryArr(queryArrCopy2)
     }
 
 
@@ -45,7 +47,7 @@ const IngredientsSearchBar = ({ setQuery }) => {
                     </Col>
                 </Row>
                 <p className='mt-3'> {queryArr.map((elm, idx) => {
-                    return <span className='Ingredient' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
+                    return <span className='badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
                 })}</p>
             </Form.Group>
         </Form>
