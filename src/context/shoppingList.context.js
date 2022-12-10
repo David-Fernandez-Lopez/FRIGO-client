@@ -5,10 +5,15 @@ import unifyShopingListItems from '../utils/unifyShopingListItems'
 const ShoppingListContext = createContext()
 
 function ShoppingListWrapper(props) {
-
+    
     const [shoppingList, setShoppingList] = useState([])
 
-    const unifyItems = () => setShoppingList(unifyShopingListItems(shoppingList))
+    const unifyItems = () => {
+ 
+        setShoppingList(oldData => {
+            return unifyShopingListItems(oldData)
+        })
+    }
 
     const deleteItem = idx => {
 

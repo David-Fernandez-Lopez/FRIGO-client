@@ -7,12 +7,12 @@ import AddIcon from '@mui/icons-material/Add'
 function NewShoppingListItem() {
 
 
-    const { shoppingList, setShoppingList} = useContext(ShoppingListContext)
+    const { shoppingList, setShoppingList, unifyItems} = useContext(ShoppingListContext)
     const [ingredientsData, setIngredientsData] = useState(
         {
             name: '',
-            quantity: 0,
-            units: ''
+            amount: 0,
+            unit: ''
         }
     )
 
@@ -26,12 +26,14 @@ function NewShoppingListItem() {
         setShoppingList([...shoppingList, ingredientsData])
         setIngredientsData({
             name: '',
-            quantity: 0,
-            units: ''
-        })
+            amount: 0,
+            unit: ''
+        })           
+        unifyItems()
+        
     }
 
-    const {name, quantity, units} = ingredientsData
+    const {name, amount, unit} = ingredientsData
 
     return (
 
@@ -44,11 +46,11 @@ function NewShoppingListItem() {
                         </Col>
                                 
                         <Col md={{ span: 2 }}>  
-                            <Form.Control type="number" placeholder="Quantity" value={quantity || ''} onChange={handleInputChange} name="quantity" /> 
+                            <Form.Control type="number" placeholder="Amount" value={amount || ''} onChange={handleInputChange} name="amount" /> 
                         </Col>
                         
                         <Col md={{ span: 4 }}>     
-                            <Form.Select aria-label="ingredient.units" value={units} onChange={handleInputChange} name="units">  
+                            <Form.Select aria-label="unit" value={unit} onChange={handleInputChange} name="unit">  
                                 <option>Unit of Measurement</option>     
                                 <option>mg</option>   
                                 <option>ml</option>   
