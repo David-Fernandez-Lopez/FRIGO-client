@@ -1,13 +1,28 @@
 .DbRecipeCard img {
     opacity: 30%;
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 180px;
+    object-fit: cover;
+}
+.DbRecipeCard:hover img {
+    opacity: 30%;
+    width: 210px;
+    height: 180px;
     object-fit: cover;
 }
 
+.DbRecipeCard {
+    transition: transform 0.3s ease-out;
+    margin-right: 200px;
+}
+.DbRecipeCard:hover  {
+    box-shadow: 4px 4px 2px 1px rgba(113, 113, 113, 0.196);
+    transform: scale(1.05);
+}
+
 .CardTitle {
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 9px #000000;
     font-weight: 500;
     text-align: center;
 }
@@ -22,12 +37,12 @@
 .Icons {
     scale: 0.8;
     position: absolute;
-    color: #d2b865;
+    color: #8e7c44;
     font-weight: 500;
     top: 8px;
-    left: 16px;
+    left: 80px;
     font-size: 18px;
     background-color: rgba(255, 255, 255, 0.697);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 3px 10px;
 }

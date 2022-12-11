@@ -11,7 +11,7 @@ function ProfileHeader() {
 
     return (
 
-        <Row className='my-5'>
+        <Row className=' profile my-5'>
             <Col xs={{ span: 3, offset: 3 }} className='d-flex justify-content-center'>
                 <div className="profile-image">
                     <Figure.Image className="profile-image" width={150} height={150} src={user.profileImg} alt="" />

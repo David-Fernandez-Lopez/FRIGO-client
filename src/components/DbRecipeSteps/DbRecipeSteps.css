@@ -1,0 +1,21 @@
+.nav-pills .nav-link.active {
+    background-color:#1792469d;
+    color: white;
+    font-weight: 500;
+}
+.nav-link{
+    color:rgb(141, 141, 141)
+}
+.nav-link:hover{
+    color:black
+}
+
+.dbRSTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.minutes {
+    text-align: center;
+}

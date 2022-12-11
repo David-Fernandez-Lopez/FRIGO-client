@@ -21,19 +21,20 @@ function RecipeCard({ title, summary, image, dishTypes, cuisines }) {
 
     return (
         <>
-            <h1>{title}</h1>
-            <hr />
+            <h1 className='recipeTitle mt-5'>{title}</h1>
             <Row>
                 <Col>
-                    <Figure.Image src={image} alt="recipe image" />
-                    <p className="my-2">{dish?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
-                    <p lassName="my-2">{cuisine?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
+                    <Figure.Image className='recipeImg' src={image} alt="recipe image" />
                 </Col>
-                <Col>
+                <Col className='summaryCol'>
+                    <p className='summaryTitle'><em>Summary</em></p>
                     <div dangerouslySetInnerHTML={{ __html: summary }} />
+                    <Row className='tag mt-2'>
+                        <p>{dish?.map((elm, idx) => <span className="badge bg-light text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
+                        <p>{cuisine?.map((elm, idx) => <span className="badge bg-light text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
+                    </Row>
                 </Col>
             </Row>
-            <hr />
         </>
     )
 

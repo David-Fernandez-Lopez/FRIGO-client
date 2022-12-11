@@ -1,0 +1,32 @@
+.tag p {
+    display: flex;
+    color: black;
+    width: 100px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-right:6px;
+    font-size: 17px;
+} 
+.summaryTitle {
+    font-weight: 200;
+    margin-bottom: 8px;
+}
+
+.summaryCol {
+    margin-left: 20px;
+} 
+
+.recipeImg {
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px; 
+    border-bottom: 5px dotted rgba(0, 0, 0, 0.117);
+    border-top: 5px dotted rgba(0, 0, 0, 0.117);
+    opacity: 90%;
+
+}
+
+.recipeTitle {
+    font-weight: 400;
+    margin-bottom: 45px;
+}

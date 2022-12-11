@@ -1,8 +1,10 @@
 import './DbRecipeSteps.css'
 import { useEffect, useState } from 'react'
 import { Col, Nav, Row, Tab, } from 'react-bootstrap'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
-function DbRecipeSteps({ analyzedInstructions }) {
+function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
 
     const [dbSteps, setDbSteps] = useState(null)
 
@@ -16,14 +18,15 @@ function DbRecipeSteps({ analyzedInstructions }) {
         <>
             {dbSteps &&
                 <>
-                    <h3>Instructions</h3>
+                <h3 className='dbRSTitle'>Instructions</h3>
+                  <p className='minutes'>{readyInMinutes}' <AccessTimeIcon /></p>
                     <br />
-                    < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
+                    < Tab.Container className='stepsDB'id="left-tabs-example" defaultActiveKey="0" >
                         <Row>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
                                     {dbSteps?.map((elm, idx) => {
-                                        return (<Nav.Item key={idx}>
+                                        return (<Nav.Item key={idx} className='stepsDB'>
                                             <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
                                         </Nav.Item>)
                                     })}
@@ -40,7 +43,7 @@ function DbRecipeSteps({ analyzedInstructions }) {
                             </Col>
                         </Row>
                     </Tab.Container >
-                    <hr />
+                    <hr className='mt-5' />
                 </>
             }
         </>
