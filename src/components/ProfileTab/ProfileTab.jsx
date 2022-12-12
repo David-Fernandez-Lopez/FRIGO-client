@@ -87,6 +87,7 @@ function ProfileTab() {
         setShowToast(true)
         setToastMessage('Recipe created successfully')
         closeModal()
+        loadUserData()
     }
 
 
