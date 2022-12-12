@@ -129,9 +129,9 @@ function ProfileTab() {
                         <Modal size='xl' show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
                                 <img src="#" alt="LOGO FRIGO" />
-                                <p>New Recipe</p>
                             </Modal.Header>
                             <Modal.Body>
+                                <h4 className='NRTitle mt-3'>Create a new recipe</h4>
                                 <NewRecipeForm fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>

@@ -1,9 +1,25 @@
 import { Row } from 'react-bootstrap'
 import './RecipeIngredients.css'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
+import { ShoppingListContext } from '../../context/shoppingList.context'
+import { useContext } from 'react'
+import { capitalize } from '@mui/material'
 
 function RecipeIngredients({ extendedIngredients, servings }) {
+    
 
+    const { shoppingList } = useContext(ShoppingListContext)
+
+    console.log(extendedIngredients)
+
+    const isInShoppingList = extendedIngredients?.map(elm => {
+
+        const ingredient = { name: elm.name.toUpperCase(), amount: parseInt(elm.amount), unit: elm.unit } 
+        
+        if (shoppingList.includes(ingredient.name)) {
+            console.log(ingredient)
+        }
+    })
 
     return (
         <>
@@ -13,7 +29,7 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                 <br />
                 <Row>
                     {extendedIngredients?.map((elm, idx) => {
-                        return <p key={idx}><span>{elm.amount}</span> <span>{elm.unit}</span> of {elm.name}</p>
+                        return <p className='block' key={idx}> {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
                     }
                     )}
                 </Row>

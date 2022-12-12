@@ -8,12 +8,14 @@ import sortAlphabetically from '../../utils/sort'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
+import measurementsUnitsService from "../../services/measurementsUnits.service"
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
     const [dishType, setdishType] = useState([])
+
     const [instructionsData, setInstructionsData] = useState(
         [{
             number: 1,
@@ -46,16 +48,17 @@ const NewRecipeForm = ({ fireFinalActions }) => {
 
         const promises = [
             cuisineService.getCuisines(),
-            dishTypeService.getDishType()
+            dishTypeService.getDishType(),
         ]
 
         Promise
             .all(promises)
-            .then(([cuisines, dishType]) => {
+            .then(([cuisines, dishType, units]) => {
                 const cuisineSortedByName = sortAlphabetically(cuisines)
                 setCuisine(cuisineSortedByName)
                 const dishTypeSortedByName = sortAlphabetically(dishType)
                 setdishType(dishTypeSortedByName)
+                
             })
             .catch(err => console.log(err))
     }
@@ -178,7 +181,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                                                 <Form.Control type="text" value={elm.step} onChange={e => handleInstructionsChange(idx, e)} name="step" />
                                             </Col>
                                             <Col md={{ span: 1, offset: 1 }}>
-                                                <Button variant="danger" onClick={() => deleteStep(idx)}> <DeleteForeverIcon /> </Button>
+                                                <Button className="deleteIngredientBtn" onClick={() => deleteStep(idx)}> <DeleteForeverIcon /> </Button>
                                             </Col>
                                         </Row>
                                     )
@@ -212,7 +215,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create New Recipe'}</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create'}</Button>
             </div>
         </Form>
     )

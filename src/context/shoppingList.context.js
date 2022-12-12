@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 
 
@@ -6,14 +6,12 @@ const ShoppingListContext = createContext()
 
 function ShoppingListWrapper(props) {
     
-    const [shoppingList, setShoppingList] = useState([])
+    const [shoppingList, setShoppingList] = useState(null)
+
+    useEffect(() => {
+        setShoppingList([])
+    },[])
     
-    const sortItems = () => {
-        const shoppingListCopy = [...shoppingList]
-
-        
-    }
-
     const deleteItem = idx => {
 
         const shoppingListCopy = [...shoppingList]

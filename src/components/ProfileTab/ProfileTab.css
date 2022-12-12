@@ -42,3 +42,8 @@ a {
     color:white;
     border-color: rgba(47, 102, 40, 0.714);
 }
+
+.NRTitle {
+        text-align: center;
+        font-weight: 300;
+}

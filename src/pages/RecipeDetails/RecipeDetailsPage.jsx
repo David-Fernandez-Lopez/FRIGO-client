@@ -12,6 +12,7 @@ import spoonacularService from "../../services/spoonacular.service"
 import { AuthContext } from './../../context/auth.context'
 import recipeService from "../../services/recipes.service"
 import userService from "../../services/user.service"
+import './../../components/RecipeCard/RecipeCard.css'
 
 const RecipeDetailsPage = () => {
 
@@ -92,18 +93,24 @@ const RecipeDetailsPage = () => {
 
     return (
         <Container>
-            {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
             {user &&
                 <>
-                    {!favRecipe ? <Button onClick={addRecipeToFav} variant="success"><FavoriteBorderIcon /></Button> :
-                        <Button onClick={removeRecipeFromFav} variant="success"><FavoriteIcon /></Button>}
+                    {!favRecipe ? <Button onClick={addRecipeToFav} className='favBtn mt-3'><FavoriteBorderIcon /></Button> :
+                        <Button onClick={removeRecipeFromFav} className='favBtn mt-3'><FavoriteIcon /></Button>}
                 </>
             }
-            <hr />
+            {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
             <Col>
                 <Row>
+                    <Col md={12}>
+            <hr />
+            
+                    
                     {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
+                    </Col>
+                    <Col md={12}>
                     {!dbRecipe ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
+                    </Col>
                 </Row>
             </Col>
             <hr />

@@ -3,12 +3,15 @@ import { useContext, useEffect, useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import AddIcon from '@mui/icons-material/Add'
 import dataTreatment from "../../utils/dataTreatment.js"
+import { measurementUnitsContext } from "../../context/measurementUnits.context.js"
 
 
 function NewShoppingListItem() {
 
+    const { measurementsUnits } = useContext(measurementUnitsContext)
 
-    const { shoppingList, setShoppingList, unifyItems} = useContext(ShoppingListContext)
+
+    const { shoppingList, setShoppingList} = useContext(ShoppingListContext)
     const [ingredientsData, setIngredientsData] = useState(
         {
             name: '',
@@ -77,15 +80,16 @@ function NewShoppingListItem() {
                         </Col>
                                 
                         <Col md={{ span: 2 }}>  
-                            <Form.Control type="number" placeholder="Amount" value={amount || ''} onChange={handleInputChange} name="amount" /> 
+                            <Form.Control type="number" placeholder="Amount" value={amount? amount : ''} onChange={handleInputChange} name="amount" /> 
                         </Col>
                         
                         <Col md={{ span: 4 }}>     
-                            <Form.Select aria-label="unit" value={unit} onChange={handleInputChange} name="unit">  
-                                <option>Unit of Measurement</option>     
-                                <option>mg</option>   
-                                <option>ml</option>   
-                            </Form.Select> 
+                            <Form.Select aria-label="unit" value={unit} onChange={handleInputChange} name="unit">
+                                <option>Unit of Measurement</option>                                
+                                {measurementsUnits.map(elem => {                                            
+                                    return <option key={elem._id}>{elem.unit}</option>                                    
+                                })}                                
+                            </Form.Select>
                         </Col>    
                     </Row>            
                 </Col>

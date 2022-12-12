@@ -8,6 +8,8 @@ import { AuthProviderWrapper } from './../src/context/auth.context'
 import { MessageProviderWrapper } from './../src/context/userMessage.context'
 import { ShoppingListWrapper } from './context/shoppingList.context'
 import { IngredientProviderWrapper } from './context/ingredients.context'
+import { MeasurementUnitsProviderWrapper } from './context/measurementUnits.context'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -15,11 +17,13 @@ root.render(
   <MessageProviderWrapper>
     <ShoppingListWrapper>
       <IngredientProviderWrapper>
-        <AuthProviderWrapper>
-          <Router>
-            <App />
-          </Router>
-        </AuthProviderWrapper>
+        <MeasurementUnitsProviderWrapper>
+          <AuthProviderWrapper>
+            <Router>
+              <App />
+            </Router>
+          </AuthProviderWrapper>
+        </MeasurementUnitsProviderWrapper>
       </IngredientProviderWrapper>
     </ShoppingListWrapper>
   </MessageProviderWrapper>

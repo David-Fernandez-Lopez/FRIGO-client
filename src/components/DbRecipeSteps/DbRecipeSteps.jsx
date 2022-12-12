@@ -17,7 +17,7 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
     return (
         <>
             {dbSteps &&
-                <>
+                <Row>
                     <h3 className='dbRSTitle'>Instructions</h3>
                     <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
                     <br />
@@ -26,9 +26,10 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
                                     {dbSteps?.map((elm, idx) => {
-                                        return (<Nav.Item key={idx} className='stepsDB'>
-                                            <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
-                                        </Nav.Item>)
+                                        return (
+                                            <Nav.Item key={idx} className='stepsDB'>
+                                                <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
+                                            </Nav.Item>)
                                     })}
                                 </Nav>
                             </Col>
@@ -43,7 +44,7 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                             </Col>
                         </Row>
                     </Tab.Container >
-                </>
+                </Row>
             }
         </>
     )

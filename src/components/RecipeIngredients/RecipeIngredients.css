@@ -1,5 +1,5 @@
 .IngrContainer {
-    height: 350px;
+
     text-align: center;
 }
 .IngrContainer p {
@@ -13,4 +13,8 @@
 }
 .servings {
     margin-left: 330px;
+}
+
+.block {
+    display:inline-block;
 }

@@ -4,7 +4,6 @@ class MeasurementsUnitsService {
 
     constructor() {
 
-
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/api/measurementsUnits`
         })
@@ -24,8 +23,6 @@ class MeasurementsUnitsService {
     getMeasurementsUnits() {
         return this.api.get(`/`)
     }
-
-
 }
 
 const measurementsUnitsService = new MeasurementsUnitsService()
