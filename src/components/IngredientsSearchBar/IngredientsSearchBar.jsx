@@ -2,33 +2,23 @@ import './IngredientsSearchBar.css'
 import 'react-select-search/style.css'
 import SearchIcon from '@mui/icons-material/Search'
 import { Form, Button, Row, Col } from "react-bootstrap"
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 // import { SettingsPowerRounded } from '@mui/icons-material'
 // import SelectSearch from 'react-select-search'
 // import { useSelect } from 'react-select-search'
 // import { useLoaderData } from 'react-router-dom'
 import ingredientsService from '../../services/ingredients.service'
+import Select from 'react-select'
 
+import { IngredientsContext } from '../../context/ingredients.context'
 
 const IngredientsSearchBar = ({ setQuery }) => {
 
     const [inputValue, setInputValue] = useState('')
     const [queryArr, setQueryArr] = useState([])
-    const [ingredients, setIngredients] = useState([])
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = () => {
-        
-        ingredientsService
-            .getIngredients()
-            .then(({ data }) => setIngredients(data))
-            .catch(err => console.log(err))
-        
-    }
+   const {ingredients} = useContext(IngredientsContext)
 
     const searchRecipes = e => {
         setInputValue(e.target.value)
@@ -54,26 +44,11 @@ const IngredientsSearchBar = ({ setQuery }) => {
         e.preventDefault()
         setQuery(queryArr.toString())
     }
+   
+    const options = ingredients.map(elem => {
+        return { label: elem.name, value:elem.value}
+    })
 
-    
-    // const options = ingredients.map(elem => {
-    //     return { name: elem.name}
-    // })
-
-    const options = [
-        {
-            name: 'Afghanistan',
-            value: 'AF'
-        },
-        {
-            name: 'Åland Islands',
-            value: 'AX'
-        },
-        {
-            name: 'Albania',
-            value: 'AL'
-        }]
-    
 
     return (
 
@@ -81,6 +56,12 @@ const IngredientsSearchBar = ({ setQuery }) => {
             <Form.Group className="mb-4" controlId="ingredient">
                 <Row>
                     <Col md={{ span: 7, offset: 2 }} >
+
+                        <Select 
+                            // value={selectedOption}
+                            onChange={event => console.log(event)}
+                            options={options} />
+                        
                         {/* <SelectSearch options={options}
                             autoComplete='on'
                             search='true' 
@@ -98,7 +79,7 @@ const IngredientsSearchBar = ({ setQuery }) => {
                     </Col>
                 </Row>
                 <p className='mt-3'> {queryArr.map((elm, idx) => {
-                    return <span className='badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
+                    return <span className='ingredientResult badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
                 })}</p>
             </Form.Group>
         </Form>

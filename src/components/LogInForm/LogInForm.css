@@ -1,0 +1,13 @@
+.loginT {
+    text-align: center;
+}
+
+.formBtn{
+    background-color: rgba(47, 102, 40, 0.714);
+    border-color: rgba(47, 102, 40, 0.714);
+    margin-top: 10px;
+}
+.formBtn:hover{
+    background-color: rgba(47, 102, 40, 0.916);
+    border-color: rgba(47, 102, 40, 0.916)
+}

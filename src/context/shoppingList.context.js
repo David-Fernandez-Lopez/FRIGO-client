@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import unifyShoppingListItems from '../utils/unifyShoppingListItems'
+
 
 
 const ShoppingListContext = createContext()
@@ -7,20 +7,6 @@ const ShoppingListContext = createContext()
 function ShoppingListWrapper(props) {
     
     const [shoppingList, setShoppingList] = useState([])
-
-    // useEffect(() => {
-    //     setShoppingList(unifyShoppingListItems(shoppingList))
-    // },[])
-
-    function unifyItems () {
-        console.log(shoppingList)
-        setShoppingList(oldData => {
-            return unifyShoppingListItems(oldData)
-        })
-        console.log(shoppingList)
-    }
-    
-    console.log(shoppingList)
     
 
     const deleteItem = idx => {
@@ -31,7 +17,7 @@ function ShoppingListWrapper(props) {
     }
 
     return (
-        <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem, unifyItems}}>
+        <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem}}>
             {props.children}
         </ShoppingListContext.Provider>
     )
