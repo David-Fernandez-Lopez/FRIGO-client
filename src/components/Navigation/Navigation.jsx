@@ -78,7 +78,7 @@ const Navigation = () => {
                                             <Nav.Link as="div" className='hover-underline-animation' onClick={signUp}>Sign Up</Nav.Link>
                                         </Link>
 
-                                        <Modal show={showModal} onHide={closeModal}>
+                                        <Modal style={{padding:'100px'}} show={showModal} onHide={closeModal}>
                                             <Modal.Header closeButton>
                                                 <img src="#" alt="LOGO FRIGO" />
                                             </Modal.Header>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Accordion, Container } from "react-bootstrap"
 import CuisineCategory from "../../components/CuisineCategory/CuisineCategory"
 import cuisineService from "../../services/cuisines.service"
+import './RecipesPage.css'
 
 
 const RecipesPage = () => {

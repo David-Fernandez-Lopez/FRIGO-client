@@ -46,7 +46,7 @@ const [signupData, setSignupData] = useState({
 
     return (
         <>
-        <h3>Sign Up</h3>
+        <h3 className="mb-3 mt-3 loginT">Sign Up</h3>
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
@@ -64,7 +64,7 @@ const [signupData, setSignupData] = useState({
 
              {/*    [elm].forEach ((error) => */}
             <div className="d-grid">
-                <Button variant="dark" type="submit">Register</Button>
+                <Button className="formBtn" type="submit">Register</Button>
             </div>
                 
             </Form>

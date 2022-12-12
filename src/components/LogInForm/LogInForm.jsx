@@ -9,6 +9,8 @@ import UserMessage from "../UserMessage/UserMessage"
 import { MessageContext } from '../../context/userMessage.context'
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
+import './LogInForm.css'
+
 const LogInForm = ({fireFinalActions}) => {
 
     const [signupData, setSignupData] = useState({
@@ -55,7 +57,7 @@ const LogInForm = ({fireFinalActions}) => {
 
     return (
         <>
-        <h3>Log In</h3>
+            <h3 className="mb-3 mt-3 loginT">Log In</h3>
         <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="email">
                             <Form.Label>Email</Form.Label>
@@ -69,7 +71,7 @@ const LogInForm = ({fireFinalActions}) => {
                          {errors.length ? <ErrorMessage>{errors.map(e => <p key={e}>{e}</p>)}</ErrorMessage> : undefined} 
 
                             <div className="d-grid">
-                            <Button variant="dark" type="submit">Start</Button>
+                            <Button className="formBtn" type="submit">Start</Button>
                             </div>
             </Form>
             </>

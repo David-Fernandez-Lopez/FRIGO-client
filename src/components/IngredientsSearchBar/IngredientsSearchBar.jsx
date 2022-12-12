@@ -98,7 +98,7 @@ const IngredientsSearchBar = ({ setQuery }) => {
                     </Col>
                 </Row>
                 <p className='mt-3'> {queryArr.map((elm, idx) => {
-                    return <span className='badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
+                    return <span className='ingredientResult badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
                 })}</p>
             </Form.Group>
         </Form>
