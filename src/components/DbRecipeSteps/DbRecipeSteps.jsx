@@ -43,10 +43,6 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                             </Col>
                         </Row>
                     </Tab.Container >
-<<<<<<< HEAD
-=======
-                    <hr className='mt-5' />
->>>>>>> ec56dd2ef0a804494b53542b4374f654ca5cb4eb
                 </>
             }
         </>
