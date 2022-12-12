@@ -8,7 +8,7 @@ import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
 import userService from "../../services/user.service"
 import { MessageContext } from "../../context/userMessage.context"
-import { AuthContext } from './../../context/auth.context'
+// import { AuthContext } from './../../context/auth.context'
 import DbRecipeCard from '../DbRecipeCard/DbRecipeCard'
 import ApiRecipeCard from '../ApiRecipeCard/ApiRecipeCard'
 import Loader from '../Loader/Loader'
@@ -19,9 +19,10 @@ function ProfileTab() {
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const [myRecipes, setMyRecipes] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     // const { user } = useContext(AuthContext)
-    const [apiFavRecipes, setApiFavRecipes] = useState([])
-    const [dbFavRecipes, setDbFavRecipes] = useState([])
+    const [apiFavRecipes, setApiFavRecipes] = useState(null)
+    const [dbFavRecipes, setDbFavRecipes] = useState(null)
 
     useEffect(() => {
         loadUserData()
@@ -37,6 +38,7 @@ function ProfileTab() {
             .getUserById()
             .then(({ data }) => {
                 setCurrentUser(data)
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -54,8 +56,8 @@ function ProfileTab() {
 
         //User Fav Recipes
         currentUser?.favRecipes.map(elm => {
-            const apiFavRecipesCopy = [...apiFavRecipes]
-            const dbFavRecipesCopy = [...dbFavRecipes]
+            const apiFavRecipesCopy = []
+            const dbFavRecipesCopy = []
             if (elm.length < 10) {
                 spoonacularService
                     .getRecipeById(elm)
@@ -95,29 +97,25 @@ function ProfileTab() {
                 id="justify-tab-example"
                 className="mb-3 black-text"
                 justify
-
             >
-
                 <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='favTab'>
-                    {currentUser?.favRecipes?.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
-                    {
-                        dbFavRecipes || apiFavRecipes
-                            ?
+                    {isLoading ? <Loader /> : <>
+                        {currentUser.favRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
+                        {
+                            (dbFavRecipes || apiFavRecipes) &&
                             <section className='d-flex justify-content-start mb-3'>
                                 {
-                                    apiFavRecipes.map(elm => {
+                                    apiFavRecipes?.map(elm => {
                                         return <ApiRecipeCard key={elm.id} {...elm} />
                                     })
                                 }
                                 {
-                                    dbFavRecipes.map(elm => {
+                                    dbFavRecipes?.map(elm => {
                                         return <DbRecipeCard key={elm._id} {...elm} />
                                     })
                                 }
                             </section>
-                            :
-                            <Loader />
-                    }
+                        }</>}
                 </Tab>
                 <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
                     {myRecipes.length < 1 && <h5 className='mt-5'>You don't have recipes yet</h5>}

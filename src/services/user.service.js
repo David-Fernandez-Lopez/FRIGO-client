@@ -33,6 +33,14 @@ class UserService {
         return this.api.put('removeRecipeFromFav', { favRecipes: recipe_id })
     }
 
+    addItemToShoppingList = (item_obj) => {
+        return this.api.put('addItemToShoppingList', { shoppingList: item_obj })
+    }
+
+    removeItemFromShoppingList = (item_obj) => {
+        return this.api.put('removeItemFromShoppingList', { shoppingList: item_obj })
+    }
+
 }
 
 const userService = new UserService()
