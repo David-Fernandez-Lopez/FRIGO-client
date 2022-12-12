@@ -21,8 +21,8 @@ class UserService {
         })
     }
 
-    getCurrentUserById() {
-        return this.api.get('/getCurrentUserById')
+    getUserById() {
+        return this.api.get('/getUserById')
     }
 
     addRecipeToFav = (recipe_id) => {

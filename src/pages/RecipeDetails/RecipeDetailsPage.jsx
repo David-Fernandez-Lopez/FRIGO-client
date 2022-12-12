@@ -1,11 +1,15 @@
 import { Col, Container, Row, Button } from "react-bootstrap"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import RecipeCard from "../../components/RecipeCard/RecipeCard"
 import DbRecipeSteps from "../../components/DbRecipeSteps/DbRecipeSteps"
 import ApiRecipeSteps from "../../components/ApiRecipeSteps/ApiRecipeSteps"
 import RecipeIngredients from "../../components/RecipeIngredients/RecipeIngredients"
+import { MessageContext } from "../../context/userMessage.context"
 import spoonacularService from "../../services/spoonacular.service"
+import { AuthContext } from './../../context/auth.context'
 import recipeService from "../../services/recipes.service"
 import userService from "../../services/user.service"
 
@@ -17,24 +21,25 @@ const RecipeDetailsPage = () => {
     const [dbRecipe, setDbRecipe] = useState(null)
     const [currentUser, setCurrentUser] = useState(null)
     const [favRecipe, setFavRecipe] = useState(false)
-
+    const { user } = useContext(AuthContext)
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     useEffect(() => {
         loadCurrentUser()
-        loadData()
     }, [])
+
+    useEffect(() => {
+        loadData()
+    }, [currentUser, favRecipe])
 
     const loadCurrentUser = () => {
 
         userService
-            .getCurrentUserById()
+            .getUserById()
             .then(({ data }) => {
                 setCurrentUser(data)
-
             })
             .catch(err => console.log(err))
-
-        currentUser?.favRecipes.includes(id) && setFavRecipe(true)
     }
 
     const loadData = () => {
@@ -55,6 +60,8 @@ const RecipeDetailsPage = () => {
                 .catch(err => console.log(err))
         }
 
+        currentUser?.favRecipes.includes(id) ? setFavRecipe(true) : setFavRecipe(false)
+
     }
 
     const addRecipeToFav = () => {
@@ -63,6 +70,9 @@ const RecipeDetailsPage = () => {
             .addRecipeToFav(id)
             .then(() => {
                 loadData()
+                loadCurrentUser()
+                setShowToast(true)
+                setToastMessage('Recipe add to fav')
             })
             .catch(err => console.log(err))
     }
@@ -73,6 +83,9 @@ const RecipeDetailsPage = () => {
             .removeRecipeFromFav(id)
             .then(() => {
                 loadData()
+                loadCurrentUser()
+                setShowToast(true)
+                setToastMessage('Recipe removed from fav')
             })
             .catch(err => console.log(err))
     }
@@ -80,8 +93,12 @@ const RecipeDetailsPage = () => {
     return (
         <Container>
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
-            <Button onClick={addRecipeToFav} variant="success">Add to Fav</Button>
-            <Button onClick={removeRecipeFromFav} variant="success">Remove from Fav</Button>
+            {user &&
+                <>
+                    {!favRecipe ? <Button onClick={addRecipeToFav} variant="success"><FavoriteBorderIcon /></Button> :
+                        <Button onClick={removeRecipeFromFav} variant="success"><FavoriteIcon /></Button>}
+                </>
+            }
             <hr />
             <Col>
                 <Row>

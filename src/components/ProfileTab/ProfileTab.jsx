@@ -8,6 +8,7 @@ import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
 import userService from "../../services/user.service"
 import { MessageContext } from "../../context/userMessage.context"
+import { AuthContext } from './../../context/auth.context'
 import DbRecipeCard from '../DbRecipeCard/DbRecipeCard'
 import ApiRecipeCard from '../ApiRecipeCard/ApiRecipeCard'
 import Loader from '../Loader/Loader'
@@ -18,6 +19,7 @@ function ProfileTab() {
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const [myRecipes, setMyRecipes] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
+    // const { user } = useContext(AuthContext)
     const [apiFavRecipes, setApiFavRecipes] = useState([])
     const [dbFavRecipes, setDbFavRecipes] = useState([])
 
@@ -32,10 +34,9 @@ function ProfileTab() {
     const loadUserData = () => {
 
         userService
-            .getCurrentUserById()
+            .getUserById()
             .then(({ data }) => {
                 setCurrentUser(data)
-
             })
             .catch(err => console.log(err))
     }
