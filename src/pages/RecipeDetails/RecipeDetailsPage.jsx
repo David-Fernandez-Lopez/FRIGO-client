@@ -7,7 +7,7 @@ import ApiRecipeSteps from "../../components/ApiRecipeSteps/ApiRecipeSteps"
 import RecipeIngredients from "../../components/RecipeIngredients/RecipeIngredients"
 import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
-import authService from "../../services/auth.service"
+import userService from "../../services/user.service"
 
 const RecipeDetailsPage = () => {
 
@@ -15,11 +15,27 @@ const RecipeDetailsPage = () => {
 
     const [apiRecipe, setApiRecipe] = useState(null)
     const [dbRecipe, setDbRecipe] = useState(null)
+    const [currentUser, setCurrentUser] = useState(null)
+    const [favRecipe, setFavRecipe] = useState(false)
 
 
     useEffect(() => {
+        loadCurrentUser()
         loadData()
     }, [])
+
+    const loadCurrentUser = () => {
+
+        userService
+            .getCurrentUserById()
+            .then(({ data }) => {
+                setCurrentUser(data)
+
+            })
+            .catch(err => console.log(err))
+
+        currentUser?.favRecipes.includes(id) && setFavRecipe(true)
+    }
 
     const loadData = () => {
 
@@ -43,8 +59,18 @@ const RecipeDetailsPage = () => {
 
     const addRecipeToFav = () => {
 
-        authService
+        userService
             .addRecipeToFav(id)
+            .then(() => {
+                loadData()
+            })
+            .catch(err => console.log(err))
+    }
+
+    const removeRecipeFromFav = () => {
+
+        userService
+            .removeRecipeFromFav(id)
             .then(() => {
                 loadData()
             })
@@ -55,13 +81,14 @@ const RecipeDetailsPage = () => {
         <Container>
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
             <Button onClick={addRecipeToFav} variant="success">Add to Fav</Button>
+            <Button onClick={removeRecipeFromFav} variant="success">Remove from Fav</Button>
             <hr />
-                <Col>
-            <Row>
-                    {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}             
+            <Col>
+                <Row>
+                    {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
                     {!dbRecipe ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
-            </Row>
-                </Col>
+                </Row>
+            </Col>
             <hr />
         </Container>
     )
