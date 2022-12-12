@@ -36,27 +36,27 @@ function ProfileTab() {
 
 
         //User Fav Recipes
-        // user.favRecipes.map(elm => {
-        //     const apiFavRecipesCopy = [...apiFavRecipes]
-        //     const dbFavRecipesCopy = [...dbFavRecipes]
-        //     if (elm.length < 10) {
-        //         spoonacularService
-        //             .getRecipeById(elm)
-        //             .then(({ data }) => {
-        //                 apiFavRecipesCopy.push(data)
-        //                 setApiFavRecipes(apiFavRecipesCopy)
-        //             })
-        //             .catch(err => console.log(err))
-        //     } else {
-        //         recipeService
-        //             .getRecipeById(elm)
-        //             .then(({ data }) => {
-        //                 dbFavRecipesCopy.push(data)
-        //                 setDbFavRecipes(dbFavRecipesCopy)
-        //             })
-        //             .catch(err => console.log(err))
-        //     }
-        // })
+        user.favRecipes.map(elm => {
+            const apiFavRecipesCopy = [...apiFavRecipes]
+            const dbFavRecipesCopy = [...dbFavRecipes]
+            if (elm.length < 10) {
+                spoonacularService
+                    .getRecipeById(elm)
+                    .then(({ data }) => {
+                        apiFavRecipesCopy.push(data)
+                        setApiFavRecipes(apiFavRecipesCopy)
+                    })
+                    .catch(err => console.log(err))
+            } else {
+                recipeService
+                    .getRecipeById(elm)
+                    .then(({ data }) => {
+                        dbFavRecipesCopy.push(data)
+                        setDbFavRecipes(dbFavRecipesCopy)
+                    })
+                    .catch(err => console.log(err))
+            }
+        })
     }
 
     const closeModal = () => setShowModal(false)
