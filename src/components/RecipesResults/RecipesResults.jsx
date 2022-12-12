@@ -1,19 +1,23 @@
 import './RecipesResults.css'
 import { Card } from 'react-bootstrap'
+import { elementAcceptingRef } from '@mui/utils'
 
 const RecipesResults = ({ recipesToSearch }) => {
 
 
     return (
         <>
-            {recipesToSearch && <section className="CountriesList" style={{ "maxHeight": "50vh", "overflow": "scroll" }}>
-                {recipesToSearch.map(elm => {
-                    return (<Card className="bg-ligth text-black">
-                        <Card.Img src={elm.image} alt="Card image" />
-                        <Card.ImgOverlay>
-
-                        </Card.ImgOverlay>
-                    </Card>)
+            {recipesToSearch && <section className="CountriesList" style={{ "maxHeight": "40vh"}}>
+                {recipesToSearch.map((elm, idx) => {
+                    return (
+                     
+                        <Card key={idx} className="bg-ligth text-black">
+                            <h5>{elm.title}</h5>
+                            <Card.Img className='imgResult' src={elm.image} alt="Card image" />
+                            <Card.ImgOverlay>
+                            </Card.ImgOverlay>
+                        </Card>
+                    )
                 }
                 )}
             </section>}

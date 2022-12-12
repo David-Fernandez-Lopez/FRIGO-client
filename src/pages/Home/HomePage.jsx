@@ -9,26 +9,30 @@ import RecipesResults from "../../components/RecipesResults/RecipesResults"
 
 const HomePage = () => {
 
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState(null)
     const [recipesToSearch, setrecipesToSearch] = useState([])
+    
+    useEffect(() => {
+        loadData()
+    }, [query])
 
     const loadData = () => {
 
         const paramsObj = { query: query, number: '2' }
         const searchParams = new URLSearchParams(paramsObj)
 
+        recipesToSearch ?
         spoonacularService
-            .autocompleatSearch(searchParams.toString())
+            .getRecipesByCategory(searchParams.toString())
             .then(({ data }) => {
-                console.log(data)
-                setrecipesToSearch(data)
+                setrecipesToSearch(data.results)
             })
-            .catch(err => console.log(err))
+                .catch(err => console.log(err))
+            :
+
+        setQuery(null)
     }
 
-    useEffect(() => {
-        loadData()
-    }, [query])
 
     return (
         <Container className="homepageForm">
