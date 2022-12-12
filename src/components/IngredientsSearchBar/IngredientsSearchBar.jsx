@@ -4,10 +4,12 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useEffect, useState } from 'react'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
-import { SettingsPowerRounded } from '@mui/icons-material'
-import SelectSearch from 'react-select-search'
-import { useLoaderData } from 'react-router-dom'
+// import { SettingsPowerRounded } from '@mui/icons-material'
+// import SelectSearch from 'react-select-search'
+// import { useSelect } from 'react-select-search'
+// import { useLoaderData } from 'react-router-dom'
 import ingredientsService from '../../services/ingredients.service'
+
 
 const IngredientsSearchBar = ({ setQuery }) => {
 
@@ -53,9 +55,25 @@ const IngredientsSearchBar = ({ setQuery }) => {
         setQuery(queryArr.toString())
     }
 
-    const options = ingredients.map(elem => {
-        return { name: elem.name, value: elem._id }
-    })
+    
+    // const options = ingredients.map(elem => {
+    //     return { name: elem.name}
+    // })
+
+    const options = [
+        {
+            name: 'Afghanistan',
+            value: 'AF'
+        },
+        {
+            name: 'Åland Islands',
+            value: 'AX'
+        },
+        {
+            name: 'Albania',
+            value: 'AL'
+        }]
+    
 
     return (
 
@@ -63,7 +81,16 @@ const IngredientsSearchBar = ({ setQuery }) => {
             <Form.Group className="mb-4" controlId="ingredient">
                 <Row>
                     <Col md={{ span: 7, offset: 2 }} >
-                        <SelectSearch options={options} value='sv' name='ingredients' placeholder='Search by ingredient'/>
+                        {/* <SelectSearch options={options}
+                            autoComplete='on'
+                            search='true' 
+                            value={options.map(elm => {
+                                return(elm.value)
+                            })}
+                            onChange={() => console.log('aquí')}
+                            name='ingredients'
+                            placeholder='Search by ingredient'
+                        /> */}
                         <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleKeys} onChange={searchRecipes} placeholder='Search by ingredient' />
                     </Col>
                     <Col md={{ span: 2 }}>
