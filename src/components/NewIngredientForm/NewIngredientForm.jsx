@@ -1,28 +1,13 @@
 import { Form, Button, Row, Col } from "react-bootstrap"
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import measurementsUnitsService from "../../services/measurementsUnits.service"
 import AddIcon from '@mui/icons-material/Add'
+import { measurementUnitsContext } from "../../context/measurementUnits.context"
 
 
 function NewIngredientForm({ ingredientsData, setIngredientsData }) {
 
-    const [measurementsUnits, setmeasurementsUnits] = useState([])
-
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = () => {
-
-        measurementsUnitsService
-            .getMeasurementsUnits()
-            .then(({ data }) => {
-                setmeasurementsUnits(data)
-            })
-            .catch(err => console.log(err))
-
-    }
+    const { measurementsUnits } = useContext(measurementUnitsContext)
 
     const handleIngredientsChange = (idx, e) => {
 

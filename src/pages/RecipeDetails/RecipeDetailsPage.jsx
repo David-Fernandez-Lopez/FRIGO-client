@@ -100,12 +100,14 @@ const RecipeDetailsPage = () => {
                 </>
             }
             <hr />
-            <Col>
-                <Row>
+            
+                <div>
+                    
                     {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
                     {!dbRecipe ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
-                </Row>
-            </Col>
+                    
+                </div>
+            
             <hr />
         </Container>
     )

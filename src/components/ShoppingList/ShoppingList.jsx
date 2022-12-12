@@ -4,18 +4,20 @@ import { Row, Col , ListGroup, Button} from 'react-bootstrap'
 import { ShoppingListContext } from "../../context/shoppingList.context.js"
 import { useContext, useState } from "react"
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
+import sortShoppingList from '../../utils/sortShoppingList';
 
 
 function ShoppingList() {
 
     const { shoppingList, deleteItem } = useContext(ShoppingListContext)
     
+    const sortedList = sortShoppingList(shoppingList)
 
 
     return (
         <Row>
             {
-                shoppingList.map((elem, idx) => {
+                sortedList.map((elem, idx) => {
                     return (
                         <Col className='shopListItems' key={ idx} md={{ span: 6 }} >
                             <ListGroup>
