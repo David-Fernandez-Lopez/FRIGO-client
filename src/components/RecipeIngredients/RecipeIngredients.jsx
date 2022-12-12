@@ -12,8 +12,8 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                 <p className='servings'>{servings} <RestaurantIcon /></p>
                 <br />
                 <Row>
-                {extendedIngredients?.map((elm, idx) => {
-                    return <p key={idx}><span>{elm.amount}</span> <span>{elm.unit}</span> of {elm.name}</p>
+                    {extendedIngredients?.map((elm, idx) => {
+                        return <p key={idx}><span>{elm.amount}</span> <span>{elm.unit}</span> of {elm.name}</p>
                     }
                     )}
                 </Row>

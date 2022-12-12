@@ -18,10 +18,10 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
         <>
             {dbSteps &&
                 <>
-                <h3 className='dbRSTitle'>Instructions</h3>
-                  <p className='minutes'>{readyInMinutes}' <AccessTimeIcon /></p>
+                    <h3 className='dbRSTitle'>Instructions</h3>
+                    <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
                     <br />
-                    < Tab.Container className='stepsDB'id="left-tabs-example" defaultActiveKey="0" >
+                    < Tab.Container className='stepsDB' id="left-tabs-example" defaultActiveKey="0" >
                         <Row>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
