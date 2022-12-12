@@ -21,7 +21,7 @@ function RecipeCard({ title, summary, image, dishTypes, cuisines }) {
 
     return (
         <>
-            <h1 className='recipeTitle mt-5'>{title}</h1>
+            <h1 className='recipeTitle mt-3'>{title}</h1>
             <Row>
                 <Col>
                     <Figure.Image className='recipeImg' src={image} alt="recipe image" />

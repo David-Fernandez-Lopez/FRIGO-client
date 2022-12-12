@@ -63,10 +63,10 @@ const Navigation = () => {
                                         <Nav.Link as="div" className='hover-underline-animation' onClick={logoutUser}>Log Out</Nav.Link>
 
                                         <NavDropdown className='hover-underline-animation' title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
-                                            <NavDropdown.Item className='dropdown' href="/profile/:id"> My Profile </NavDropdown.Item>
-                                            <NavDropdown.Item className='dropdown' href="/shopping-list"> Shopping List </NavDropdown.Item>
+                                            <Link to="/profile/:id"><NavDropdown.Item as='div' className='dropdown'> My Profile </NavDropdown.Item></Link>
+                                            <Link to="/shopping-list"><NavDropdown.Item as='div' className='dropdown'> Shopping List </NavDropdown.Item></Link>
                                             <NavDropdown.Divider />
-                                            <NavDropdown.Item className='dropdown' href={`/profile/${user._id}/edit`}> Account Settings </NavDropdown.Item>
+                                            <Link to={`/profile/${user._id}/edit`}><NavDropdown.Item as='div' className='dropdown'> Account Settings </NavDropdown.Item></Link>
                                         </NavDropdown>
                                     </>
                                     :

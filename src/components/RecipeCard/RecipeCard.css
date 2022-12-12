@@ -31,3 +31,20 @@
     font-weight: 400;
     margin-bottom: 45px;
 }
+
+.favBtn {
+    color: red;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: white;
+    position: relative;
+    left: 1200px;
+    top: 120px;
+    transition: 0.3s ease-in-out;
+    
+}
+.favBtn:hover {
+    color:red;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: white;
+    transform: scale(1.2);
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import measurementsUnitsService from "../../services/measurementsUnits.service"
 import AddIcon from '@mui/icons-material/Add'
-
+import './NewIngredientForm.css'
 
 function NewIngredientForm({ ingredientsData, setIngredientsData }) {
 
@@ -67,7 +67,7 @@ function NewIngredientForm({ ingredientsData, setIngredientsData }) {
                                     </Form.Select>
                                 </Col>
                                 <Col md={{ span: 1, offset: 1 }}>
-                                    <Button variant="danger" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon /> </Button>
+                                    <Button className="deleteIngredientBtn" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon /> </Button>
                                 </Col>
                             </Row>
                         )

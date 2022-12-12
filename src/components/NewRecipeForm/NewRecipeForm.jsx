@@ -178,7 +178,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                                                 <Form.Control type="text" value={elm.step} onChange={e => handleInstructionsChange(idx, e)} name="step" />
                                             </Col>
                                             <Col md={{ span: 1, offset: 1 }}>
-                                                <Button variant="danger" onClick={() => deleteStep(idx)}> <DeleteForeverIcon /> </Button>
+                                                <Button className="deleteIngredientBtn" onClick={() => deleteStep(idx)}> <DeleteForeverIcon /> </Button>
                                             </Col>
                                         </Row>
                                     )
@@ -212,7 +212,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create New Recipe'}</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create'}</Button>
             </div>
         </Form>
     )

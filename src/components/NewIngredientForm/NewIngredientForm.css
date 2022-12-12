@@ -1,0 +1,8 @@
+.deleteIngredientBtn {
+    background-color: rgba(198, 23, 23, 0.773);
+    border-color: rgba(209, 48, 48, 0.086);
+}
+.deleteIngredientBtn:hover {
+    background-color: rgba(197, 0, 0, 0.993);
+    border-color: rgba(209, 48, 48, 0.086);
+}
