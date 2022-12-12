@@ -26,14 +26,13 @@ function RecipeCard({ title, summary, image, dishTypes, cuisines }) {
             <Row>
                 <Col>
                     <Figure.Image src={image} alt="recipe image" />
-                    <p className="my-2">{dish?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
-                    <p lassName="my-2">{cuisine?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
                 </Col>
                 <Col>
-                    <div dangerouslySetInnerHTML={{ __html: summary }} />
+                    <p className="my-2">{dish?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
+                    <p lassName="my-2">{cuisine?.map((elm, idx) => <span className="badge bg-light me-2 text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
+                    <div className='Summary' dangerouslySetInnerHTML={{ __html: summary }} />
                 </Col>
             </Row>
-            <hr />
         </>
     )
 

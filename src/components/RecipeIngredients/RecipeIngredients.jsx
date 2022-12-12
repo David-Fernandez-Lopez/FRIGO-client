@@ -11,7 +11,6 @@ function RecipeIngredients({ extendedIngredients }) {
                 return <p key={idx}><span>{elm.amount}</span> <span>{elm.unit}</span> of {elm.name}</p>
             }
             )}
-            <hr />
         </>
     )
 

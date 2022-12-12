@@ -40,7 +40,6 @@ function DbRecipeSteps({ analyzedInstructions }) {
                             </Col>
                         </Row>
                     </Tab.Container >
-                    <hr />
                 </>
             }
         </>

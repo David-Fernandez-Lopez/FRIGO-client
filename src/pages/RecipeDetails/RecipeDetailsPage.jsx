@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap"
+import { Col, Container, Row, Button } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import RecipeCard from "../../components/RecipeCard/RecipeCard"
@@ -7,6 +7,7 @@ import ApiRecipeSteps from "../../components/ApiRecipeSteps/ApiRecipeSteps"
 import RecipeIngredients from "../../components/RecipeIngredients/RecipeIngredients"
 import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
+import authService from "../../services/auth.service"
 
 const RecipeDetailsPage = () => {
 
@@ -14,6 +15,11 @@ const RecipeDetailsPage = () => {
 
     const [apiRecipe, setApiRecipe] = useState(null)
     const [dbRecipe, setDbRecipe] = useState(null)
+
+
+    useEffect(() => {
+        loadData()
+    }, [])
 
     const loadData = () => {
 
@@ -35,15 +41,30 @@ const RecipeDetailsPage = () => {
 
     }
 
-    useEffect(() => {
-        loadData()
-    }, [])
+    const addRecipeToFav = () => {
+
+        authService
+            .addRecipeToFav(id)
+            .then(() => {
+                loadData()
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <Container>
-            {dbRecipe === null ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
-            {dbRecipe === null ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
-            {dbRecipe === null ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
+            {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
+            <Button onClick={addRecipeToFav} variant="success">Add to Fav</Button>
+            <hr />
+            <Row>
+                <Col>
+                    {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
+                </Col>
+                <Col>
+                    {!dbRecipe ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
+                </Col>
+            </Row>
+            <hr />
         </Container>
     )
 }

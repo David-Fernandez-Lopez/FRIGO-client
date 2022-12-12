@@ -33,7 +33,12 @@ class AuthService {
     }
 
     editProfile = (_id, signupData) => {
-        return this.api.put(`/${_id}/edit` , signupData)
+        return this.api.put(`/${_id}/edit`, signupData)
+    }
+
+    addRecipeToFav = (recipe_id) => {
+        console.log('client', recipe_id)
+        return this.api.put('addRecipeToFav', { favRecipes: recipe_id })
     }
 }
 

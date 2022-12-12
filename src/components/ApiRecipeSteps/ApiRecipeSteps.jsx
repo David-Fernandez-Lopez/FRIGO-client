@@ -23,7 +23,7 @@ function ApiRecipeSteps({ analyzedInstructions }) {
                 <>
                     <h3>Instructions</h3>
                     <br />
-                    < Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+                    < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
                         <Row>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
@@ -45,7 +45,6 @@ function ApiRecipeSteps({ analyzedInstructions }) {
                             </Col>
                         </Row>
                     </Tab.Container >
-                    <hr />
                 </>
             }
         </>
