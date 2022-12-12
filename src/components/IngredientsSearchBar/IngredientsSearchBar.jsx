@@ -18,7 +18,7 @@ const IngredientsSearchBar = ({ setQuery }) => {
     const [inputValue, setInputValue] = useState('')
     const [queryArr, setQueryArr] = useState([])
 
-   const {ingredients} = useContext(IngredientsContext)
+    const {ingredients} = useContext(IngredientsContext)
 
     const searchRecipes = e => {
         setInputValue(e.target.value)
