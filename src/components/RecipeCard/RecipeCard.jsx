@@ -28,7 +28,7 @@ function RecipeCard({ title, summary, image, dishTypes, cuisines }) {
                 </Col>
                 <Col className='summaryCol'>
                     <p className='summaryTitle'><em>Summary</em></p>
-                    <div dangerouslySetInnerHTML={{ __html: summary }} />
+                    <div style={{textAlign:'justify'}} dangerouslySetInnerHTML={{ __html: summary }} />
                     <Row className='tag mt-2'>
                         <p>{dish?.map((elm, idx) => <span className="badge bg-light text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>
                         <p>{cuisine?.map((elm, idx) => <span className="badge bg-light text-capitalize text-dark fw-lighter p-2" key={idx}>{elm}</span>)}</p>

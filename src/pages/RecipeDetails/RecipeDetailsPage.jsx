@@ -56,14 +56,12 @@ const RecipeDetailsPage = () => {
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
             <Button onClick={addRecipeToFav} variant="success">Add to Fav</Button>
             <hr />
+                <Col>
             <Row>
-                <Col>
-                    {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
-                </Col>
-                <Col>
+                    {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}             
                     {!dbRecipe ? <ApiRecipeSteps {...apiRecipe} /> : <DbRecipeSteps {...dbRecipe} />}
-                </Col>
             </Row>
+                </Col>
             <hr />
         </Container>
     )
