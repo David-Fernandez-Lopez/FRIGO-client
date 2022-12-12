@@ -1,7 +1,7 @@
 
 let dataTreatment = ({name, amount, unit}) => {
   
-  return { name: name.toUpperCase(), amount: parseInt(amount), unit }
+  return { name: name.toUpperCase(), amount: amount === 0 ? undefined : parseInt(amount), unit }
   
 }
 

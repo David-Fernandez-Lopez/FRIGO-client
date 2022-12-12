@@ -1,8 +1,10 @@
 import './ApiRecipeSteps.css'
 import { useEffect, useState } from 'react'
-import { Col, Nav, Row, Tab, } from 'react-bootstrap'
+import { Col, Nav, Row, Tab } from 'react-bootstrap'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
-function ApiRecipeSteps({ analyzedInstructions }) {
+
+function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
     // if (analyzedInstructions) {
     //     let { steps: instructions } = analyzedInstructions[0]
     //     console.log('funciona??', instructions)
@@ -18,13 +20,15 @@ function ApiRecipeSteps({ analyzedInstructions }) {
 
 
     return (
-        <>
+        <Row>
             {apiSteps &&
                 <>
-                    <h3>Instructions</h3>
+                <h3 className='dbRSTitle'>Instructions</h3>
+                <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
+
                     <br />
                     < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
-                        <Row>
+                        <>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
                                     {apiSteps?.map((elm, idx) => {
@@ -43,11 +47,11 @@ function ApiRecipeSteps({ analyzedInstructions }) {
                                     })}
                                 </Tab.Content>
                             </Col>
-                        </Row>
+                        </>
                     </Tab.Container >
                 </>
             }
-        </>
+        </Row>
     )
 
 }

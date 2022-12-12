@@ -103,6 +103,9 @@ const RecipeDetailsPage = () => {
             <Col>
                 <Row>
                     <Col md={12}>
+            <hr />
+            
+                    
                     {!dbRecipe ? <RecipeIngredients {...apiRecipe} /> : <RecipeIngredients {...dbRecipe} />}
                     </Col>
                     <Col md={12}>

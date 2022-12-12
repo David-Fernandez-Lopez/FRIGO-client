@@ -8,12 +8,14 @@ import sortAlphabetically from '../../utils/sort'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
+import measurementsUnitsService from "../../services/measurementsUnits.service"
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
     const [dishType, setdishType] = useState([])
+
     const [instructionsData, setInstructionsData] = useState(
         [{
             number: 1,
@@ -46,16 +48,17 @@ const NewRecipeForm = ({ fireFinalActions }) => {
 
         const promises = [
             cuisineService.getCuisines(),
-            dishTypeService.getDishType()
+            dishTypeService.getDishType(),
         ]
 
         Promise
             .all(promises)
-            .then(([cuisines, dishType]) => {
+            .then(([cuisines, dishType, units]) => {
                 const cuisineSortedByName = sortAlphabetically(cuisines)
                 setCuisine(cuisineSortedByName)
                 const dishTypeSortedByName = sortAlphabetically(dishType)
                 setdishType(dishTypeSortedByName)
+                
             })
             .catch(err => console.log(err))
     }
