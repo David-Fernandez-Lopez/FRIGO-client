@@ -8,7 +8,6 @@ import sortAlphabetically from '../../utils/sort'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
-import measurementsUnitsService from "../../services/measurementsUnits.service"
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
@@ -53,12 +52,12 @@ const NewRecipeForm = ({ fireFinalActions }) => {
 
         Promise
             .all(promises)
-            .then(([cuisines, dishType, units]) => {
+            .then(([cuisines, dishType]) => {
                 const cuisineSortedByName = sortAlphabetically(cuisines)
                 setCuisine(cuisineSortedByName)
                 const dishTypeSortedByName = sortAlphabetically(dishType)
                 setdishType(dishTypeSortedByName)
-                
+
             })
             .catch(err => console.log(err))
     }

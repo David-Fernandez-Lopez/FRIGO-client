@@ -41,6 +41,11 @@ class UserService {
         return this.api.put('removeItemFromShoppingList', { shoppingList: item_obj })
     }
 
+    getShoppingList() {
+        return this.api.get('/getShoppingList')
+    }
+
+
 }
 
 const userService = new UserService()
