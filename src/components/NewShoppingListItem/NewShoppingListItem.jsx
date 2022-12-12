@@ -27,23 +27,41 @@ function NewShoppingListItem() {
     }
 
     const newIngredient = () => {
-
-        const ingredientsDataCopy = { ...ingredientsData }
-        console.log(ingredientsDataCopy)
-
-        let ingredientsTreated = dataTreatment(ingredientsDataCopy)
-        console.log(ingredientsTreated)
-
-        setIngredientsData(ingredientsTreated)
-        console.log(ingredientsData)
+    
         
-        setShoppingList([...shoppingList, ingredientsData])
+        let addToShopping = data => {
+
+            const treatedData = dataTreatment(data)
+
+            let listCopy = [...shoppingList]
+
+                let duplicated = listCopy.find(obj => obj.name === treatedData.name && obj.unit === treatedData.unit)
+
+                if (!duplicated) {
+                listCopy.push(treatedData)
+                return listCopy
+                }
+
+                const sumAmount = duplicated.amount + treatedData.amount
+
+                const modifiedList = listCopy.map(elm => {
+                        
+                return {
+                    ...elm,
+                    amount: elm.name === treatedData.name && elm.unit === treatedData.unit ? sumAmount : elm.amount
+                }
+                })
+
+                return modifiedList
+        }
+
+        setShoppingList(addToShopping(ingredientsData))
         setIngredientsData({
             name: '',
             amount: 0,
             unit: ''
         })           
-        unifyItems()
+
     }
 
     const {name, amount, unit} = ingredientsData
