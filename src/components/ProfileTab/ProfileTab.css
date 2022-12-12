@@ -26,3 +26,19 @@ a {
     font-weight: 500;
     color: black;
 }
+
+.newRecipeBtn {
+    position: relative;
+    left: 1120px;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.602);
+}
+
+.newRecipeBtn:hover {
+    position: relative;
+    left: 1120px;
+    margin-bottom: 20px;
+    background-color: rgba(47, 102, 40, 0.714);
+    color:white;
+    border-color: rgba(47, 102, 40, 0.714);
+}

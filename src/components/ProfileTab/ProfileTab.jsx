@@ -73,7 +73,7 @@ function ProfileTab() {
     return (
         <>
             <Tabs
-                defaultActiveKey="Fav Recipes"
+                defaultActiveKey="My Recipes"
                 id="justify-tab-example"
                 className="mb-3 black-text"
                 justify
@@ -94,7 +94,7 @@ function ProfileTab() {
                 <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
                     {myRecipes.length < 1 && <h5 className='mt-5'>You don't have recipes yet</h5>}
                     <section className='mt-5'>
-                        <Button variant='outline-secondary' onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
+                        <Button className='newRecipeBtn' variant='outline-secondary' onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
                         <div className='d-flex justify-content-start mt-3'>
                             {myRecipes?.map(elm => {
                                 return <DbRecipeCard key={elm._id} {...elm} />
