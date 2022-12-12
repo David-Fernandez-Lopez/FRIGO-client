@@ -1,10 +1,12 @@
 .nav-pills .nav-link.active {
-    background-color:#1792469d;
+    background-color: #1792469d;
     color: white;
     font-weight: 500;
+    max-width: 150px;
 }
 .nav-link{
-    color:rgb(141, 141, 141)
+    color:rgb(141, 141, 141);
+    max-width: 150px;
 }
 .nav-link:hover{
     color:black
@@ -18,4 +20,9 @@
 
 .minutes {
     text-align: center;
+}
+
+
+.nav-pills {
+    margin-left: 90px;
 }

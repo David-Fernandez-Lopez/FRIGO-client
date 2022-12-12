@@ -40,7 +40,6 @@ const HomePage = () => {
             <IngredientsSearchBar setQuery={setQuery} />
             <RecipesResults recipesToSearch={recipesToSearch} />
             {/* <Category /> */}
-            <h2>Placeholder Categories</h2>
 
         </Container>
     )
