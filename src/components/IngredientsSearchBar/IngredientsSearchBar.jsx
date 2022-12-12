@@ -8,29 +8,21 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 // import SelectSearch from 'react-select-search'
 // import { useSelect } from 'react-select-search'
 // import { useLoaderData } from 'react-router-dom'
-import ingredientsService from '../../services/ingredients.service'
 import Select from 'react-select'
 
 import { IngredientsContext } from '../../context/ingredients.context'
 
 const IngredientsSearchBar = ({ setQuery }) => {
 
-    const [inputValue, setInputValue] = useState('')
     const [queryArr, setQueryArr] = useState([])
 
    const {ingredients} = useContext(IngredientsContext)
 
-    const searchRecipes = e => {
-        setInputValue(e.target.value)
-    }
 
     const handleKeys = e => {
-        if (e.keyCode === 32 || e.keyCode === 13) {
-            let queryArrCopy1 = [...queryArr]
-            queryArrCopy1.push(inputValue)
-            setQueryArr(queryArrCopy1)
-            setInputValue('')
-        }
+        let queryArrCopy1 = [...queryArr]
+        queryArrCopy1.push(e.label)
+        setQueryArr(queryArrCopy1)
     }
 
     const handleIgredients = idx => {
@@ -44,9 +36,14 @@ const IngredientsSearchBar = ({ setQuery }) => {
         e.preventDefault()
         setQuery(queryArr.toString())
     }
+
+    const clearQuery = () => {
+        setQuery(null)
+        setQueryArr([])
+    }
    
     const options = ingredients.map(elem => {
-        return { label: elem.name, value:elem.value}
+        return { label: elem.name, value:elem._id}
     })
 
 
@@ -57,25 +54,14 @@ const IngredientsSearchBar = ({ setQuery }) => {
                 <Row>
                     <Col md={{ span: 7, offset: 2 }} >
 
-                        <Select 
-                            // value={selectedOption}
-                            onChange={event => console.log(event)}
-                            options={options} />
+                        <Select value='' onChange={e=>handleKeys(e)} options={options} placeholder='Insert your ingredients'/>
                         
-                        {/* <SelectSearch options={options}
-                            autoComplete='on'
-                            search='true' 
-                            value={options.map(elm => {
-                                return(elm.value)
-                            })}
-                            onChange={() => console.log('aquí')}
-                            name='ingredients'
-                            placeholder='Search by ingredient'
-                        /> */}
-                        <Form.Control type="text" name="ingredients" value={inputValue} onKeyDown={handleKeys} onChange={searchRecipes} placeholder='Search by ingredient' />
+                    </Col>
+                    <Col md={{ span: 1 }}>
+                        <Button variant="dark" type="submit"><SearchIcon /></Button>
                     </Col>
                     <Col md={{ span: 2 }}>
-                        <Button variant="dark" type="submit"><SearchIcon /></Button>
+                        <Button variant="dark" onClick={clearQuery}>Clear</Button>
                     </Col>
                 </Row>
                 <p className='mt-3'> {queryArr.map((elm, idx) => {

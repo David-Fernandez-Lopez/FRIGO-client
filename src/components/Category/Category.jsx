@@ -28,21 +28,26 @@ function Category(props) {
 
     const loadData = () => {
 
-        const paramsObj = { query: 'main course' , number: '5' }
-        const searchParams = new URLSearchParams(paramsObj)
+        const paramsObjAfrican = { query: 'main course' , number: '2' }
+        const searchParamsAfrican = new URLSearchParams(paramsObjAfrican)
+
+        const paramsObjVegetarian = { query: 'vegetarian' , number: '2' }
+        const searchParamsVegetarian = new URLSearchParams(paramsObjVegetarian)
 
         const promises = [
             spoonacularService.getRecipeByIngredients('apple'),
-            spoonacularService.getRecipesByCategory(searchParams.toString())
+            spoonacularService.getRecipesByCategory(searchParamsAfrican.toString()),
+            spoonacularService.getRecipesByCategory(searchParamsVegetarian.toString())
         ]
 
         Promise
             .all(promises)
-            .then(([apple, African]) => {
-                console.log(apple.data)
-                console.log(African.data.results)
+            .then(([apple, mainCourse, vegetarian]) => {
+                // console.log(apple.data)
+                // console.log(mainCourse.data.results)
                 setCategory1(apple.data)
-                setCategory2(African.data.results)
+                setCategory2(mainCourse.data.results)
+                setCategory3(vegetarian.data.results)
             })
             .catch(err => console.log(err))
     }
@@ -59,6 +64,9 @@ function Category(props) {
         return <div className="item" data-value={elm.id}><CategoryCard {...elm} /></div>
     })
 
+    const vegetarianParty = category3.map(elm => {
+        return <div className="item" data-value={elm.id}><CategoryCard {...elm} /></div>
+    })
 
     return (
         <div className='Category'>
@@ -69,11 +77,18 @@ function Category(props) {
                 items={appleParty}
                 responsive={responsive}
             />
-            <h4>African</h4>
+            <h4>Main Course</h4>
             <hr />
             <AliceCarousel
                 mouseTracking
                 items={africanParty}
+                responsive={responsive}
+            />
+            <h4>Veggie Moment</h4>
+            <hr />
+            <AliceCarousel
+                mouseTracking
+                items={vegetarianParty}
                 responsive={responsive}
             />
         </div>
