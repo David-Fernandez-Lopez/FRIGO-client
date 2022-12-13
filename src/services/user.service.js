@@ -37,6 +37,11 @@ class UserService {
         return this.api.put('addItemToShoppingList', { shoppingList: item_obj })
     }
 
+    addItemsToShoppingList = (shoppingList) => {
+        return this.api.put('addItemsToShoppingList', {shoppingList})
+    }
+
+
     removeItemFromShoppingList = (item_obj) => {
         return this.api.put('removeItemFromShoppingList', { shoppingList: item_obj })
     }
