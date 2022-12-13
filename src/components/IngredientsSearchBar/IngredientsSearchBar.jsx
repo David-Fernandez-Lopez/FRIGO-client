@@ -61,7 +61,7 @@ const IngredientsSearchBar = ({ setQuery }) => {
                         <Button variant="dark" type="submit"><SearchIcon /></Button>
                     </Col>
                     <Col md={{ span: 2 }}>
-                        <Button variant="white" className='clearBtn' onClick={clearQuery}>Clear</Button>
+                        <Button variant="white" className='clearBtn' onClick={clearQuery}>Clear search</Button>
                     </Col>
                 </Row>
                 <p className='mt-3'> {queryArr.map((elm, idx) => {

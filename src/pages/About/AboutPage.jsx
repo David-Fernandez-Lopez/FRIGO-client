@@ -9,7 +9,7 @@ const AboutPage = () => {
         <>
             <Container fluid className="aboutPage">
                 <Row className="flex-column">
-                    <img className="" src='https://photoshop-kopona.com/uploads/posts/2018-02/1519121034_paper-texture-2.jpg' alt='team image' />
+                    <img className="imageAU" src='https://photoshop-kopona.com/uploads/posts/2018-02/1519121034_paper-texture-2.jpg' alt='team image' />
                     <h1 className='aboutPageTitle'>About Us</h1>
                 </Row>
             </Container>
