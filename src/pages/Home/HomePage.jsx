@@ -25,8 +25,8 @@ const HomePage = () => {
         recipesToSearch ?
         spoonacularService
             .getRecipesByCategory(searchParams.toString())
-            .then(({ data }) => {
-                setrecipesToSearch(data.results)
+                .then(({ data }) => {
+                    setrecipesToSearch(data.results)
             })
                 .catch(err => console.log(err))
             :

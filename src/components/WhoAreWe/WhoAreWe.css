@@ -1,6 +1,6 @@
 .WhoAreWeT {
     margin-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -8,25 +8,49 @@
 
 .teamRow {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .hrAUP {
-    margin-top: 50px;
+    margin-top: 60px;
     border-top: 1px dashed rgba(0, 0, 0, 0.521);
 }
 
-.personalImg {
-margin-top: 30px;
-max-width: 300px;
-min-width: 300px;
-max-height: 300px;
-min-height: 300px;
-border-radius: 70px;
-border-bottom: 2px solid  rgba(20, 57, 20, 0.67);
-border-left: 2px solid rgba(20, 57, 20, 0.67);
+.personalImgD {
+    margin-top: 30px;
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 300px;
+    min-height: 300px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);
 }
+
+.personalImgJ {
+    margin-top: 30px;
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 300px;
+    min-height: 300px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);}
+
+.personalImgM {
+    margin-top: 30px;
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 300px;
+    min-height: 300px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);}
 
 .teamName {
     margin-top: 60px;
     text-align:start
-}
+}   
