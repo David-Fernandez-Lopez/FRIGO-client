@@ -104,7 +104,7 @@ function ProfileTab() {
                         {userFavRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
                         {
                             (dbFavRecipes || apiFavRecipes) &&
-                            <section className='d-flex justify-content-start mb-3'>
+                            <section className='favRec d-flex justify-content-start mb-3'>
                                 {
                                     apiFavRecipes?.map(elm => {
                                         return <ApiRecipeCard key={elm.id} {...elm} />
@@ -120,7 +120,7 @@ function ProfileTab() {
                 </Tab>
                 <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
                     {myRecipes.length < 1 && <h5 className='mt-5'>You don't have recipes yet</h5>}
-                    <section className='mt-5'>
+                    <section>
                         <Button className='newRecipeBtn' variant='outline-secondary' onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
                         <div className='d-flex justify-content-start mt-3'>
                             {myRecipes?.map(elm => {

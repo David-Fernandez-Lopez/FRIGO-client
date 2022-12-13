@@ -12,32 +12,31 @@ a {
 
 .favTab {
     font-weight: 500;
-    color: black;
+    color: rgba(0, 0, 0, 0.331);
 }
 .myRecTab {
     font-weight: 500;
-    color: black;
+    color: rgba(0, 0, 0, 0.331);
 }
 .favTab:hover {
     font-weight: 500;
-    color: black;
+    color: rgba(0, 0, 0, 0.766);
 }
 .myRecTab:hover {
     font-weight: 500;
-    color: black;
+    color: rgba(0, 0, 0, 0.766);
 }
 
 .newRecipeBtn {
     position: relative;
     left: 1120px;
-    margin-bottom: 20px;
+    margin-bottom: -195px;
     color: rgba(0, 0, 0, 0.602);
 }
 
 .newRecipeBtn:hover {
     position: relative;
-    left: 1120px;
-    margin-bottom: 20px;
+    margin-bottom: -195px;
     background-color: rgba(47, 102, 40, 0.714);
     color:white;
     border-color: rgba(47, 102, 40, 0.714);
@@ -46,4 +45,15 @@ a {
 .NRTitle {
         text-align: center;
         font-weight: 300;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.766);
+    
+}
+
+.tab-content>.active { 
+    margin-top: 0px;
 }
