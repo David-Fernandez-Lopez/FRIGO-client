@@ -5,42 +5,41 @@ import { ShoppingListContext } from "../../context/shoppingList.context.js"
 import { useContext, useState } from "react"
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import sortShoppingList from '../../utils/sortShoppingList';
-
+import Loader from './../Loader/Loader'
 
 function ShoppingList() {
 
-    const { shoppingList, deleteItem, saveShoppingList } = useContext(ShoppingListContext)
+    const { localShoppingList , deleteItem } = useContext(ShoppingListContext)
     
-    const sortedList = sortShoppingList(shoppingList)
+    const sortedList = localShoppingList && sortShoppingList(localShoppingList)
 
 
     return (
         <Row>
-            <Col  className='d-flex justify-content-center mb-4' md={12}>
-                <Button variant='dark' onClick={saveShoppingList}>Save Shopping List</Button>
-            </Col>
 
-            {
-                sortedList.map((elem, idx) => {
+
+            {localShoppingList  
+                ?
+                sortedList.map((elm, idx) => {
                     return (
                         <Col className='shopListItems' key={ idx} md={{ span: 6 }} >
                             <ListGroup>
                                 <ListGroup.Item className='cardShopList'>
                                     <Row>
                                         <Col md={{ span: 6 }}>
-                                        <p className='shopListName'>{elem.name}</p>
+                                        <p className='shopListName'>{elm.name}</p>
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p className='shopListInfo'>{elem.amount}</p>
+                                        <p className='shopListInfo'>{elm.amount}</p>
                                         </Col>
 
                                         <Col md={{ span: 2 }}>
-                                        <p className='shopListInfo'>{elem.unit}</p>
+                                        <p className='shopListInfo'>{elm.unit}</p>
                                         </Col>
 
                                         <Col className='d-grid' md={{ span: 2 }}>
-                                            <Button  className='deleteItemButton' variant="danger" onClick={() => deleteItem(idx)} > <RemoveRoundedIcon /> </Button>
+                                            <Button  className='deleteItemButton' variant="danger" onClick={() => deleteItem(elm)} > <RemoveRoundedIcon /> </Button>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -48,6 +47,8 @@ function ShoppingList() {
                         </Col>
                     )
                 })
+                :
+                <Loader/>
             }
         </Row>
     )

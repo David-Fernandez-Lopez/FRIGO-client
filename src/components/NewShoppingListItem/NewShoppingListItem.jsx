@@ -11,7 +11,7 @@ function NewShoppingListItem() {
     const { measurementsUnits } = useContext(measurementUnitsContext)
 
 
-    const { shoppingList, setShoppingList} = useContext(ShoppingListContext)
+    const { localShoppingList, setLocalShoppingList} = useContext(ShoppingListContext)
     const [ingredientsData, setIngredientsData] = useState(
         {
             name: '',
@@ -35,7 +35,7 @@ function NewShoppingListItem() {
 
             const treatedData = dataTreatment(data)
 
-            let listCopy = [...shoppingList]
+            let listCopy = [...localShoppingList]
 
             let duplicated = listCopy.find(obj => obj.name === treatedData.name && obj.unit === treatedData.unit)
 
@@ -57,7 +57,7 @@ function NewShoppingListItem() {
             return modifiedList
         }
    
-        setShoppingList(addItemToShoppingList(ingredientsData))
+        setLocalShoppingList(addItemToShoppingList(ingredientsData))
         setIngredientsData({
             name: '',
             amount: 0,
@@ -94,7 +94,7 @@ function NewShoppingListItem() {
                 </Col>
                 
                 <Col md={{ span: 2 }}>                    
-                    <Button variant="dark" onClick={newIngredient}><AddIcon /> Ingredient</Button>                    
+                    <Button variant="dark" onClick={()=> (newIngredient())}><AddIcon /> Ingredient</Button>                    
                 </Col>                
             </Row>          
 
