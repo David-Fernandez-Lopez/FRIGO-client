@@ -1,3 +1,43 @@
 .imgResult{
+    opacity: 70%;
     width: 200px;
+    height: 120px;
+    object-fit: cover;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.recipeResultsCard {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    border-color: white;
+    width: 200px;
+    margin-right: 0px;
+}
+.recipeResultsCard:hover {
+    background-color: rgba(15, 117, 49, 0.109);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgba(14, 57, 14, 0.057)
+}
+
+.recipeResultsT {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-weight: 500;
+}
+
+.recipeResults {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.recipeResults p {
+    text-align: center;
+}
+a:hover {
+    color:rgb(14, 49, 14)
 }
