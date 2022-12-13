@@ -2,9 +2,9 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap"
 import { useState, useEffect, useContext } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import uploadServices from "../../services/upload.service"
+import userService from "../../services/user.service"
 import './EditProfilePage.css'
 
-import authService from "../../services/auth.service"
 import { AuthContext } from "../../context/auth.context"
 
 // NO ACTUALIZA LA INFO SI NO HACES LOG OUT
@@ -14,20 +14,20 @@ const EditProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-    const [editData, setEditData] = useState({   
-            name: '',
-            email: '',
-            lastName: '',
-            profileImg: '',
-        })
+    const [editData, setEditData] = useState({
+        name: '',
+        email: '',
+        lastName: '',
+        profileImg: '',
+    })
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [changed, setChanged] = useState(false)
 
-    useEffect( () => {
+    useEffect(() => {
         loadData()
     }, [])
-    
+
     const loadData = () => {
         setEditData({
             name: user.name,
@@ -36,7 +36,7 @@ const EditProfilePage = () => {
             profileImg: user.profileImg,
         })
     }
-    
+
     const handleFileUpload = e => {
 
         setLoadingImage(true)
@@ -68,10 +68,10 @@ const EditProfilePage = () => {
 
         e.preventDefault()
 
-        authService
-            .editProfile(user._id, editData)
+        userService
+            .editProfile(editData)
             .then(() => {
-                navigate('/profile/:id')
+                navigate('/profile')
             })
             .catch(err => console.log(err))
     }
@@ -104,7 +104,7 @@ const EditProfilePage = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="image">
                             <Form.Label>Profile Image</Form.Label>
-                            <Form.Control type="file"  onChange={handleFileUpload} />
+                            <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
 
                         <div className="d-grid">

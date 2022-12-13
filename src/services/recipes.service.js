@@ -44,6 +44,10 @@ class RecipeService {
     getRecipesByCuisine(cuisines) {
         return this.api.get(`/complexSearch?query=${cuisines}`)
     }
+
+    deleteRecipe(recipe_id) {
+        return this.api.delete(`/${recipe_id}/deleteRecipe`)
+    }
 }
 
 const recipeService = new RecipeService()

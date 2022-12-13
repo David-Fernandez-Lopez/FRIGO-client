@@ -25,6 +25,10 @@ class UserService {
         return this.api.get('/getUserById')
     }
 
+    editProfile = (signupData) => {
+        return this.api.put('/edit', signupData)
+    }
+
     addRecipeToFav = (recipe_id) => {
         return this.api.put('addRecipeToFav', { favRecipes: recipe_id })
     }
@@ -42,9 +46,8 @@ class UserService {
     }
 
     addItemsToShoppingList = (shoppingList) => {
-        return this.api.put('addItemsToShoppingList', {shoppingList})
+        return this.api.put('addItemsToShoppingList', { shoppingList })
     }
-
 
     removeItemFromShoppingList = (item_obj) => {
         return this.api.put('removeItemFromShoppingList', { shoppingList: item_obj })
@@ -53,7 +56,6 @@ class UserService {
     getShoppingList() {
         return this.api.get('/getShoppingList')
     }
-
 
 }
 

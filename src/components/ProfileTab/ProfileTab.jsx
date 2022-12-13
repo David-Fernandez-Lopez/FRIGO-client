@@ -18,26 +18,26 @@ function ProfileTab() {
     const [showModal, setShowModal] = useState(false)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const [myRecipes, setMyRecipes] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
+    const [userFavRecipes, setUserFavRecipes] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     // const { user } = useContext(AuthContext)
     const [apiFavRecipes, setApiFavRecipes] = useState(null)
     const [dbFavRecipes, setDbFavRecipes] = useState(null)
 
+
     useEffect(() => {
-        loadUserData()
+        loadUserFavRecipes()
     }, [])
 
     useEffect(() => {
         loadRecipesData()
-    }, [currentUser])
+    }, [userFavRecipes])
 
-    const loadUserData = () => {
-
+    const loadUserFavRecipes = () => {
         userService
-            .getUserById()
+            .getFavRecipes()
             .then(({ data }) => {
-                setCurrentUser(data)
+                setUserFavRecipes(data.favRecipes)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
@@ -55,7 +55,7 @@ function ProfileTab() {
 
 
         //User Fav Recipes
-        currentUser?.favRecipes.map(elm => {
+        userFavRecipes?.map(elm => {
             const apiFavRecipesCopy = []
             const dbFavRecipesCopy = []
             if (elm.length < 10) {
@@ -87,7 +87,7 @@ function ProfileTab() {
         setShowToast(true)
         setToastMessage('Recipe created successfully')
         closeModal()
-        loadUserData()
+        loadUserFavRecipes()
     }
 
 
@@ -101,7 +101,7 @@ function ProfileTab() {
             >
                 <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='favTab'>
                     {isLoading ? <Loader /> : <>
-                        {currentUser.favRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
+                        {userFavRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
                         {
                             (dbFavRecipes || apiFavRecipes) &&
                             <section className='d-flex justify-content-start mb-3'>

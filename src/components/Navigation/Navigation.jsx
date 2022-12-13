@@ -11,8 +11,8 @@ import { MessageContext } from '../../context/userMessage.context'
 const Navigation = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
-/*     const { setShowToast, setToastMessage } = useContext(MessageContext)
- */
+    /*     const { setShowToast, setToastMessage } = useContext(MessageContext)
+     */
     const [showModal, setShowModal] = useState(false)
     const [showingForm, setShowingForm] = useState('')
 
@@ -30,8 +30,8 @@ const Navigation = () => {
     }
 
     const fireFinalActions = () => {
-     /*    setShowToast(true)
-        setToastMessage('') */
+        /*    setShowToast(true)
+           setToastMessage('') */
         closeModal()
     }
 
@@ -63,7 +63,7 @@ const Navigation = () => {
                                         <Nav.Link as="div" className='hover-underline-animation' onClick={logoutUser}>Log Out</Nav.Link>
 
                                         <NavDropdown className='hover-underline-animation' title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
-                                            <Link to="/profile/:id"><NavDropdown.Item as='div' className='dropdown'> My Profile </NavDropdown.Item></Link>
+                                            <Link to="/profile"><NavDropdown.Item as='div' className='dropdown'> My Profile </NavDropdown.Item></Link>
                                             <Link to="/shopping-list"><NavDropdown.Item as='div' className='dropdown'> Shopping List </NavDropdown.Item></Link>
                                             <NavDropdown.Divider />
                                             <Link to={`/profile/${user._id}/edit`}><NavDropdown.Item as='div' className='dropdown'> Account Settings </NavDropdown.Item></Link>
@@ -78,7 +78,7 @@ const Navigation = () => {
                                             <Nav.Link as="div" className='hover-underline-animation' onClick={signUp}>Sign Up</Nav.Link>
                                         </Link>
 
-                                        <Modal style={{padding:'100px'}} show={showModal} onHide={closeModal}>
+                                        <Modal style={{ padding: '100px' }} show={showModal} onHide={closeModal}>
                                             <Modal.Header closeButton>
                                                 <img src="#" alt="LOGO FRIGO" />
                                             </Modal.Header>
