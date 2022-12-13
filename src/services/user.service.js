@@ -33,6 +33,10 @@ class UserService {
         return this.api.put('removeRecipeFromFav', { favRecipes: recipe_id })
     }
 
+    getFavRecipes() {
+        return this.api.get('/getFavRecipes')
+    }
+
     addItemToShoppingList = (item_obj) => {
         return this.api.put('addItemToShoppingList', { shoppingList: item_obj })
     }
