@@ -10,15 +10,15 @@ function RecipeIngredients({ extendedIngredients, servings }) {
 
     const { shoppingList } = useContext(ShoppingListContext)
 
-    console.log(extendedIngredients)
+    // console.log(extendedIngredients)
 
-    const isInShoppingList = extendedIngredients?.map(elm => {
+    extendedIngredients?.map(elm => {
 
         const ingredient = { name: elm.name.toUpperCase(), amount: parseInt(elm.amount), unit: elm.unit } 
         
-        if (shoppingList.includes(ingredient.name)) {
-            console.log(ingredient)
-        }
+        // if ('name' in elm === ) {
+        //     console.log(ingredient)
+        // }
     })
 
     return (
