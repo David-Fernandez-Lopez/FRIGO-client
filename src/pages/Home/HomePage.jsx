@@ -6,6 +6,7 @@ import IngredientsSearchBar from "../../components/IngredientsSearchBar/Ingredie
 import spoonacularService from "../../services/spoonacular.service"
 import './HomePage.css'
 import RecipesResults from "../../components/RecipesResults/RecipesResults"
+import Loader from "../../components/Loader/Loader"
 
 const HomePage = () => {
 
@@ -40,7 +41,6 @@ const HomePage = () => {
             <IngredientsSearchBar setQuery={setQuery} />
             <RecipesResults recipesToSearch={recipesToSearch} />
             {/* <Category /> */}
-            <h2>Placeholder Categories</h2>
 
         </Container>
     )

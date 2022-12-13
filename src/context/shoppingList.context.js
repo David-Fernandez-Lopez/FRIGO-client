@@ -14,17 +14,15 @@ function ShoppingListWrapper(props) {
         userService
             .getShoppingList()
             .then(({ data }) => {
-                console.log(data)
                     setShoppingList(data.shoppingList)
             })
             .catch(err => console.log(err))
         
     },[])
     
-    const adItem = (data) => {
+    const saveShoppingList = () => {
 
-        addItemToShoppingList(data)
-        setShoppingList()
+        userService.addItemsToShoppingList(shoppingList)
 
     }
 
@@ -33,16 +31,15 @@ function ShoppingListWrapper(props) {
         const shoppingListCopy = [...shoppingList]
 
         const itemToDelete = shoppingListCopy[idx]
+        console.log(itemToDelete)
         
         userService.removeItemFromShoppingList(itemToDelete)
-            
-        shoppingListCopy.splice(idx, 1)
-        setShoppingList(shoppingListCopy)
+
         
     }
     console.log(shoppingList)
     return (
-        <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem}}>
+        <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem, saveShoppingList}}>
             {props.children}
         </ShoppingListContext.Provider>
     )

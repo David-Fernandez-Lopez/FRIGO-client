@@ -9,7 +9,7 @@ const UserMessage = () => {
     const { setShowToast, toastMessage, showToast } = useContext(MessageContext)
 
     return (
-        <Toast onClose={() => setShowToast(false)} show={showToast} delay={13000} autohide style={{ position: 'fixed', bottom: 50, right: 50, backgroundColor: '#66ac8150' }}>
+        <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide style={{ position: 'fixed', bottom: 50, right: 50, backgroundColor: '#66ac8150' }}>
             <Toast.Header  style={{backgroundColor: 'white'}}>
                 <strong className="frigoTeam me-auto"> 🥑 FRIGO Team </strong>
             </Toast.Header>

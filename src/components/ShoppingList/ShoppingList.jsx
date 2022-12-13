@@ -9,13 +9,17 @@ import sortShoppingList from '../../utils/sortShoppingList';
 
 function ShoppingList() {
 
-    const { shoppingList, deleteItem } = useContext(ShoppingListContext)
+    const { shoppingList, deleteItem, saveShoppingList } = useContext(ShoppingListContext)
     
     const sortedList = sortShoppingList(shoppingList)
 
 
     return (
         <Row>
+            <Col  className='d-flex justify-content-center mb-4' md={12}>
+                <Button variant='dark' onClick={saveShoppingList}>Save Shopping List</Button>
+            </Col>
+
             {
                 sortedList.map((elem, idx) => {
                     return (
