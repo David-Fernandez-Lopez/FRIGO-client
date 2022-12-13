@@ -7,39 +7,47 @@ const ShoppingListContext = createContext()
 
 function ShoppingListWrapper(props) {
     
-    const [shoppingList, setShoppingList] = useState([])
+    const [localShoppingList, setLocalShoppingList] = useState(null)
 
     useEffect(() => {
+       loadShoppingList()
+    }, [])
 
-        userService
+    useEffect(() => {
+        saveShoppingList()
+    }, [localShoppingList])
+        
+    
+    const loadShoppingList = () => {
+
+         userService
             .getShoppingList()
-            .then(({ data }) => {
-                    setShoppingList(data.shoppingList)
+             .then(({ data }) => {
+                 console.log(data)
+                 data.shoppingList
+                    ?
+                    setLocalShoppingList(data.shoppingList)
+                    :
+                    setLocalShoppingList([])
             })
             .catch(err => console.log(err))
         
-    },[])
+    }
     
     const saveShoppingList = () => {
 
-        userService.addItemsToShoppingList(shoppingList)
-
+        localShoppingList && userService.addItemsToShoppingList(localShoppingList)
     }
 
-    const deleteItem = idx => {
+    const deleteItem = itemToDelete => {
 
-        const shoppingListCopy = [...shoppingList]
-
-        const itemToDelete = shoppingListCopy[idx]
-        console.log(itemToDelete)
-        
-        userService.removeItemFromShoppingList(itemToDelete)
-
-        
+        const shoppingListCopy = [...localShoppingList]
+        const filteredShoppingList = shoppingListCopy.filter(elm => elm !== itemToDelete)
+        setLocalShoppingList(filteredShoppingList)
     }
-    console.log(shoppingList)
+
     return (
-        <ShoppingListContext.Provider value={{ shoppingList, setShoppingList, deleteItem, saveShoppingList}}>
+        <ShoppingListContext.Provider value={{ localShoppingList, setLocalShoppingList, deleteItem}}>
             {props.children}
         </ShoppingListContext.Provider>
     )
