@@ -1,3 +1,7 @@
 @media print {
     .recipeSteps {}
 }
+
+.printRecipe {
+    margin-top: 33px;
+}

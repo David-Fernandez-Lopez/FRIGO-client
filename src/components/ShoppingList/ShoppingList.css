@@ -72,6 +72,24 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.082);
 }
 
+.PrintButton {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.625);
+    border-color: white;
+}
+
+.PrintButton:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
+.PrintButton:active {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
 @media print {
 
     .Print {

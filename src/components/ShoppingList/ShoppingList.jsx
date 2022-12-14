@@ -22,7 +22,7 @@ function ShoppingList() {
 
     return (
         <>
-            <Button className='PrintButton mb-3' variant="outline-secondary"
+            <Button className='PrintButton mb-3'
                 size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
 
             <Row className='Print' ref={componentRef}>
