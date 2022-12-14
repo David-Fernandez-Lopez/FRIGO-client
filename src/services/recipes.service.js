@@ -45,6 +45,10 @@ class RecipeService {
         return this.api.get(`/complexSearch?query=${cuisines}`)
     }
 
+    getRecipesByTitle(title) {
+        return this.api.get(`/findByTitle?title=${title}`)
+    }
+
     deleteRecipe(recipe_id) {
         return this.api.delete(`/${recipe_id}/deleteRecipe`)
     }

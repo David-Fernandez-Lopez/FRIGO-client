@@ -44,6 +44,9 @@ const RecipeDetailsPage = () => {
         loadData()
     }, [userFavRecipes, favRecipe, user])
 
+    useEffect(() => {
+        dbRecipe?.owner === user?._id && setIsOwner(true)
+    }, [dbRecipe])
 
     const loadData = () => {
 
@@ -67,6 +70,7 @@ const RecipeDetailsPage = () => {
         userFavRecipes?.includes(id) ? setFavRecipe(true) : setFavRecipe(false)
 
     }
+
 
     const addRecipeToFav = () => {
 
@@ -123,7 +127,7 @@ const RecipeDetailsPage = () => {
             {dbRecipe &&
                 <>
                     {isOwner &&
-                        <Button onClick={openModal} className='mt-3'>DETELE</Button>
+                        <Button onClick={openModal} variant="danger" className='mt-3'>DELETE</Button>
                     }
                 </>
             }
@@ -132,7 +136,9 @@ const RecipeDetailsPage = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <h4 className='NRTitle mt-3'>Are you sure?</h4>
-                    <Button onClick={deleteRecipe} className='mt-3'>Yes</Button>
+                    <div className='d-grid'>
+                        <Button onClick={deleteRecipe} className='mt-3'>Yes</Button>
+                    </div>
                 </Modal.Body>
             </Modal>
             <Col>

@@ -4,6 +4,7 @@
     height: 180px;
     object-fit: cover;
 }
+
 .DbRecipeCard:hover img {
     opacity: 30%;
     width: 210px;
@@ -15,7 +16,8 @@
     transition: transform 0.3s ease-out;
     margin-right: 200px;
 }
-.DbRecipeCard:hover  {
+
+.DbRecipeCard:hover {
     box-shadow: 4px 4px 2px 1px rgba(113, 113, 113, 0.196);
     transform: scale(1.05);
 }

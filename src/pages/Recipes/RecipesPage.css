@@ -3,3 +3,8 @@
     border-left: 0px;
     border-right: 0px;
 }
+
+.recipeResults {
+    display: flex;
+    justify-content: flex-start;
+}
