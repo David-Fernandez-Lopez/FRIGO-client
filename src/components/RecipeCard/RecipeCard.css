@@ -48,3 +48,8 @@
     border-color: white;
     transform: scale(1.2);
 }
+.favBtn:active {
+    color:red;
+    background-color: white;
+    border-color: white;
+}

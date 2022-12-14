@@ -23,7 +23,7 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                     <br />
                     < Tab.Container className='stepsDB' id="left-tabs-example" defaultActiveKey="0" >
                         <Row>
-                            <Col sm={3}>
+                            <Col sm={2}>
                                 <Nav variant="pills" className="flex-column">
                                     {dbSteps?.map((elm, idx) => {
                                         return (
@@ -33,10 +33,10 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                                     })}
                                 </Nav>
                             </Col>
-                            <Col sm={9}>
+                            <Col sm={{span:8, offset:1}}>
                                 <Tab.Content>
                                     {dbSteps?.map((elm, idx) => {
-                                        return (<Tab.Pane eventKey={idx}>
+                                        return (<Tab.Pane key={idx} eventKey={idx}>
                                             <p>{elm.step}</p>
                                         </Tab.Pane>)
                                     })}
