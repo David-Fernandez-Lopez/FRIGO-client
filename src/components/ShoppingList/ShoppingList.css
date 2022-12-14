@@ -76,6 +76,24 @@
     display: none;
 }
 
+.PrintButton {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.625);
+    border-color: white;
+}
+
+.PrintButton:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
+.PrintButton:active {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
 @media print {
 
     .Print {
