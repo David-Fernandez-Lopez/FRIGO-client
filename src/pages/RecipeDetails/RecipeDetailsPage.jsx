@@ -1,6 +1,7 @@
 import { Col, Container, Row, Button, Modal } from "react-bootstrap"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { useReactToPrint } from "react-to-print"
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import RecipeCard from "../../components/RecipeCard/RecipeCard"
@@ -12,7 +13,9 @@ import spoonacularService from "../../services/spoonacular.service"
 import { AuthContext } from './../../context/auth.context'
 import recipeService from "../../services/recipes.service"
 import userService from "../../services/user.service"
+import PrintIcon from '@mui/icons-material/Print'
 import './../../components/RecipeCard/RecipeCard.css'
+import './RecipeDetailsPage.css'
 
 const RecipeDetailsPage = () => {
 
@@ -115,8 +118,13 @@ const RecipeDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    const componentRef = useRef()
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    })
+
     return (
-        <Container>
+        <Container ref={componentRef}>
             {user &&
                 <>
                     {!favRecipe ? <Button onClick={addRecipeToFav} className='favBtn mt-3'><FavoriteBorderIcon /></Button> :
@@ -124,10 +132,12 @@ const RecipeDetailsPage = () => {
                 </>
             }
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
+            <Button className='PrintButton mt-3 me-3' variant="outline-secondary"
+                size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
             {dbRecipe &&
                 <>
                     {isOwner &&
-                        <Button onClick={openModal} variant="danger" className='mt-3'>DELETE</Button>
+                        <Button size='sm' onClick={openModal} variant="danger" className='mt-3'>DELETE</Button>
                     }
                 </>
             }

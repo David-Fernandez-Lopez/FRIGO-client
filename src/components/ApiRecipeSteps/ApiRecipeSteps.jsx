@@ -20,11 +20,11 @@ function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
 
 
     return (
-        <Row>
+        <Row className="recipeSteps">
             {apiSteps &&
                 <>
-                <h3 className='dbRSTitle'>Instructions</h3>
-                <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
+                    <h3 className='dbRSTitle'>Instructions</h3>
+                    <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
 
                     <br />
                     < Tab.Container id="left-tabs-example" defaultActiveKey="0" >

@@ -31,6 +31,9 @@ function AuthProviderWrapper(props) {
             })
     }
 
+
+
+
     const logoutUser = () => {
         setUser(null)
         setIsLoading(false)

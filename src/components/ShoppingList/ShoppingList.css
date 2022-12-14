@@ -1,7 +1,7 @@
 .deleteItemButton {
     border-radius: 40px;
     background-color: rgba(227, 101, 101, 0.773);
-    border-color:rgba(209, 48, 48, 0.086);
+    border-color: rgba(209, 48, 48, 0.086);
 }
 
 .shopListItems {
@@ -9,16 +9,16 @@
 }
 
 .shopListName {
- font-weight:500;
- margin-top: 15px;
+    font-weight: 500;
+    margin-top: 15px;
 }
 
 .shopListRow {
- display:flex;
- flex-direction: row;
- align-content: center;
- align-items: center;
- justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .shopListInfo {
@@ -30,7 +30,7 @@
 
 .shopListPageTitle {
     text-align: center;
-    font-weight:lighter;
+    font-weight: lighter;
     border-radius: 30px;
     margin-top: 50px;
     margin-bottom: 0px;
@@ -50,7 +50,7 @@
     font-style: italic;
     margin-bottom: 50px;
     position: relative;
-/*     text-decoration-style: wavy;
+    /*     text-decoration-style: wavy;
     text-decoration-color: rgb(17, 133, 65);
     text-decoration-line:underline; */
 }
@@ -72,8 +72,27 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.082);
 }
 
+@media print {
+
+    .Print {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .shopListItems {
+        margin-top: 10px;
+    }
+
+    .deleteItemButton {
+        display: none;
+    }
+
+}
+
 .shopListBg {
-   /*  background-image: url('https://64.media.tumblr.com/3898d527bfa5c7a7515a4c13029da1d4/tumblr_mwjh5kGYcp1s21vcjo1_1280.png');
+    /*  background-image: url('https://64.media.tumblr.com/3898d527bfa5c7a7515a4c13029da1d4/tumblr_mwjh5kGYcp1s21vcjo1_1280.png');
     height: 100vh; */
-    
+
 }

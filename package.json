@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
     "react-select-search": "^4.1.6",
+    "react-to-print": "^2.14.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

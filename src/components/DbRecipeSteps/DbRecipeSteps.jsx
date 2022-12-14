@@ -17,7 +17,7 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
     return (
         <>
             {dbSteps &&
-                <Row>
+                <Row className="recipeSteps">
                     <h3 className='dbRSTitle'>Instructions</h3>
                     <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
                     <br />
@@ -33,7 +33,7 @@ function DbRecipeSteps({ analyzedInstructions, servings, readyInMinutes }) {
                                     })}
                                 </Nav>
                             </Col>
-                            <Col sm={{span:8, offset:1}}>
+                            <Col sm={{ span: 8, offset: 1 }}>
                                 <Tab.Content>
                                     {dbSteps?.map((elm, idx) => {
                                         return (<Tab.Pane key={idx} eventKey={idx}>
