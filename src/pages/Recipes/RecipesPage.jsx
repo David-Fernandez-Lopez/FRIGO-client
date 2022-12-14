@@ -32,7 +32,6 @@ const RecipesPage = () => {
             recipesService
                 .getRecipesByTitle(query)
                 .then(({ data }) => {
-                    console.log(data)
                     setRecipesByTitle(data)
                 })
                 .catch(err => console.log(err))

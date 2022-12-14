@@ -1,14 +1,12 @@
 import './ProfileTab.css'
 import { useState, useContext, useEffect } from 'react'
 import { Tab, Tabs, Button, Modal } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import LibraryBooksRoundedIcon from '@mui/icons-material/LibraryBooksRounded'
 import NewRecipeForm from '../NewRecipeForm/NewRecipeForm'
 import spoonacularService from "../../services/spoonacular.service"
 import recipeService from "../../services/recipes.service"
-import userService from "../../services/user.service"
 import { MessageContext } from "../../context/userMessage.context"
-// import { AuthContext } from './../../context/auth.context'
+import { AuthContext } from './../../context/auth.context'
 import DbRecipeCard from '../DbRecipeCard/DbRecipeCard'
 import ApiRecipeCard from '../ApiRecipeCard/ApiRecipeCard'
 import Loader from '../Loader/Loader'
@@ -18,30 +16,15 @@ function ProfileTab() {
     const [showModal, setShowModal] = useState(false)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const [myRecipes, setMyRecipes] = useState([])
-    const [userFavRecipes, setUserFavRecipes] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    // const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [apiFavRecipes, setApiFavRecipes] = useState(null)
     const [dbFavRecipes, setDbFavRecipes] = useState(null)
 
 
     useEffect(() => {
-        loadUserFavRecipes()
-    }, [])
-
-    useEffect(() => {
         loadRecipesData()
-    }, [userFavRecipes])
-
-    const loadUserFavRecipes = () => {
-        userService
-            .getFavRecipes()
-            .then(({ data }) => {
-                setUserFavRecipes(data.favRecipes)
-                setIsLoading(false)
-            })
-            .catch(err => console.log(err))
-    }
+    }, [user])
 
     const loadRecipesData = () => {
 
@@ -53,18 +36,17 @@ function ProfileTab() {
             })
             .catch(err => console.log(err))
 
-
         //User Fav Recipes
-        userFavRecipes?.map(elm => {
-            const apiFavRecipesCopy = []
-            const dbFavRecipesCopy = []
+        const apiFavRecipesCopy = []
+        const dbFavRecipesCopy = []
+        user.favRecipes?.map(elm => {
             if (elm.length < 10) {
                 spoonacularService
                     .getRecipeById(elm)
                     .then(({ data }) => {
                         apiFavRecipesCopy.push(data)
                         setApiFavRecipes(apiFavRecipesCopy)
-
+                        setIsLoading(false)
                     })
                     .catch(err => console.log(err))
             } else {
@@ -73,6 +55,7 @@ function ProfileTab() {
                     .then(({ data }) => {
                         dbFavRecipesCopy.push(data)
                         setDbFavRecipes(dbFavRecipesCopy)
+                        setIsLoading(false)
                     })
                     .catch(err => console.log(err))
             }
@@ -87,9 +70,10 @@ function ProfileTab() {
         setShowToast(true)
         setToastMessage('Recipe created successfully')
         closeModal()
-        loadUserFavRecipes()
     }
 
+    console.log({ dbFavRecipes }, { apiFavRecipes })
+    console.log(user.favRecipes)
 
     return (
         <>
@@ -101,7 +85,7 @@ function ProfileTab() {
             >
                 <Tab eventKey="Fav Recipes" title="Fav Recipes" tabClassName='favTab'>
                     {isLoading ? <Loader /> : <>
-                        {userFavRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
+                        {user.favRecipes.length < 1 && <h5 className='mt-5'>You don't have favorites recipes yet</h5>}
                         {
                             (dbFavRecipes || apiFavRecipes) &&
                             <section className='favRec d-flex justify-content-start mb-3'>

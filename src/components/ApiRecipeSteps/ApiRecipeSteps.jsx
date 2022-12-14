@@ -27,28 +27,35 @@ function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
                     <p className='minutes mb-5'>{readyInMinutes}' <AccessTimeIcon /></p>
 
                     <br />
-                    < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
-                        <>
-                            <Col sm={3}>
-                                <Nav variant="pills" className="flex-column">
-                                    {apiSteps?.map((elm, idx) => {
-                                        return (<Nav.Item key={idx}>
-                                            <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
-                                        </Nav.Item>)
-                                    })}
-                                </Nav>
-                            </Col>
-                            <Col sm={9}>
-                                <Tab.Content>
-                                    {apiSteps?.map((elm, idx) => {
-                                        return (<Tab.Pane key={idx} eventKey={idx}>
-                                            <p>{elm.step}</p>
-                                        </Tab.Pane>)
-                                    })}
-                                </Tab.Content>
-                            </Col>
-                        </>
-                    </Tab.Container >
+                    <div className='noPrint'>
+                        < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
+                            <>
+                                <Col sm={3}>
+                                    <Nav variant="pills" className="flex-column">
+                                        {apiSteps?.map((elm, idx) => {
+                                            return (<Nav.Item key={idx}>
+                                                <Nav.Link eventKey={idx}>Step {elm.number}</Nav.Link>
+                                            </Nav.Item>)
+                                        })}
+                                    </Nav>
+                                </Col>
+                                <Col sm={9}>
+                                    <Tab.Content>
+                                        {apiSteps?.map((elm, idx) => {
+                                            return (<Tab.Pane key={idx} eventKey={idx}>
+                                                <p>{elm.step}</p>
+                                            </Tab.Pane>)
+                                        })}
+                                    </Tab.Content>
+                                </Col>
+                            </>
+                        </Tab.Container >
+                    </div>
+                    <div className='onlyToPrint'>
+                        {apiSteps?.map((elm, idx) => {
+                            return <p key={idx}><span className='fw-bold'>Step {elm.number}: </span>{elm.step}</p>
+                        })}
+                    </div>
                 </>
             }
         </Row>

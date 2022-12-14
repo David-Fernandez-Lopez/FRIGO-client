@@ -27,7 +27,7 @@ const RecipeDetailsPage = () => {
     const [userFavRecipes, setUserFavRecipes] = useState(null)
     const [favRecipe, setFavRecipe] = useState(false)
     const [isOwner, setIsOwner] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, refreshToken } = useContext(AuthContext)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     useEffect(() => {
@@ -82,6 +82,7 @@ const RecipeDetailsPage = () => {
             .then(() => {
                 loadData()
                 loadUserFavRecipes()
+                refreshToken()
                 setShowToast(true)
                 setToastMessage('Recipe add to fav')
             })
@@ -95,6 +96,7 @@ const RecipeDetailsPage = () => {
             .then(() => {
                 loadData()
                 loadUserFavRecipes()
+                refreshToken()
                 setShowToast(true)
                 setToastMessage('Recipe removed from fav')
             })
@@ -124,7 +126,7 @@ const RecipeDetailsPage = () => {
     })
 
     return (
-        <Container ref={componentRef}>
+        <Container className="RecipeDetailsPage" ref={componentRef}>
             {user &&
                 <>
                     {!favRecipe ? <Button onClick={addRecipeToFav} className='favBtn mt-3'><FavoriteBorderIcon /></Button> :
@@ -132,12 +134,12 @@ const RecipeDetailsPage = () => {
                 </>
             }
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
-            <Button className='PrintButton mt-3 me-3' variant="outline-secondary"
+            <Button className='PrintButton mt-3 me-3 noPrint' variant="outline-secondary"
                 size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
             {dbRecipe &&
                 <>
                     {isOwner &&
-                        <Button size='sm' onClick={openModal} variant="danger" className='mt-3'>DELETE</Button>
+                        <Button size='sm' onClick={openModal} variant="danger noPrint" className='mt-3'>DELETE</Button>
                     }
                 </>
             }

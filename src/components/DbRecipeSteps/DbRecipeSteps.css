@@ -4,12 +4,14 @@
     font-weight: 500;
     max-width: 150px;
 }
-.nav-link{
-    color:rgb(141, 141, 141);
+
+.nav-link {
+    color: rgb(141, 141, 141);
     max-width: 150px;
 }
-.nav-link:hover{
-    color:black
+
+.nav-link:hover {
+    color: black
 }
 
 .dbRSTitle {
@@ -25,4 +27,10 @@
 
 .nav-pills {
     margin-left: 90px;
+}
+
+@media print {
+    .noPrint {
+        display: none;
+    }
 }

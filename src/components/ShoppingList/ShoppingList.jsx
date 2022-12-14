@@ -26,7 +26,7 @@ function ShoppingList() {
                 size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
 
             <Row className='Print' ref={componentRef}>
-
+                <h3 className='onlyToPrint'>My Shopping List</h3>
                 {localShoppingList
                     ?
                     sortedList.map((elm, idx) => {

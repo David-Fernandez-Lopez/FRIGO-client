@@ -8,12 +8,14 @@ import sortAlphabetically from '../../utils/sort'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
+import { AuthContext } from './../../context/auth.context'
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [cuisine, setCuisine] = useState([])
     const [dishType, setdishType] = useState([])
+    const { refreshToken } = useContext(AuthContext)
 
     const [instructionsData, setInstructionsData] = useState(
         [{
@@ -89,15 +91,16 @@ const NewRecipeForm = ({ fireFinalActions }) => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
+        refreshToken()
         const recipe = { ...recipeData, extendedIngredients: ingredientsData, analyzedInstructions: instructionsData }
         console.log(recipe)
         recipeService
             .createRecipe(recipe)
             .then(() =>
-
                 fireFinalActions()
             )
             .catch(err => console.log(err))
+
     }
 
     const handleInstructionsChange = (idx, e) => {
