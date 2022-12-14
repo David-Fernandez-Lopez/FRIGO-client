@@ -9,23 +9,26 @@ import { MessageProviderWrapper } from './../src/context/userMessage.context'
 import { ShoppingListWrapper } from './context/shoppingList.context'
 import { IngredientProviderWrapper } from './context/ingredients.context'
 import { MeasurementUnitsProviderWrapper } from './context/measurementUnits.context'
+import { MapsProviderWrapper } from './context/maps.context'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
   <MessageProviderWrapper>
-    <ShoppingListWrapper>
-      <IngredientProviderWrapper>
-        <MeasurementUnitsProviderWrapper>
-          <AuthProviderWrapper>
-            <Router>
-              <App />
-            </Router>
-          </AuthProviderWrapper>
-        </MeasurementUnitsProviderWrapper>
-      </IngredientProviderWrapper>
-    </ShoppingListWrapper>
+    <MapsProviderWrapper>
+      <ShoppingListWrapper>
+        <IngredientProviderWrapper>
+          <MeasurementUnitsProviderWrapper>
+            <AuthProviderWrapper>
+              <Router>
+                <App />
+              </Router>
+            </AuthProviderWrapper>
+          </MeasurementUnitsProviderWrapper>
+        </IngredientProviderWrapper>
+      </ShoppingListWrapper>
+    </MapsProviderWrapper>
   </MessageProviderWrapper>
   // </React.StrictMode >
 )
