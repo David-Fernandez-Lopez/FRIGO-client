@@ -7,6 +7,7 @@ import spoonacularService from "../../services/spoonacular.service"
 import './HomePage.css'
 import RecipesResults from "../../components/RecipesResults/RecipesResults"
 import Loader from "../../components/Loader/Loader"
+import Map from './../../components/Map/Map'
 
 const HomePage = () => {
 
@@ -41,7 +42,7 @@ const HomePage = () => {
             <IngredientsSearchBar setQuery={setQuery} />
             <RecipesResults recipesToSearch={recipesToSearch} />
             {/* <Category /> */}
-
+            <Map></Map>
         </Container>
     )
 }

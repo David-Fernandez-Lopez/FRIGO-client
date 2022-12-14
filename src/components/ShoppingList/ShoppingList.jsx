@@ -25,7 +25,7 @@ function ShoppingList() {
                         <Col className='shopListItems' key={ idx} md={{ span: 6 }} >
                             <ListGroup>
                                 <ListGroup.Item className='cardShopList'>
-                                    <Row>
+                                    <Row className='shopListRow'>
                                         <Col md={{ span: 6 }}>
                                         <p className='shopListName'>{elm.name}</p>
                                         </Col>

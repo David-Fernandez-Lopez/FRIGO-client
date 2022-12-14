@@ -23,7 +23,7 @@ function ShoppingListWrapper(props) {
          userService
             .getShoppingList()
              .then(({ data }) => {
-                 console.log(data)
+                //  console.log(data)
                  data.shoppingList
                     ?
                     setLocalShoppingList(data.shoppingList)

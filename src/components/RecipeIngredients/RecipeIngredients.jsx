@@ -1,31 +1,57 @@
-import { Row } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import './RecipeIngredients.css'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import { ShoppingListContext } from '../../context/shoppingList.context'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import capitalize  from './../../utils/capitalize'
 import spoonacularUnitsConversor  from './../../utils/spoonacularUnitsConversor'
 import Loader from './../Loader/Loader'
+import { MessageContext } from '../../context/userMessage.context'
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 
 
 function RecipeIngredients({ extendedIngredients, servings }) {
     
 
-    const { localShoppingList } = useContext(ShoppingListContext)
+    
+    const { localShoppingList, setLocalShoppingList } = useContext(ShoppingListContext)
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
-    // console.log(localShoppingList)
 
     const editedIngredients = extendedIngredients && spoonacularUnitsConversor(extendedIngredients)
 
-    // let cardColor
-
-    // editedIngredients?.map(elm => {        
-    //     let cardColor = localShoppingList.forEach(item => (item.name === elm.name) ? cardColor = 'green' : cardColor = 'red')
-    // })
-    
-
+    const newIngredient = data => {
         
+        let listCopy = [...localShoppingList]        
+
+        let duplicated = listCopy.find(obj => obj.name === data.name && obj.unit === data.unit)        
+
+        if (!duplicated) {                
+            listCopy.push(data)
+            return setLocalShoppingList(listCopy)            
+        }        
+
+        const sumAmount = duplicated.amount + data.amount        
+
+        const modifiedList = listCopy.map(elm => {                
+                                
+            return {                    
+                ...elm,                
+                amount: elm.name === data.name && elm.unit === data.unit ? sumAmount : elm.amount                    
+            }            
+        })        
+
+        return setLocalShoppingList(modifiedList)        
+    }
     
+   
+    const handleToast = (elm) => {
+        setShowToast(true)
+        setToastMessage(`${elm.name} correctly included`)
+    }
+         
+    
+
     return (
         <>
             {extendedIngredients
@@ -35,12 +61,38 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                     <p className='servings'>{servings} <RestaurantIcon /></p>                    
                     <br />
                     
-                    <Row>                        
+                    <Row className='d-flex flex-wrap'>                        
                         {editedIngredients?.map((elm, idx) => {                        
-                            return <p className='block' key={idx}> {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>                            
+                            return (
+                                idx % 2 === 0
+                                    ?
+                                <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:3}}>
+                                <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
+                                    <Button
+                                        variant="outline-secondary"
+                                        size='sm'
+                                        className='mb-3 cartButton block'
+                                        onClick={() => (newIngredient(elm), handleToast(elm))}
+                                    >
+                                        <AddShoppingCartRoundedIcon />
+                                    </Button>
+                                    </Col>  
+                                    :
+                                    <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:0}}>
+                                <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
+                                    <Button
+                                        variant="outline-secondary"
+                                        size='sm'
+                                        className='mb-3 cartButton block'
+                                        onClick={() => (newIngredient(elm), handleToast(elm))}
+                                    >
+                                        <AddShoppingCartRoundedIcon />
+                                    </Button>
+                                </Col>  
+                            )                            
                         }                            
                         )}                        
-                    </Row>                    
+                        </Row>                    
                 </div>
                 :
                 <Loader/>
