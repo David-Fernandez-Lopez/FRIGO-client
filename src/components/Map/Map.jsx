@@ -1,21 +1,30 @@
 import './Map.css'
-import { Container, Row, Col, Button } from "react-bootstrap"
-import { useContext, useEffect, useState } from 'react'
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { Container, Row, Col } from "react-bootstrap"
+import { useContext, useState } from 'react'
+import { GoogleMap, InfoWindow } from '@react-google-maps/api';
 import { mapsContext } from '../../context/maps.context';
 import Loader from '../Loader/Loader';
+import RangeSlider from 'react-bootstrap-range-slider';
 
 
 const Map = () => {
     
-    const { coordinates, isLoaded, map, setMap, request, setRequest, getplaces, callback } = useContext(mapsContext)
+    const { coordinates, isLoaded, setMap, request, setRequest } = useContext(mapsContext)
 
+    const [value, setValue] = useState(400)
+    const [finalValue, setFinalValue] = useState(null)
     
-    
+    const valueHandler = e => {
+        setFinalValue(e.target.value)
+        finalValue && setRequest({ ...request, radius: finalValue })
+    }
+
     const onLoad = (map) => {
         setMap(map)
         map.setCenter(coordinates)
     }
+
+    
 
     return (
         
@@ -27,16 +36,28 @@ const Map = () => {
                             <>
                             <div id='map' className="map">
 
-                        <GoogleMap 
-                            zoom={15}
-                            onLoad={onLoad}
-                            defaultCenter = {{lat: 39.85990934802615, lng: -4.028579292753214}}
-                            center={coordinates}                            
-                            mapContainerClassName='map'
-                            ></GoogleMap>
+                                    <GoogleMap                                         
+                                        zoom={16}                                        
+                                        onLoad={onLoad}                                        
+                                        defaultCenter={{ lat: 39.85990934802615, lng: -4.028579292753214 }}                                        
+                                        center={coordinates} 
+                                        mapContainerClassName='map'>                                        
+                                        
+                            </GoogleMap>
 
                             </div>
-                                <Button onClick={()=>getplaces(request, callback)}>Find Places</Button>
+                                
+                                <RangeSlider
+                                    className='slider'                                    
+                                    size='sm'                                    
+                                    value={value}                                    
+                                    onChange={(e) => setValue(e.target.value)}                                    
+                                    onAfterChange={e => valueHandler(e)}                                    
+                                                                      
+                                    min={400}                                    
+                                    max={2000}                                    
+                                    variant='secondary'                                    
+                                />                                
                             </>
                             :
                             <Loader/>
