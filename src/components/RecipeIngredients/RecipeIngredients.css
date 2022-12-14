@@ -16,5 +16,11 @@
 }
 
 .block {
-    display:inline-block;
+    display:inline;
+}
+
+.cartButton {
+    width: min-content;
+    display: inline;
+    border:0
 }

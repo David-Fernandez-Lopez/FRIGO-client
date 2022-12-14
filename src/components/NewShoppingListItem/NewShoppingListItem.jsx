@@ -34,7 +34,6 @@ function NewShoppingListItem() {
         const addItemToShoppingList = data => {
 
             const treatedData = dataTreatment(data)
-
             let listCopy = [...localShoppingList]
 
             let duplicated = listCopy.find(obj => obj.name === treatedData.name && obj.unit === treatedData.unit)
