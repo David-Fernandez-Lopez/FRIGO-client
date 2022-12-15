@@ -12,7 +12,7 @@ const HomePage = () => {
 
     const [query, setQuery] = useState(null)
     const [recipesToSearch, setrecipesToSearch] = useState([])
-    
+
     useEffect(() => {
         loadData()
     }, [query])
@@ -23,15 +23,15 @@ const HomePage = () => {
         const searchParams = new URLSearchParams(paramsObj)
 
         recipesToSearch ?
-        spoonacularService
-            .getRecipesByCategory(searchParams.toString())
+            spoonacularService
+                .getRecipesByCategory(searchParams.toString())
                 .then(({ data }) => {
                     setrecipesToSearch(data.results)
-            })
+                })
                 .catch(err => console.log(err))
             :
 
-        setQuery(null)
+            setQuery(null)
     }
 
 

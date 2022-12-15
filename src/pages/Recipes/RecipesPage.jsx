@@ -64,8 +64,10 @@ const RecipesPage = () => {
 
     return (
         <Container>
-            <h1 className="titles mb-5">Search for a Recipe!</h1>
-            <RecipesSearchBar setQuery={setQuery} />
+            <div className="recipePageHeader">
+                <h1 className="titles mb-5">Search for a Recipe!</h1>
+                <RecipesSearchBar setQuery={setQuery} />
+            </div>
             {recipesByTitle &&
                 <section className="recipeResults">
                     <AliceCarousel
@@ -79,6 +81,7 @@ const RecipesPage = () => {
                     />
                 </section>
             }
+            <h3 className="titles mb-5">Or Explore our Cuisines!</h3>
             <Accordion>
 
                 {cuisineList.map((elm, idx) => {

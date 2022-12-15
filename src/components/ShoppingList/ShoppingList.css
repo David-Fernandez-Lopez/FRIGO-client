@@ -98,9 +98,8 @@
 
     .Print {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        margin-top: 50px;
+        margin: 50px 20px;
     }
 
     .onlyToPrint {

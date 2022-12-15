@@ -9,6 +9,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import AddIcon from '@mui/icons-material/Add'
 import NewIngredientForm from "../NewIngredientForm/NewIngredientForm"
 import { AuthContext } from './../../context/auth.context'
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 const NewRecipeForm = ({ fireFinalActions }) => {
 
@@ -16,6 +17,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
     const [cuisine, setCuisine] = useState([])
     const [dishType, setdishType] = useState([])
     const { refreshToken } = useContext(AuthContext)
+    const [errors, setErrors] = useState([])
 
     const [instructionsData, setInstructionsData] = useState(
         [{
@@ -99,7 +101,7 @@ const NewRecipeForm = ({ fireFinalActions }) => {
             .then(() =>
                 fireFinalActions()
             )
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
 
     }
 
@@ -215,6 +217,8 @@ const NewRecipeForm = ({ fireFinalActions }) => {
                 <Form.Label>Image</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
+
+            {errors.length ? <ErrorMessage>{errors.map(e => <p key={e}>{e}</p>)}</ErrorMessage> : undefined}
 
             <div className="d-grid">
                 <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading image...' : 'Create'}</Button>

@@ -113,7 +113,7 @@ function ProfileTab() {
                         </div>
                         <Modal size='xl' show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
-                                <img src="#" alt="LOGO FRIGO" />
+                                <img className='logoNavBar' src="https://res.cloudinary.com/dp0abawuh/image/upload/v1671093843/Frigo_logo_Mesa_de_trabajo_1_dd2tns.png" alt="LOGO FRIGO" />
                             </Modal.Header>
                             <Modal.Body>
                                 <h4 className='NRTitle mt-3'>Create a new recipe</h4>
