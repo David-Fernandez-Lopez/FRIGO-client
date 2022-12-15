@@ -44,7 +44,8 @@ a {
 
 .NRTitle {
         text-align: center;
-        font-weight: 300;
+        font-weight: 400;
+        margin-bottom: 30px;
 }
 
 .nav-tabs .nav-item.show .nav-link,
