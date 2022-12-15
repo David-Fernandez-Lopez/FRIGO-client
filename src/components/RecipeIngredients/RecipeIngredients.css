@@ -22,5 +22,21 @@
 .cartButton {
     width: min-content;
     display: inline;
-    border:0
+    border: 0;
+background-color: rgba(70, 67, 67, 0);
+color: rgba(82, 82, 82, 0.732);
+}
+.cartButton:hover {
+    width: min-content;
+    display: inline;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+}
+.cartButton:active {
+    width: min-content;
+    display: inline;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
 }

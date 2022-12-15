@@ -9,6 +9,12 @@
     justify-content: flex-start;
 }
 
-/* .recipePageHeader {
-    background-image: url("https: //images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=4800");
-} */
+.exploretext {
+font-weight: 300;
+font-style: italic;
+text-align: center;
+}
+
+.acordeon {
+    background-color: red;
+}

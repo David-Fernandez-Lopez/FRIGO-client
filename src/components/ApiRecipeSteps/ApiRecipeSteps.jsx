@@ -29,8 +29,8 @@ function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
                     <br />
                     <div className='noPrint'>
                         < Tab.Container id="left-tabs-example" defaultActiveKey="0" >
-                            <>
-                                <Col sm={3}>
+                            <Row>
+                                <Col sm={2}>
                                     <Nav variant="pills" className="flex-column">
                                         {apiSteps?.map((elm, idx) => {
                                             return (<Nav.Item key={idx}>
@@ -39,7 +39,7 @@ function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
                                         })}
                                     </Nav>
                                 </Col>
-                                <Col sm={9}>
+                                <Col sm={{ span: 8, offset: 1 }}>
                                     <Tab.Content>
                                         {apiSteps?.map((elm, idx) => {
                                             return (<Tab.Pane key={idx} eventKey={idx}>
@@ -48,7 +48,7 @@ function ApiRecipeSteps({ analyzedInstructions, readyInMinutes }) {
                                         })}
                                     </Tab.Content>
                                 </Col>
-                            </>
+                            </Row>
                         </Tab.Container >
                     </div>
                     <div className='onlyToPrint'>

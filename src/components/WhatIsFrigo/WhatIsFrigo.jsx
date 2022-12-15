@@ -1,12 +1,11 @@
 import { Container } from "react-bootstrap"
 import '../WhatIsFrigo/WhatIsFrigo.css'
 
-
 const WhatIsFrigo = () => {
 
     return (
         <Container className="whatIsFrigo">
-            <h3 className='whatIsFrigoT'>What is FRIG🥑?</h3>
+            <h3 className='whatIsFrigoT'>What is <span><img className="aboutUsLogo" src='/images/Frigo logo_Mesa de trabajo.png' alt="FRIG🥑" /></span>?</h3>
             <p className='whatIsFrigoP mt-5'>
             We realized that one of the problems of many people is not knowing all the possible recipes that can be made with the ingredients they already have at home, so it's very easy to get stuck in the same old and boring recipes.</p>
             <p>This is were FRIGO is born.</p>

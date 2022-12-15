@@ -57,3 +57,8 @@ a {
 .tab-content>.active { 
     margin-top: 0px;
 }
+
+
+.logoNavBar {
+    width: 100px;
+}

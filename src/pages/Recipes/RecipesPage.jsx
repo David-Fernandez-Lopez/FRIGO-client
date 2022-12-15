@@ -65,7 +65,7 @@ const RecipesPage = () => {
     return (
         <Container>
             <div className="recipePageHeader">
-                <h1 className="titles mb-5">Search for a Recipe!</h1>
+                <h1 className="titles mb-5">Search for a Recipe</h1>
                 <RecipesSearchBar setQuery={setQuery} />
             </div>
             {recipesByTitle &&
@@ -81,7 +81,7 @@ const RecipesPage = () => {
                     />
                 </section>
             }
-            <h3 className="titles mb-5">Or Explore our Cuisines!</h3>
+            <h5 className="exploretext mt-5 ms-3 mb-3">or explore the world's cuisines!</h5>
             <Accordion>
 
                 {cuisineList.map((elm, idx) => {
