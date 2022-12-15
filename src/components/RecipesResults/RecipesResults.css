@@ -9,18 +9,21 @@
 }
 
 .recipeResultsCard {
+    
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     margin-bottom: 15px;
-    border-color: white;
+    border-color: rgba(255, 255, 255, 0);
     width: 200px;
     margin-right: 0px;
+    background-color: rgba(15, 117, 49, 0);
+    height: 100%;
 }
 .recipeResultsCard:hover {
     background-color: rgba(15, 117, 49, 0.109);
     border-radius: 10px;
     border-width: 1px;
-    border-color: rgba(14, 57, 14, 0.057)
+    border-color: rgba(14, 57, 14, 0.057);
 }
 
 .recipeResultsT {
@@ -31,7 +34,8 @@
 
 .recipeResults {
     display: flex;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center !important;
 }
 
 .recipeResults p {

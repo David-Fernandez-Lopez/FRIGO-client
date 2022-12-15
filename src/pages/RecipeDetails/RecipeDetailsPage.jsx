@@ -143,13 +143,14 @@ const RecipeDetailsPage = () => {
                     }
                 </>
             }
-            <Modal size='sm' show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
+            <Modal size='md' show={showModal} onHide={closeModal}>
+               <Modal.Header closeButton>
+                    <img className='logoFrigo' src="https://res.cloudinary.com/dp0abawuh/image/upload/v1671093843/Frigo_logo_Mesa_de_trabajo_1_dd2tns.png" alt="LOGO FRIGO" />
                 </Modal.Header>
                 <Modal.Body>
-                    <h4 className='NRTitle mt-3'>Are you sure?</h4>
-                    <div className='d-grid'>
-                        <Button onClick={deleteRecipe} className='mt-3'>Yes</Button>
+                    <p className='deleteModalTitle mt-3'>Are you sure you want to delete your recipe?</p>
+                    <div className="deleteRecipeBtn">
+                        <Button onClick={deleteRecipe} className='yesBtn mt-3'>Yes</Button>
                     </div>
                 </Modal.Body>
             </Modal>

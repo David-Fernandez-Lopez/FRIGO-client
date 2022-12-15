@@ -35,7 +35,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #179246;
+    background-color: #6a8824;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -43,4 +43,8 @@
 .hover-underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+.logoFrigo {
+    width: 100px;
 }

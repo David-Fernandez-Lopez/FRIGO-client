@@ -4,4 +4,19 @@
 
 .homepageForm {
     align-content: center;
+    margin: 0px;
+    min-width: 100vw;
+    min-height: 800px;
+    
+}
+
+.bgImageHP {
+    opacity: 20%;
+    width: 100vw;
+    position: absolute;
+    height: 800px;
+}
+
+.HPBody {
+    position: relative;
 }

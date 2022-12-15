@@ -40,7 +40,9 @@ const Navigation = () => {
             <Navbar expand="md" className="navbar">
                 <Container>
                     <Link to="/">
-                        <Navbar.Brand as="div">FRIGO LOGO</Navbar.Brand>
+                        <Navbar.Brand as="div">
+                            <img className='logoNavBar' style={{width:'100px'}} src="https://res.cloudinary.com/dp0abawuh/image/upload/v1671093843/Frigo_logo_Mesa_de_trabajo_1_dd2tns.png" alt="logo" />
+                        </Navbar.Brand>
                     </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -80,7 +82,7 @@ const Navigation = () => {
 
                                         <Modal style={{ padding: '100px' }} show={showModal} onHide={closeModal}>
                                             <Modal.Header closeButton>
-                                                <img src="#" alt="LOGO FRIGO" />
+                                                <img className='logoFrigo' src="https://res.cloudinary.com/dp0abawuh/image/upload/v1671093843/Frigo_logo_Mesa_de_trabajo_1_dd2tns.png" alt="LOGO FRIGO" />
                                             </Modal.Header>
                                             <Modal.Body>
                                                 {showingForm === 'login' && <LogInForm fireFinalActions={fireFinalActions} />}
