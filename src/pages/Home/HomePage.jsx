@@ -17,6 +17,7 @@ const HomePage = () => {
         loadData()
     }, [query])
 
+
     const loadData = () => {
 
         const paramsObj = { query: query, number: '14' }
@@ -30,7 +31,6 @@ const HomePage = () => {
                 })
                 .catch(err => console.log(err))
             :
-
             setQuery(null)
     }
 
