@@ -1,3 +1,4 @@
+import './NewShoppingListItem.css'
 import { ShoppingListContext } from "../../context/shoppingList.context.js"
 import { useContext, useEffect, useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
@@ -74,15 +75,30 @@ function NewShoppingListItem() {
                 <Col md={{ span: 8, offset:1 }}>                                                            
                     <Row className="mb-3">      
                         <Col>   
-                            <Form.Control type="text" placeholder="Ingredient Name" value={name} onChange={handleInputChange} name="name" /> 
+                            <Form.Control
+                                type="text"
+                                placeholder="Ingredient Name"
+                                value={name}
+                                onChange={handleInputChange}
+                                name="name" /> 
                         </Col>
                                 
                         <Col md={{ span: 2 }}>  
-                            <Form.Control type="number" placeholder="Amount" value={amount? amount : ''} onChange={handleInputChange} name="amount" /> 
+                            <Form.Control
+                                type="number"
+                                placeholder="Amount"
+                                value={amount ? amount : ''}
+                                onChange={handleInputChange}
+                                name="amount" /> 
                         </Col>
                         
                         <Col md={{ span: 4 }}>     
-                            <Form.Select aria-label="unit" value={unit} onChange={handleInputChange} name="unit">
+                            <Form.Select
+                                aria-label="unit"
+                                value={unit}
+                                onChange={handleInputChange}
+                                name="unit">
+                                
                                 <option>Unit of Measurement</option>                                
                                 {measurementsUnits.map(elem => {                                            
                                     return <option key={elem._id}>{elem.unit}</option>                                    

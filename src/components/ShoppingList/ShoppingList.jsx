@@ -48,7 +48,12 @@ function ShoppingList() {
                                             </Col>
 
                                             <Col className='d-grid' md={{ span: 2 }}>
-                                                <Button className='deleteItemButton' variant="danger" onClick={() => deleteItem(elm)} > <RemoveRoundedIcon /> </Button>
+                                                <Button
+                                                    className='deleteItemButton'
+                                                    variant="danger"
+                                                    onClick={() => deleteItem(elm)}
+                                                > <RemoveRoundedIcon />
+                                                </Button>
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>

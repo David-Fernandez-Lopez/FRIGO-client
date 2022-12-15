@@ -1,20 +1,20 @@
-.deleteIngredientBtn {
+.deleteStepBtn {
     border-radius: 25px;
     background-color: rgba(227, 101, 101, 0.773);
     border-color: rgba(209, 48, 48, 0.086);
 }
-.deleteIngredientBtn:hover {
+.deleteStepBtn:hover {
     background-color: rgba(197, 0, 0, 0.993);
     border-color: rgba(209, 48, 48, 0.086);
 }
 
-.addIngredientBtn {
+.addStepBtn {
     border-radius: 25px;
     background-color: rgba(47, 102, 40, 0.714);
     border-color: rgba(47, 102, 40, 0.714);
 }
 
-.addIngredientBtn:hover {
+.addStepBtn:hover {
     border-radius: 25px;
     background-color: rgba(47, 102, 40, 0.993);
     border-color: rgba(47, 102, 40, 0.993)
