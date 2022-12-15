@@ -1,8 +1,8 @@
+import './NewIngredientForm.css'
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useContext } from "react"
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import AddIcon from '@mui/icons-material/Add'
-import './NewIngredientForm.css'
 import { measurementUnitsContext } from "../../context/measurementUnits.context"
 
 
@@ -31,37 +31,67 @@ function NewIngredientForm({ ingredientsData, setIngredientsData }) {
         <Form.Group className="mb-3" controlId="ingredients">
             <Form.Label>Ingredients</Form.Label>
             <Row>
-                <Col md={{ span: 10 }}>
+                <Col md={{ span: 11 }}>
                     {ingredientsData.map((elm, idx) => {
                         return (
 
                             <Row className="mb-3" key={idx}>
                                 <Col>
-                                    <Form.Control type="text" placeholder="Ingredient Name" value={elm.name} onChange={e => handleIngredientsChange(idx, e)} name="name" />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Ingredient Name"
+                                        value={elm.name}
+                                        onChange={e => handleIngredientsChange(idx, e)}
+                                        name="name" />
                                 </Col>
 
                                 <Col md={{ span: 2 }}>
-                                    <Form.Control type="number" placeholder="amount" value={parseInt(elm.amount)} onChange={e => handleIngredientsChange(idx, e)} name="amount" />
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="Amount"
+                                        value={parseInt(elm.amount) || ''}
+                                        onChange={e => handleIngredientsChange(idx, e)}
+                                        name="amount" />
                                 </Col>
 
-                                <Col md={{ span: 2 }}>
-                                    <Form.Select aria-label="ingredient.unit" value={elm.unit} onChange={e => handleIngredientsChange(idx, e)} name="unit">
+                                <Col md={{ span: 3 }}>
+                                    <Form.Select
+                                        aria-label="ingredient.unit"
+                                        value={elm.unit}
+                                        onChange={e => handleIngredientsChange(idx, e)}
+                                        name="unit">
+                                        
                                         <option>Unit of Measurement</option>
                                         {measurementsUnits.map(elem => {
                                             return <option key={elem._id}>{elem.unit}</option>
                                         })}
                                     </Form.Select>
                                 </Col>
-                                <Col md={{ span: 1, offset: 1 }}>
-                                    <Button className="deleteIngredientBtn" onClick={() => deleteIngredient(idx)}> <DeleteForeverIcon /> </Button>
+                                <Col md={{ span: 1}} className="d-grid">
+                                    <Button
+                                        className="deleteIngredientFormBtn"
+                                        onClick={() => deleteIngredient(idx)}
+                                    >
+                                        <RemoveRoundedIcon />
+                                    </Button>
                                 </Col>
                             </Row>
                         )
                     })}
                 </Col>
 
-                <Col md={{ span: 2 }}>
-                    <Button variant="dark" onClick={newIngredient}><AddIcon /> Ingredient</Button>
+                <Col md={{ span: 1 }}>
+                    <Row>
+                        <Col className="d-grid">
+                            <Button
+                                className="addIngredientBtn"
+                                variant="dark"
+                                onClick={newIngredient}
+                                >
+                                <AddIcon /> 
+                            </Button>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 
