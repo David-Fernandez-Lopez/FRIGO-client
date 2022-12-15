@@ -135,7 +135,7 @@ const RecipeDetailsPage = () => {
             }
             {!dbRecipe ? <RecipeCard {...apiRecipe} /> : <RecipeCard {...dbRecipe} />}
             <Button className='PrintButton mt-3 me-3 noPrint' variant="outline-secondary"
-                size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
+                size='sm' onClick={handlePrint} > <PrintIcon /> <span>Print</span> </Button>
             {dbRecipe &&
                 <>
                     {isOwner &&

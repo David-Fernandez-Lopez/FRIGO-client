@@ -21,9 +21,9 @@ function ShoppingList() {
     })
 
     return (
-        <>
+        <div className='melasuda'>
             <Button className='PrintButton mb-3'
-                size='sm' onClick={handlePrint} > <PrintIcon /> </Button>
+                size='sm' onClick={handlePrint} > <PrintIcon /> <span>Print</span> </Button>
 
             <Row className='Print' ref={componentRef}>
                 <h3 className='onlyToPrint'>My Shopping List</h3>
@@ -48,7 +48,12 @@ function ShoppingList() {
                                             </Col>
 
                                             <Col className='d-grid' md={{ span: 2 }}>
-                                                <Button className='deleteItemButton' variant="danger" onClick={() => deleteItem(elm)} > <RemoveRoundedIcon /> </Button>
+                                                <Button
+                                                    className='deleteItemButton'
+                                                    variant="danger"
+                                                    onClick={() => deleteItem(elm)}
+                                                > <RemoveRoundedIcon />
+                                                </Button>
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
@@ -60,7 +65,7 @@ function ShoppingList() {
                     <Loader />
                 }
             </Row>
-        </>
+        </div>
     )
 
 }
