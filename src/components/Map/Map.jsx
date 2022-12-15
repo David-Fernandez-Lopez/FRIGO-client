@@ -1,22 +1,24 @@
 import './Map.css'
 import { Container, Row, Col } from "react-bootstrap"
-import { useContext, useState } from 'react'
-import { GoogleMap, InfoWindow } from '@react-google-maps/api';
+import { useContext, useEffect, useState } from 'react'
+import { GoogleMap } from '@react-google-maps/api';
 import { mapsContext } from '../../context/maps.context';
 import Loader from '../Loader/Loader';
 import RangeSlider from 'react-bootstrap-range-slider';
-
 
 const Map = () => {
     
     const { coordinates, isLoaded, setMap, request, setRequest } = useContext(mapsContext)
 
     const [value, setValue] = useState(400)
-    const [finalValue, setFinalValue] = useState(null)
+
+    useEffect(() => {
+        setRequest({ ...request, radius: value })
+    },[isLoaded])
     
-    const valueHandler = e => {
-        setFinalValue(e.target.value)
-        finalValue && setRequest({ ...request, radius: finalValue })
+    const valueHandler = () => {
+        
+        value && setRequest({ ...request, radius: value })
     }
 
     const onLoad = (map) => {
@@ -36,7 +38,7 @@ const Map = () => {
                             <>
                             <div id='map' className="map">
 
-                                    <GoogleMap                                         
+                                    <GoogleMap        
                                         zoom={16}                                        
                                         onLoad={onLoad}                                        
                                         defaultCenter={{ lat: 39.85990934802615, lng: -4.028579292753214 }}                                        
@@ -52,8 +54,7 @@ const Map = () => {
                                     size='sm'                                    
                                     value={value}                                    
                                     onChange={(e) => setValue(e.target.value)}                                    
-                                    onAfterChange={e => valueHandler(e)}                                    
-                                                                      
+                                    onAfterChange={valueHandler}                                                      
                                     min={400}                                    
                                     max={2000}                                    
                                     variant='secondary'                                    
