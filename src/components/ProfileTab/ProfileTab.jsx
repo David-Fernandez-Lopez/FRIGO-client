@@ -44,7 +44,8 @@ function ProfileTab() {
                 spoonacularService
                     .getRecipeById(elm)
                     .then(({ data }) => {
-                        apiFavRecipesCopy.push(data)
+                        data &&
+                            apiFavRecipesCopy.push(data)
                         setApiFavRecipes(apiFavRecipesCopy)
                         setIsLoading(false)
                     })
@@ -53,7 +54,8 @@ function ProfileTab() {
                 recipeService
                     .getRecipeById(elm)
                     .then(({ data }) => {
-                        dbFavRecipesCopy.push(data)
+                        data &&
+                            dbFavRecipesCopy.push(data)
                         setDbFavRecipes(dbFavRecipesCopy)
                         setIsLoading(false)
                     })
@@ -102,14 +104,17 @@ function ProfileTab() {
                             </section>
                         }</>}
                 </Tab>
+
                 <Tab eventKey="My Recipes" title="My Recipes" tabClassName='myRecTab'>
-                    {myRecipes.length < 1 && <h5 className='mt-5'>You don't have recipes yet</h5>}
                     <section>
                         <Button className='newRecipeBtn' variant='outline-secondary' onClick={openModal}> <LibraryBooksRoundedIcon /> New Recipe</Button>
                         <div className='d-flex justify-content-start mt-3'>
-                            {myRecipes?.map(elm => {
-                                return <DbRecipeCard key={elm._id} {...elm} />
-                            })}
+                            {isLoading ? <Loader /> : <>
+                                {myRecipes.length < 1 && <h5 className='mt-5'>You don't have recipes yet</h5>}
+                                {myRecipes?.map(elm => {
+                                    return <DbRecipeCard key={elm._id} {...elm} />
+                                })}
+                            </>}
                         </div>
                         <Modal size='xl' show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
