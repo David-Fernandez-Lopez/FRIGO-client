@@ -38,13 +38,13 @@ const HomePage = () => {
     return (
         <Container className="homepageForm">
             <div className="bgImage">
-            <img className="bgImageHP" src='https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' alt='bgImage'></img>
+                <img className="bgImageHP" src='https://res.cloudinary.com/dp0abawuh/image/upload/v1671119419/pexels-photo-349610_xr5o3z.png' alt='bgImage'></img>
             </div>
             <div className="HPBody">
-                    <h1 className="homepageTitle titles mb-5">What's in your fridge?</h1>
-                    <IngredientsSearchBar setQuery={setQuery} />
+                <h1 className="homepageTitle titles mb-5">What's in your fridge?</h1>
+                <IngredientsSearchBar setQuery={setQuery} />
                 <div className="homeDiv">
-                    <RecipesResults recipesToSearch={recipesToSearch} /> 
+                    <RecipesResults recipesToSearch={recipesToSearch} />
                 </div>
             </div>
             {/* <Category /> */}

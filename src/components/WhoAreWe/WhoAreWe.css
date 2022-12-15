@@ -28,6 +28,7 @@
 }
 
 .personalImgJ {
+    object-fit: cover;
     margin-top: 30px;
     max-width: 350px;
     min-width: 350px;
@@ -36,7 +37,8 @@
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 40px;
-    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);}
+    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);
+}
 
 .personalImgM {
     margin-top: 30px;
@@ -47,11 +49,12 @@
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px;
     border-top-left-radius: 40px;
-    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);}
+    box-shadow: 3px 4px 8px rgba(34, 127, 49, 0.492), 5px 10px 20px rgba(76, 75, 75, 0.2);
+}
 
 .teamName {
     margin-top: 60px;
-    text-align:start;
-    color:rgb(34, 127, 49);
+    text-align: start;
+    color: rgb(34, 127, 49);
     text-shadow: 2px 2px 5px rgba(62, 62, 62, 0.5);
-}   
+}

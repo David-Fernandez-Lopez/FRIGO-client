@@ -8,11 +8,11 @@
     min-width: 100vw;
     min-height: 800px;
     position: relative;
-    
+
 }
 
 .bgImageHP {
-    opacity: 20%;
+    opacity: 50%;
     width: 100vw;
     position: absolute;
     height: 800px;
@@ -20,7 +20,7 @@
 
 .HPBody {
     position: absolute;
-    left:0px;
+    left: 0px;
     right: 0;
-    top:55px
+    top: 55px
 }

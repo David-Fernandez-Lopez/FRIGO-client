@@ -14,7 +14,7 @@ const WhoAreWe = () => {
             <Row className="teamRow mb-4">
                 <Col xs={5}>
                     <img className="personalImgJ"
-                        src="https://res.cloudinary.com/dp0abawuh/image/upload/v1670944890/jadde_mteitb.jpg"
+                        src="https://res.cloudinary.com/dp0abawuh/image/upload/v1671120190/IMG_6157_yetwod.png"
                         alt="dav" />
                 </Col>
                 <Col xs={5}>
@@ -26,8 +26,8 @@ const WhoAreWe = () => {
                         tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años,
                         sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando
                         esencialmente igual al original.</p>
-                     <a href="https://www.linkedin.com/in/jaddesuarez/" target="_blank">
-                        <LinkedInIcon /> <span><LocalPhoneIcon/>+67890</span>
+                    <a href="https://www.linkedin.com/in/jaddesuarez/" target="_blank">
+                        <LinkedInIcon /> <span><LocalPhoneIcon />+67890</span>
                     </a>
                 </Col>
             </Row>
@@ -39,8 +39,8 @@ const WhoAreWe = () => {
                         and Environmental Health, which allowed me to work for several years as an Environmental
                         Quality Auditor. Now, determined to give my life a 180 degree turn, I have added Web Development
                         to my skills. I hope it's for the best.</p>
-                     <a href="https://www.linkedin.com/in/davidfernandezlopez/" target="_blank">
-                        <LinkedInIcon /> <span><LocalPhoneIcon/>+34 670629076</span>
+                    <a href="https://www.linkedin.com/in/davidfernandezlopez/" target="_blank">
+                        <LinkedInIcon /> <span><LocalPhoneIcon />+34 670629076</span>
                     </a>
                 </Col>
                 <Col xs={5}>
@@ -64,9 +64,9 @@ const WhoAreWe = () => {
                         sin conocimientos previos en código, en la experiencia de un Bootcamp de Full Stack del
                         que salgo emocionada por las posibilidades de la programación y con ganas de seguir mejorando.</p>
                     <a href="https://www.linkedin.com/in/martasalvadorberenguer/" target="_blank">
-                        <LinkedInIcon /> 
+                        <LinkedInIcon />
                     </a>
-                    <span style={{marginLeft:'10px'}}>+34 622 151 066</span>
+                    <span style={{ marginLeft: '10px' }}>+34 622 151 066</span>
                 </Col>
             </Row>
         </Container>
