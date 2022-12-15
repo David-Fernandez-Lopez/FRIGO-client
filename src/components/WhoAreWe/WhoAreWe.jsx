@@ -27,7 +27,7 @@ const WhoAreWe = () => {
                         sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando
                         esencialmente igual al original.</p>
                      <a href="https://www.linkedin.com/in/jaddesuarez/" target="_blank">
-                        <LinkedInIcon /> <span><LocalPhoneIcon/>+67890</span>
+                        <LinkedInIcon /> <span><LocalPhoneIcon/>+34 677 373 595</span>
                     </a>
                 </Col>
             </Row>
@@ -40,7 +40,7 @@ const WhoAreWe = () => {
                         Quality Auditor. Now, determined to give my life a 180 degree turn, I have added Web Development
                         to my skills. I hope it's for the best.</p>
                      <a href="https://www.linkedin.com/in/davidfernandezlopez/" target="_blank">
-                        <LinkedInIcon /> <span><LocalPhoneIcon/>+34 670629076</span>
+                        <LinkedInIcon /> <span><LocalPhoneIcon/>+34 670 629 076</span>
                     </a>
                 </Col>
                 <Col xs={5}>

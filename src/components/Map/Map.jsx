@@ -1,5 +1,5 @@
 import './Map.css'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Form} from "react-bootstrap"
 import { useContext, useEffect, useState } from 'react'
 import { GoogleMap } from '@react-google-maps/api';
 import { mapsContext } from '../../context/maps.context';
@@ -32,10 +32,10 @@ const Map = () => {
         
         <Container>
             <Row>
-                <Col md={{ span: 10, offset: 1 }}>
                     {
                         isLoaded ?
                             <>
+                <Col md={{ span: 12 }}>
                             <div id='map' className="map">
 
                                     <GoogleMap        
@@ -48,23 +48,34 @@ const Map = () => {
                             </GoogleMap>
 
                             </div>
+                            </Col>
+                            
+                            <Col md={{ span: 8, offset: 2 }}> 
                                 
-                                <RangeSlider
-                                    className='slider'                                    
-                                    size='sm'                                    
-                                    value={value}                                    
-                                    onChange={(e) => setValue(e.target.value)}                                    
-                                    onAfterChange={valueHandler}                                                      
-                                    min={400}                                    
-                                    max={2000}                                    
-                                    variant='secondary'                                    
-                                />                                
+                                <Form>
+                                <Form.Group>
+                                <Form.Label> Choose search radius (m) </Form.Label>
+       
+                                    <RangeSlider
+                                        className='slider'                                    
+                                        size='sm'                                    
+                                        value={value}                                    
+                                        onChange={(e) => setValue(e.target.value)}                                    
+                                        onAfterChange={valueHandler}                                                      
+                                        min={400}                                    
+                                        max={2000}                                    
+                                        variant='secondary'                                    
+                                        />    
+                                    </Form.Group>
+                                </Form>
+                                
+                            </Col>
+                            
                             </>
                             :
                             <Loader/>
                     }
                     
-                </Col>
             </Row>            
         </Container>
     )

@@ -2,6 +2,8 @@
     width: 100%;
     height: 60vh;
     margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(153, 153, 153, 0.647);
 }
 
 .slider{

@@ -69,7 +69,7 @@ function NewShoppingListItem() {
 
     return (
 
-        <Form.Group className="mb-3" controlId="ingredients">
+        <Form.Group className="mb-3 mt-5" controlId="ingredients">
             <Row>                
                 <Col md={{ span: 8, offset:1 }}>                                                            
                     <Row className="mb-3">      

@@ -31,3 +31,12 @@
     border-radius: 30px;
     padding: 3px 10px;
 }
+
+.ApiRecipeCard {
+    transition: transform 0.3s ease-out;
+    margin-right: 200px;
+}
+.ApiRecipeCard:hover {
+    box-shadow: 4px 4px 2px 1px rgba(113, 113, 113, 0.196);
+    transform: scale(1.05);
+}
