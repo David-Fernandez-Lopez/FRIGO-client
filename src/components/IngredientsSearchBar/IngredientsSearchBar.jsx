@@ -64,8 +64,8 @@ const IngredientsSearchBar = ({ setQuery }) => {
                         <Button variant="white" className='clearBtn' onClick={clearQuery}>Clear search</Button>
                     </Col>
                 </Row>
-                <p className='mt-3'> {queryArr.map((elm, idx) => {
-                    return <span className='ingredientResult badge bg-light me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
+                <p className='mt-3 ms-3 ingredientsList'> {queryArr.map((elm, idx) => {
+                    return <span className='ingredientResult badge me-2 text-capitalize text-dark' key={idx}>{elm} <HighlightOffIcon onClick={() => handleIgredients(idx)} /></span>
                 })}</p>
             </Form.Group>
         </Form>

@@ -37,9 +37,16 @@ const HomePage = () => {
 
     return (
         <Container className="homepageForm">
-            <h1 className="titles mb-5">What's in your fridge?</h1>
-            <IngredientsSearchBar setQuery={setQuery} />
-            <RecipesResults recipesToSearch={recipesToSearch} />
+            <div className="bgImage">
+            <img className="bgImageHP" src='https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' alt='bgImage'></img>
+            </div>
+            <div className="HPBody">
+                    <h1 className="homepageTitle titles mb-5">What's in your fridge?</h1>
+                    <IngredientsSearchBar setQuery={setQuery} />
+                <div className="homeDiv">
+                    <RecipesResults recipesToSearch={recipesToSearch} /> 
+                </div>
+            </div>
             {/* <Category /> */}
         </Container>
     )

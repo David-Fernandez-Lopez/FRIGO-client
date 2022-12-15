@@ -10,3 +10,30 @@
         display: none;
     }
 }
+
+.deleteRecipeBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.yesBtn {
+    border-radius: 6px;
+    background-color: rgba(227, 101, 101, 0);
+    color: rgba(153, 11, 11, 0.773);
+    border-color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+.yesBtn:hover {
+    border-radius: 6px;
+    background-color: rgba(153, 11, 11, 0.773);
+    border-color: rgba(209, 48, 48, 0.086);
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.deleteModalTitle {
+    font-weight: 400;
+    text-align: center;
+}
