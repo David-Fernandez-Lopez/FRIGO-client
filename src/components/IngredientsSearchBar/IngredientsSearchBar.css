@@ -6,18 +6,21 @@
 }
 
 .clearBtn {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.46);
     border-color: rgba(255, 255, 255, 0);
     color: black;
+    border-bottom: 0px white;
+    border-top: 0px white;
+    border-right: 0px white;
+    border-left: 0px white;
 }
 .clearBtn:hover {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
     border-bottom: 0px white;
     color: black;
     border-top: 0px white;
     border-right: 0px white;
     border-left: 0px white;
-    text-decoration: underline; 
 }
 .clearBtn:active {
     background-color: white;

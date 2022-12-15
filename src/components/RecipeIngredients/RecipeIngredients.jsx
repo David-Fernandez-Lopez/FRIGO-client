@@ -69,7 +69,7 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                                 <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:3}}>
                                 <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
                                     <Button
-                                        variant="outline-secondary"
+                                    
                                         size='sm'
                                         className='mb-3 cartButton block'
                                         onClick={() => (newIngredient(elm), handleToast(elm))}
@@ -81,7 +81,6 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                                     <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:0}}>
                                 <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
                                     <Button
-                                        variant="outline-secondary"
                                         size='sm'
                                         className='mb-3 cartButton block'
                                         onClick={() => (newIngredient(elm), handleToast(elm))}

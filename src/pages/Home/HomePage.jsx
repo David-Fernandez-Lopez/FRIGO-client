@@ -19,7 +19,7 @@ const HomePage = () => {
 
     const loadData = () => {
 
-        const paramsObj = { query: query, number: '2' }
+        const paramsObj = { query: query, number: '14' }
         const searchParams = new URLSearchParams(paramsObj)
 
         recipesToSearch ?
