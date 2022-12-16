@@ -4,8 +4,11 @@ import capitalize from '../utils/capitalize';
 
 
 const mapsContext = createContext()
+let placedMarkers = []
+
 
 function MapsProviderWrapper(props) {
+
 
     const [coordinates, setCoordinates] = useState({})
     const [map, setMap] = useState(null)
@@ -25,6 +28,7 @@ function MapsProviderWrapper(props) {
     }, [map])
     
     useEffect(() => {
+        deleteMarkers()
         getplaces(request, callback)
     }, [request])
     
@@ -69,21 +73,6 @@ function MapsProviderWrapper(props) {
 
         if (!place.geometry || !place.geometry.location) return
 
-        const svgMarker = {
-            path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156" +
-                "5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0" +
-                " 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758" +
-                "3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328" +
-                "-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75" +
-                "-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-            fillColor: "green",
-            fillOpacity: 0.6,
-            strokeWeight: 0,
-            rotation: 0.1,
-            scale: 2,
-            anchor: new window.google.maps.Point(15, 30),
-        }
-
         const marker = map && new window.google.maps.Marker({
             map: map,
             position: place.geometry.location,
@@ -92,9 +81,11 @@ function MapsProviderWrapper(props) {
             business_status: place.business_status,
             url: place.url,
             animation: window.google.maps.Animation.DROP,
-            icon :svgMarker
+            icon :{
+                    url: 'https://res.cloudinary.com/dp0abawuh/image/upload/v1671182183/marker_crenvc.png'
+                }
         })
-
+        placedMarkers.push(marker)
 
         map && window.google.maps.event.addListener(marker, "click", () => {
             toggleBounce()
@@ -128,9 +119,11 @@ function MapsProviderWrapper(props) {
         
     }
     
-    
-    
-
+    const deleteMarkers = () => {
+        placedMarkers.forEach(elm => {
+            elm.setMap(null)
+        })
+    }
     
     return (
         <mapsContext.Provider value={{

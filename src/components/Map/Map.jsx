@@ -6,6 +6,8 @@ import { mapsContext } from '../../context/maps.context';
 import Loader from '../Loader/Loader';
 import RangeSlider from 'react-bootstrap-range-slider';
 
+import mapStyle from './MapsStyle';
+
 const Map = () => {
     
     const { coordinates, isLoaded, setMap, request, setRequest } = useContext(mapsContext)
@@ -26,8 +28,6 @@ const Map = () => {
         map.setCenter(coordinates)
     }
 
-    
-
     return (
         
         <Container>
@@ -38,14 +38,15 @@ const Map = () => {
                 <Col md={{ span: 12 }}>
                             <div id='map' className="map">
 
-                                    <GoogleMap        
-                                        zoom={16}                                        
-                                        onLoad={onLoad}                                        
+                                    <GoogleMap                                          
+                                        options={{styles: mapStyle}}
+                                        zoom={16}                                           
+                                        onLoad={onLoad}                                         
                                         defaultCenter={{ lat: 39.85990934802615, lng: -4.028579292753214 }}                                        
                                         center={coordinates} 
-                                        mapContainerClassName='map'>                                        
-                                        
-                            </GoogleMap>
+                                        mapContainerClassName='map'>    
+                                    </GoogleMap>
+                                    
 
                             </div>
                             </Col>

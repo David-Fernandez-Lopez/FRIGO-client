@@ -2,23 +2,32 @@ import { Button, Row, Col } from 'react-bootstrap'
 import './RecipeIngredients.css'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import { ShoppingListContext } from '../../context/shoppingList.context'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import capitalize  from './../../utils/capitalize'
 import spoonacularUnitsConversor  from './../../utils/spoonacularUnitsConversor'
 import Loader from './../Loader/Loader'
 import { MessageContext } from '../../context/userMessage.context'
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-
+ 
 
 function RecipeIngredients({ extendedIngredients, servings }) {
     
-
+    
+    const [localShoppingListName, setLocalShoppingListName] = useState([])
     
     const { localShoppingList, setLocalShoppingList } = useContext(ShoppingListContext)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
 
-
     const editedIngredients = extendedIngredients && spoonacularUnitsConversor(extendedIngredients)
+   
+    useEffect(() => {
+      loadData()
+    }, [localShoppingList])
+
+    const loadData = () => {
+        setLocalShoppingListName(localShoppingList?.map(elm => elm.name))
+        console.log(localShoppingListName)
+    }
 
     const newIngredient = data => {
         
@@ -49,9 +58,7 @@ function RecipeIngredients({ extendedIngredients, servings }) {
         setShowToast(true)
         setToastMessage(`${elm.name} correctly included`)
     }
-         
-    
-
+ 
     return (
         <>
             {extendedIngredients
@@ -66,8 +73,17 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                             return (
                                 idx % 2 === 0
                                     ?
-                                <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:3}}>
-                                <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
+                                    <>
+                                        <Col
+                                            key={idx}
+                                            className= 'd-flex align-items-center'
+                                            md={{ span: 4, offset: 3 }}>
+                                            
+                                            <p className={localShoppingListName?.includes(elm.name) ? 'green block' : 'block'} >
+                                                {capitalize(elm.name)} <br/>
+                                                <span> {elm.amount} </span>
+                                                <span> {elm.unit} </span>
+                                            </p>
                                     <Button
                                     
                                         size='sm'
@@ -76,10 +92,18 @@ function RecipeIngredients({ extendedIngredients, servings }) {
                                     >
                                         <AddShoppingCartRoundedIcon />
                                     </Button>
-                                    </Col>  
+                                        </Col>  
+                                        </>
                                     :
-                                    <Col key={idx} className='d-flex align-items-center' md={{span:4, offset:0}}>
-                                <p className='block' > {capitalize(elm.name)} - <span>{elm.amount}</span> <span>{elm.unit}</span> </p>
+                                    <Col
+                                        key={idx}
+                                        className= 'd-flex align-items-center'
+                                        md={{ span: 4, offset: 0 }}>
+                                        <p className={localShoppingListName?.includes(elm.name) ? 'green block' : 'block'} >
+                                            {capitalize(elm.name)} <br/>
+                                            <span> {elm.amount} </span>
+                                            <span> {elm.unit} </span>
+                                        </p>
                                     <Button
                                         size='sm'
                                         className='mb-3 cartButton block'

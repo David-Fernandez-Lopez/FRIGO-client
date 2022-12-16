@@ -9,7 +9,6 @@ import './ShoppingListPage.css'
 
 const ShoppingListPage = () => {
 
-    const [state, setState] = useState('hidden')
 
 
     return (
