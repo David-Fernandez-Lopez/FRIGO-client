@@ -19,13 +19,12 @@ const WhoAreWe = () => {
                 </Col>
                 <Col xs={5}>
                     <h4 className="teamName">Jadde Suárez</h4>
-                    <p style={{ textAlign: "justify" }}>lorem Ipsum es simplemente el texto de relleno
-                        de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno
-                        estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona
-                        que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de
-                        tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años,
-                        sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando
-                        esencialmente igual al original.</p>
+                    <p style={{ textAlign: "justify" }}>Technology is something that I've always been fascinated about and have been following as far as I can remember,
+                        I'm a logical and pragmatic person and I think web dev has a lot to offer in these aspects,
+                        but art and design also caught my attention as a teenager, so I decided to study architecture.
+                        As technologies evolved, I learned more and more about programming,
+                        so I figured that I could merge the logical and creative parts of my life in an on-demand skill such as web development.
+                        So, I decided to enroll in a Bootcamp to grow my knowledge in this field and I hope to continue learning in the future.</p>
                     <a href="https://www.linkedin.com/in/jaddesuarez/" target="_blank">
                         <LinkedInIcon /> <span><LocalPhoneIcon />+34 677 373 595</span>
                     </a>
@@ -57,12 +56,9 @@ const WhoAreWe = () => {
                 </Col>
                 <Col xs={5}>
                     <h4 className="teamName">Marta Salvador</h4>
-                    <p style={{ textAlign: "justify" }}>Apasionada del cine, decidí estudiar Comunicación
-                        Audiovisual en Madrid. Tras unos años colaborando en proyectos cinematográficos y
-                        publicitarios, decido buscar nuevas opciones que me motiven y me topo con el Diseño
-                        y Experiencia de Usuario. Ahora, para ampliar mis conocimientos, he decidido embarcarme,
-                        sin conocimientos previos en código, en la experiencia de un Bootcamp de Full Stack del
-                        que salgo emocionada por las posibilidades de la programación y con ganas de seguir mejorando.</p>
+                    <p style={{ textAlign: "justify" }}>Passionate about film, I studied the Audiovisual Communication Degree and collaborated in some advertising and film projects, which helped me develop aspects such as leadership or teamwork.
+                        After a few years being curious about tech, I've found myself interested in Web Design & Development, that's why I took the challenge of a Full Stack Bootcamp, without any background in coding.
+                        Now, I am ready for other challenges that keep me growing both professionally and personally.</p>
                     <a href="https://www.linkedin.com/in/martasalvadorberenguer/" target="_blank">
                         <LinkedInIcon />
                     </a>
