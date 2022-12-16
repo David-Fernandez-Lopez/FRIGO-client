@@ -7,3 +7,16 @@
     background-color: rgba(197, 0, 0, 0.993);
     border-color: rgba(209, 48, 48, 0.086);
 }
+
+.itemBtn {
+    border-radius: 25px;
+    padding: 5px 20px;
+    background-color: rgba(47, 102, 40, 0.714);
+    border-color: rgba(47, 102, 40, 0.714);
+}
+
+.itemBtn:hover {
+    border-radius: 25px;
+    background-color: rgba(47, 102, 40, 0.993);
+    border-color: rgba(47, 102, 40, 0.993)
+}

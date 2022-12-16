@@ -108,9 +108,16 @@ function NewShoppingListItem() {
                     </Row>            
                 </Col>
                 
-                <Col md={{ span: 2 }}>                    
-                    <Button variant="dark" onClick={()=> (newIngredient())}><AddIcon /> Ingredient</Button>                    
-                </Col>                
+                <Col md={{ span: 2 }}>            
+                    <Row>
+                        <Col className="d-grid">    
+                            <Button
+                                className='itemBtn'
+                                variant="dark"
+                                onClick={() => (newIngredient())}><AddIcon /> Ingredient</Button>                    
+                        </Col>                           
+                    </Row> 
+                </Col>                 
             </Row>          
 
         </Form.Group>
