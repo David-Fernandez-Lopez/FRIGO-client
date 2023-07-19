@@ -6,34 +6,33 @@ import userService from '../services/user.service'
 const ShoppingListContext = createContext()
 
 function ShoppingListWrapper(props) {
-    
+
     const [localShoppingList, setLocalShoppingList] = useState(null)
 
     useEffect(() => {
-       loadShoppingList()
+        loadShoppingList()
     }, [])
 
     useEffect(() => {
         saveShoppingList()
     }, [localShoppingList])
-        
-    
+
+
     const loadShoppingList = () => {
 
-         userService
+        userService
             .getShoppingList()
-             .then(({ data }) => {
-                //  console.log(data)
-                 data.shoppingList
+            .then(({ data }) => {
+                data.shoppingList
                     ?
                     setLocalShoppingList(data.shoppingList)
                     :
                     setLocalShoppingList([])
             })
             .catch(err => console.log(err))
-        
+
     }
-    
+
     const saveShoppingList = () => {
 
         localShoppingList && userService.addItemsToShoppingList(localShoppingList)
@@ -47,7 +46,7 @@ function ShoppingListWrapper(props) {
     }
 
     return (
-        <ShoppingListContext.Provider value={{ localShoppingList, setLocalShoppingList, deleteItem}}>
+        <ShoppingListContext.Provider value={{ localShoppingList, setLocalShoppingList, deleteItem, loadShoppingList }}>
             {props.children}
         </ShoppingListContext.Provider>
     )

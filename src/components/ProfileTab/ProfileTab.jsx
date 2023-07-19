@@ -74,8 +74,6 @@ function ProfileTab() {
         closeModal()
     }
 
-    console.log({ dbFavRecipes }, { apiFavRecipes })
-    console.log(user.favRecipes)
 
     return (
         <>

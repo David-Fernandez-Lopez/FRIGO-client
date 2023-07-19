@@ -12,8 +12,11 @@ import Loader from './../Loader/Loader'
 function ShoppingList() {
 
     const { localShoppingList, deleteItem } = useContext(ShoppingListContext)
+    const [sortedList, setSortedList] = useState([])
 
-    const sortedList = localShoppingList && sortShoppingList(localShoppingList)
+    useEffect(() => {
+        setSortedList(localShoppingList && sortShoppingList(localShoppingList))
+    }, [localShoppingList])
 
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
