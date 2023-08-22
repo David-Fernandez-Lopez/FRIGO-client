@@ -2,7 +2,7 @@ import './ShoppingList.css'
 import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 
 import { ShoppingListContext } from "../../context/shoppingList.context.js"
-import { useContext, useState, useRef } from "react"
+import { useContext, useState, useRef, useEffect } from "react"
 import { useReactToPrint } from "react-to-print"
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import PrintIcon from '@mui/icons-material/Print'
