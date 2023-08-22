@@ -21,11 +21,13 @@ function AuthProviderWrapper(props) {
 
         authService
             .verify(token)
-            .then(({ data }) => {
+            .then((data) => {
+                console.log(data)
                 setUser(data)
                 setIsLoading(false)
             })
             .catch(err => {
+                console.log(err)
                 setUser(null)
                 setIsLoading(false)
             })

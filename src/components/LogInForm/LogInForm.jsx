@@ -50,7 +50,10 @@ const LogInForm = ({fireFinalActions}) => {
                 setToastMessage(`Welcome ${email}`)
                 navigate('/')
             })
-            .catch(err => setErrors(err.response.data.errorMessages))
+            .catch(err => {
+                // console.log(err.response.statusText)
+                setErrors(['Wrong user or password'])
+            })
     }
 
     const { password, email } = signupData
