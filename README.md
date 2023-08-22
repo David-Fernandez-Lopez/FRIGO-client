@@ -21,3 +21,5 @@ Relevant endpoints CLIENT
 - Brown: #5e2302
 - Black: #000000
 - White: #ffffff
+
+VISIT HERE https://frigoapp.netlify.app/
